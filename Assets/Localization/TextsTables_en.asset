@@ -1,0 +1,311 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: TextsTables_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 4db77b0398dde9a46a2a462d1d46622e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 24537763840
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 390205575168
+    m_Localized: Next Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 538071568384
+    m_Localized: Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592874344448
+    m_Localized: Clue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 631738765312
+    m_Localized: Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815201816576
+    m_Localized: Action
+    m_Metadata:
+      m_Items: []
+  - m_Id: 856150806528
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 932646522880
+    m_Localized: Place blocks under the main to bring the car to the plant and catch
+      its humidity.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1355700801536
+    m_Localized: 'Congratulations! You have completed the level in:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1447778357248
+    m_Localized: Congratulations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2090802909184
+    m_Localized: The blocks are executed sequentially starting from main.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2204820869120
+    m_Localized: To move the car forward, the "Move forward" block needs to be used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2267030786048
+    m_Localized: More than one block of the same type needs to be used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2315248504832
+    m_Localized: '"Get humidity" is the last block that needs to be used'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2437688627200
+    m_Localized: First, forward movement to the plant is needed. Then the humidity
+      is collected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2788537962496
+    m_Localized: It needs to be rotated at some point.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2818808254464
+    m_Localized: Obstacles need to be avoided.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2835816157184
+    m_Localized: A right turn is needed at some point.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3109150560256
+    m_Localized: Move forward, turn and move forward again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2943056121856
+    m_Localized: '"Get humidity" is the last block that needs to be used.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3380337479680
+    m_Localized: Note how many times the "Move forward" block needs to be executed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3409055879168
+    m_Localized: The content between the repeat block and its end will be executed
+      the specified number of times.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3427280130048
+    m_Localized: The end which corresponds to the repeat has the same colour.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3445265305600
+    m_Localized: '"Get humidity" is the last block that needs to be used.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3462008967168
+    m_Localized: Repeat "forward" until you reach the plant, then pick up the humidity.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3999584522240
+    m_Localized: The content between "if" and its end is only executed if the condition
+      is satisfied.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4025186553856
+    m_Localized: The end which corresponds to the if has the same colour.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4123664617472
+    m_Localized: Turn around if an obstacle is encountered.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4163028160512
+    m_Localized: '"Get humidity" is the last block that needs to be used.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4167520260096
+    m_Localized: Repeat "forward" until you reach the plant, but turning if an obstacle
+      is encountered, then pick up the humidity.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4522731671552
+    m_Localized: More than one rotation is needed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4613429301248
+    m_Localized: '"Get humidity" is not the last block that needs to be used.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4633125752832
+    m_Localized: The same sequence of movement is repeated.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4653023531008
+    m_Localized: The "if" block is not needed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4668391460864
+    m_Localized: Repeat "forward" until you reach the plant, pick up the humidity
+      and turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5072017723392
+    m_Localized: The shortest way is not always the right way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5093794549760
+    m_Localized: '"Get humidity" is the last block that needs to be used.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5109498023936
+    m_Localized: The same sequence of movement is repeated.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5126778556416
+    m_Localized: Need to check if there is an obstacle more than once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144260415488
+    m_Localized: Repeat turn if there is an obstacle and move forward.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5578588983296
+    m_Localized: "Aim at the cube with the controller.\r\n\nHold down the controller
+      grip to move the cube.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5602379075584
+    m_Localized: Release the controller grip to drop the cube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613250711552
+    m_Localized: Move the controller while holding the cube to place it on the platform.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5635396636672
+    m_Localized: 'Aim at the platform floor .
+
+
+
+      Press the grip once to move
+      to that location.
+
+
+
+      Rotate the view with the left joystick.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5647811776512
+    m_Localized: Apply what you have learned to bring the cube to the new platform.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5840078671872
+    m_Localized: 'This is the "Main block", responsible for executing all instructions
+      from top to bottom.
+
+
+      To place a block, grab it and put it underneath
+      the previous block.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5856621006848
+    m_Localized: 'To delete a block, press the A button to display the delete window.
+
+
+      To
+      confirm, point at the delete button with the controller and press the trigger.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5871015858176
+    m_Localized: "The objective is to drive the car to the plant to collect humidity.\r\n\nWe
+      need a 'Move forward' block to \nmove the car forward one square.\r\n\nWe need
+      a 'Get humidity' block to collect humidity."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7510418296832
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8040477659136
+    m_Localized: Dynamics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8448403083264
+    m_Localized: User ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8504204103680
+    m_Localized: What do you want to learn?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8642553221120
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8721846538240
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715094267826176
+    m_Localized: 'This is the test stand, use it to help you visualize the path before
+      you start programming.
+
+
+      Press all the buttons to see what they do.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729998936805376
+    m_Localized: Tutorial completed!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 734799909130240
+    m_Localized: No clue avalible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2890108836548608
+    m_Localized: Congratulations! You have completed all levels, would you like to
+      repeat any of them?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522172722221056
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522576809857024
+    m_Localized: 'Turn
+
+      Left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522639959298048
+    m_Localized: 'Turn
+
+      right'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522710222278656
+    m_Localized: Advance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7616732487159808
+    m_Localized: Check your code
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

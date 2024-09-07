@@ -1,0 +1,280 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TextsTables Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TextsTables
+  m_TableCollectionNameGuidString: 4db77b0398dde9a46a2a462d1d46622e
+  m_Entries:
+  - m_Id: 932646522880
+    m_Key: Welcome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24537763840
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 390205575168
+    m_Key: Next Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8040477659136
+    m_Key: dynamicsbutton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144260415488
+    m_Key: level6clue5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5126778556416
+    m_Key: level6clue4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5109498023936
+    m_Key: level6clue3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5093794549760
+    m_Key: level6clue2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5072017723392
+    m_Key: level6clue1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4668391460864
+    m_Key: level5clue5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4653023531008
+    m_Key: level5clue4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4633125752832
+    m_Key: level5clue3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4613429301248
+    m_Key: level5clue2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4522731671552
+    m_Key: level5clue1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4167520260096
+    m_Key: level4clue5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4163028160512
+    m_Key: level4clue4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4123664617472
+    m_Key: level4clue3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4025186553856
+    m_Key: level4clue2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3999584522240
+    m_Key: level4clue1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3462008967168
+    m_Key: level3clue5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3445265305600
+    m_Key: level3clue4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3427280130048
+    m_Key: level3clue3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3409055879168
+    m_Key: level3clue2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3380337479680
+    m_Key: level3clue1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3109150560256
+    m_Key: level2clue5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2943056121856
+    m_Key: level2clue4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2835816157184
+    m_Key: level2clue3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2818808254464
+    m_Key: level2clue2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2788537962496
+    m_Key: level2clue1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2437688627200
+    m_Key: level1clue5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2315248504832
+    m_Key: level1clue4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2267030786048
+    m_Key: level1clue3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2204820869120
+    m_Key: level1clue2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2090802909184
+    m_Key: level1clue1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 631738765312
+    m_Key: Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5871015858176
+    m_Key: dynamics3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5856621006848
+    m_Key: dynamics2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5840078671872
+    m_Key: dynamics1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 856150806528
+    m_Key: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7510418296832
+    m_Key: controlsbutton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5647811776512
+    m_Key: controls5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5635396636672
+    m_Key: controls4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613250711552
+    m_Key: controls3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5602379075584
+    m_Key: controls2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5578588983296
+    m_Key: controls1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1447778357248
+    m_Key: Congratulations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1355700801536
+    m_Key: Congratulations completed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592874344448
+    m_Key: Clue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 538071568384
+    m_Key: Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815201816576
+    m_Key: Action
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8448403083264
+    m_Key: userID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8504204103680
+    m_Key: learn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8642553221120
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8721846538240
+    m_Key: tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715094267826176
+    m_Key: dynamics4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729998936805376
+    m_Key: completedTutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 734799909130240
+    m_Key: noClue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2890108836548608
+    m_Key: allLevelsCompleted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522172722221056
+    m_Key: resetCharacter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522576809857024
+    m_Key: turnLeft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522639959298048
+    m_Key: turnRight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522710222278656
+    m_Key: advance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7616732487159808
+    m_Key: checkCode
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5225924273774002228
+  references:
+    version: 2
+    RefIds:
+    - rid: 5225924273774002228
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1716277472734

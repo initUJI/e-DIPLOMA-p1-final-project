@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - LeftHandController
+  - RightHandController
+  - Block
+  - DeleteWindow
+  - BottomSocket
+  - RightSocket
+  - LocalContextSocket
+  - TextScreenPrint
+  - corridor
+  - dead
+  - Character
+  - FLAG
+  - ROCK
+  - MISTERIOUS
+  - TREE
+  - finalBlock
+  - CharacterCollider
+  - Arrow
+  - FinalSection
+  - SpawnSection
+  - Bear
+  - Node
+  - NodeNext
+  - UI
+  - PLANT
+  - OBSTACLE
+  - Car
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - InsideBlock
+  - BottomBlock
+  - InsideBlockObject
+  - InsideBlockNumber
+  - InsideBlockDirection
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Teleport
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

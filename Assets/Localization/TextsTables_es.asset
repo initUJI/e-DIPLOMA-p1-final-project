@@ -1,0 +1,304 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: TextsTables_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 4db77b0398dde9a46a2a462d1d46622e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 24537763840
+    m_Localized: Empezar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 390205575168
+    m_Localized: Siguiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 538071568384
+    m_Localized: Limpiar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592874344448
+    m_Localized: Pista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 631738765312
+    m_Localized: Agarrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 815201816576
+    m_Localized: "Acci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 856150806528
+    m_Localized: Eliminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 932646522880
+    m_Localized: Coloca bloques debajo del main para llevar el coche hasta la planta
+      y coger su humedad.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1355700801536
+    m_Localized: "\xA1Enhorabuena! Has completado el nivel en:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1447778357248
+    m_Localized: "\xA1Enhorabuena!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2090802909184
+    m_Localized: Los bloques se ejecutan secuencialmente empezando por el principal.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2204820869120
+    m_Localized: "Para hacer avanzar el coche, hay que utilizar el bloque \xABAvanzar\xBB."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2267030786048
+    m_Localized: "Es necesario utilizar m\xE1s de un bloque del mismo tipo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2315248504832
+    m_Localized: "\xABObtener humedad\xBB es el \xFAltimo bloque que hay que utilizar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2437688627200
+    m_Localized: "Primero, es necesario avanzar hacia la planta. A continuaci\xF3n,
+      se recoge la humedad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2788537962496
+    m_Localized: "Hay que rotarlo en alg\xFAn momento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2818808254464
+    m_Localized: "Hay que evitar los obst\xE1culos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2835816157184
+    m_Localized: "En alg\xFAn momento es necesario girar a la derecha."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2943056121856
+    m_Localized: "\xABObtener humedad\xBB es el \xFAltimo bloque que hay que utilizar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3109150560256
+    m_Localized: Avanza, gira y vuelve a avanzar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3380337479680
+    m_Localized: "Observe cu\xE1ntas veces debe ejecutarse el bloque \xABAvanzar\xBB."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3409055879168
+    m_Localized: "El contenido entre el bloque de repetici\xF3n y su final se ejecutar\xE1
+      el n\xFAmero de veces especificado."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3427280130048
+    m_Localized: "El extremo que corresponde a la repetici\xF3n tiene el mismo color."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3445265305600
+    m_Localized: "\xABObtener humedad\xBB es el \xFAltimo bloque que hay que utilizar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3462008967168
+    m_Localized: "Repite \xABhacia delante\xBB hasta que llegues a la planta, entonces
+      recoge la humedad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3999584522240
+    m_Localized: "El contenido entre \xABif\xBB y su final s\xF3lo se ejecuta si
+      se cumple la condici\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4025186553856
+    m_Localized: El extremo que corresponde al si tiene el mismo color.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4123664617472
+    m_Localized: "D\xE9 la vuelta si encuentra un obst\xE1culo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4163028160512
+    m_Localized: "\xABObtener humedad\xBB es el \xFAltimo bloque que hay que utilizar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4167520260096
+    m_Localized: "Repite \xABadelante\xBB hasta llegar a la planta, pero girando
+      si se encuentra un obst\xE1culo, y luego retoma la humedad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4522731671552
+    m_Localized: "Se necesita m\xE1s de una rotaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4613429301248
+    m_Localized: "\xABObtener humedad\xBB no es el \xFAltimo bloque que hay que utilizar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4633125752832
+    m_Localized: Se repite la misma secuencia de movimientos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4653023531008
+    m_Localized: "El bloque \xABif\xBB no es necesario."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4668391460864
+    m_Localized: "Repite \xABadelante\xBB hasta llegar a la planta, recoge la humedad
+      y gira."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5072017723392
+    m_Localized: "El camino m\xE1s corto no siempre es el correcto."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5093794549760
+    m_Localized: "\xABObtener humedad\xBB es el \xFAltimo bloque que hay que utilizar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5109498023936
+    m_Localized: Se repite la misma secuencia de movimientos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5126778556416
+    m_Localized: "Necesidad de comprobar si hay un obst\xE1culo m\xE1s de una vez."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144260415488
+    m_Localized: "Repite el giro si hay un obst\xE1culo y avanza."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5871015858176
+    m_Localized: 'El objetivo es conducir el coche hasta la planta para recoger la
+      humedad.
+
+
+      Necesitamos un bloque de ''Avanzar'' para mover el coche una
+      casilla hacia adelante.
+
+
+      Necesitamos un bloque de ''Obtener humedad''
+      para recoger la humedad.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5856621006848
+    m_Localized: "Para eliminar un bloque, presiona el bot\xF3n A para mostrar la
+      ventana de eliminaci\xF3n.\r\n\nPara confirmar, apunta al bot\xF3n de eliminaci\xF3n
+      con el control y presiona el gatillo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5840078671872
+    m_Localized: "Este es el \xABbloque principal\xBB, responsable de ejecutar todas
+      las instrucciones de arriba a abajo.\r\n\r\nPara colocar un bloque, c\xF3gelo
+      y ponlo debajo del bloque anterior."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5647811776512
+    m_Localized: Aplica lo aprendido para llevar el cubo a la nueva plataforma.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5635396636672
+    m_Localized: "Apunta al suelo de la plataforma.\r\n\nPresiona el agarre una vez
+      para moverte a esa ubicaci\xF3n.\r\n\nGira la vista con el joystick izquierdo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613250711552
+    m_Localized: Mueve el mando mientras sujetas el cubo para colocarlo en la plataforma.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5602379075584
+    m_Localized: Suelta el agarre del control para soltar el cubo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5578588983296
+    m_Localized: "Apunta al cubo con el control.\r\n\nMant\xE9n presionado el agarre
+      del control para mover el cubo.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7510418296832
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8040477659136
+    m_Localized: "Din\xE1micas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8448403083264
+    m_Localized: Usuario ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8504204103680
+    m_Localized: "\xBFQu\xE9 quieres aprender?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8642553221120
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8721846538240
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 715094267826176
+    m_Localized: "Este es el banco de pruebas, \xFAsalo para ayudarte a visualizar
+      el camino antes de empezar a programar.\r\n\nPresiona todos los botones para
+      ver qu\xE9 hacen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729998936805376
+    m_Localized: "\xA1Tutorial completado!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 734799909130240
+    m_Localized: No hay pista disponible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2890108836548608
+    m_Localized: "\xA1Enhorabuena! Has completado todos los niveles. \xBFTe gustar\xEDa
+      repetir alguno?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522172722221056
+    m_Localized: Reiniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522576809857024
+    m_Localized: 'Giro
+
+      izquierda'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522639959298048
+    m_Localized: 'Giro
+
+      derecha'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5522710222278656
+    m_Localized: Avance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7616732487159808
+    m_Localized: "Revisa tu c\xF3digo\n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

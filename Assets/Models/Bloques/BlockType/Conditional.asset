@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3d84830342a8c488d6dee174fd046f, type: 3}
+  m_Name: Conditional
+  m_EditorClassIdentifier: 
+  Type: Conditional
+  material: {fileID: 2100000, guid: 5dae73ab2fa84ac47bd767bf1d6ab543, type: 2}
+  forma: {fileID: 1498971879651717891, guid: 4c46ae17c9b1ca84b8d89ef6046dddf8, type: 3}
+  nodeRightName: VAR
+  nodeNextName: FUNCTION
