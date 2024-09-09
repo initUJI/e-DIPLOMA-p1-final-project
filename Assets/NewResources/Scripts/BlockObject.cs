@@ -5,6 +5,4 @@ public class BlockObject : ScriptableObject
 {
     public string blockName;         // Nombre del bloque (ej. "MoveForward")
     public GameObject blockPrefab;   // Prefab asociado al bloque
-
-    // Aquí puedes añadir más propiedades específicas para cada tipo de bloque, como parámetros o valores predeterminados.
 }

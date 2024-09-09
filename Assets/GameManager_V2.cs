@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager_V2 : MonoBehaviour
 {
@@ -13,27 +14,201 @@ public class GameManager_V2 : MonoBehaviour
     }
 
     public GameState actualGameState;
+    public List<BlockSet> playerBlocksSets;
 
     private bool localPlayerInitialized = false;
-    private int localPlayer_ID;
 
     [Header("Player Scenarios")]
     public List<GameObject> PlayableScenarios;  // Escenarios donde los jugadores pueden interactuar
     public List<GameObject> NonPlayableScenarios;
+    public List<Transform> PlayersInitialTransforms;
+
+    [Header("Local player Setup")]
+    public GameObject local_XRPlayer;
+    public GameSocket_Manager socketManager;
+    private List<ShelfController_V2> localPlayerShelfsControllers;
+
+    [SerializeField] private int actualGamePhase = 0;
 
     private void Awake()
     {
-        actualGameState = GameState.WAITING_FOR_PLAYERS;
+        actualGameState = GameState.WAITING_FOR_PLAYERS;    
+    }
 
+    private void Start()
+    {
         InitializeLocalPlayer();
     }
 
     private void InitializeLocalPlayer()
     {
-        //Mandar al servidor petición para que nos diga si somos player 1 o 2
+        if(localPlayerInitialized == false)
+        {
+            if(socketManager.roomID == null || socketManager.roomID == "")
+            {
+                //Aún no se ha iniciado el player en el servidor
+                StartCoroutine(CheckRoomIDAgain());
+            }
+            else
+            {
+                //Ha inicializado correctamente en el servidor
+                localPlayerInitialized = true;
 
-        //Después de sabe qué ID nos pertenece...
+                InitializeLocalScenario(socketManager.playerID);
+            }
+        }
+    }
 
-        //IniciarLocalPlayerScenario() --> Coloca el Rig de la parte del escenario que toque y pone la interfaz partner en el contrario.
+    private IEnumerator CheckRoomIDAgain()
+    {
+        yield return new WaitForSeconds(1f);
+
+        // Vuelve a comprobar si la roomID sigue siendo null o vacía
+        if (socketManager.roomID == null || socketManager.roomID == "")
+        {
+            // Si sigue siendo null o vacía, vuelve a iniciar el proceso
+            StartCoroutine(CheckRoomIDAgain());
+        }
+        else
+        {
+            // Si ya está disponible, inicializa el jugador local
+            localPlayerInitialized = true;
+            InitializeLocalScenario(socketManager.playerID);
+        }
+    }
+
+    private void InitializeLocalScenario(int playerID)
+    {
+        if (playerID == 1)
+        {
+            PlayableScenarios[0].SetActive(true);
+            NonPlayableScenarios[1].SetActive(true);
+
+            //Se localiza el player en su lugar de Player1
+            local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[0].position, PlayersInitialTransforms[0].rotation);
+            localPlayerShelfsControllers = PlayableScenarios[0].GetComponentsInChildren<ShelfController_V2>().ToList();
+            
+            SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
+        }else if(playerID == 2)
+        {
+            PlayableScenarios[1].SetActive(true);
+            NonPlayableScenarios[0].SetActive(true);
+
+            //Se localiza el player en su lugar de Player2
+            local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[1].position, PlayersInitialTransforms[1].rotation);
+            localPlayerShelfsControllers = PlayableScenarios[1].GetComponentsInChildren<ShelfController_V2>().ToList();
+
+            SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
+        }
+        else
+        {
+            Debug.LogError("Player_ID out of bounds!");
+        }
+    }
+
+    private void SetLocalAvailableBlocks(BlockSet actualBlockSet)
+    {
+        foreach(ShelfController_V2 sf in localPlayerShelfsControllers)
+        {
+            switch (sf.block.blockName)
+            {
+                case ("MoveForward"):
+                    sf.availableBlockQuantity = actualBlockSet.moveForwardQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("For"):
+                    sf.availableBlockQuantity = actualBlockSet.forQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("EndFor"):
+                    sf.availableBlockQuantity = actualBlockSet.endForQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("If"):
+                    sf.availableBlockQuantity = actualBlockSet.ifQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("EndIf"):
+                    sf.availableBlockQuantity = actualBlockSet.endIfQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("Left"):
+                    sf.availableBlockQuantity = actualBlockSet.leftQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("Right"):
+                    sf.availableBlockQuantity = actualBlockSet.rightQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("Turn"):
+                    sf.availableBlockQuantity = actualBlockSet.turnQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("GetHumidity"):
+                    sf.availableBlockQuantity = actualBlockSet.getHumidityQuantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n3"):
+                    sf.availableBlockQuantity = actualBlockSet.number3_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n4"):
+                    sf.availableBlockQuantity = actualBlockSet.number4_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n5"):
+                    sf.availableBlockQuantity = actualBlockSet.number5_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n6"):
+                    sf.availableBlockQuantity = actualBlockSet.number6_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n7"):
+                    sf.availableBlockQuantity = actualBlockSet.number7_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n8"):
+                    sf.availableBlockQuantity = actualBlockSet.number8_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n9"):
+                    sf.availableBlockQuantity = actualBlockSet.number9_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+            }
+        }
     }
 }
