@@ -48,7 +48,7 @@ public class SocketTest : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        /*if(Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("Current player count: " + roomInfo.user + " with room ID: " + roomInfo.room);
 
@@ -60,7 +60,7 @@ public class SocketTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             
-        }
+        }*/
     }
 }
 
