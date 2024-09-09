@@ -28,7 +28,28 @@ public class GameManager_V2 : MonoBehaviour
     public GameSocket_Manager socketManager;
     private List<ShelfController_V2> localPlayerShelfsControllers;
 
+    [Header("Local player Setup")]
+    [SerializeField] private CarController localCarController;
+    [SerializeField] private CarController partnerCarController;
+
+    [SerializeField] private List<BlockObject> localBlocksSecuence;
+    [SerializeField] private List<BlockObject> partnerBlocksSecuence;
+
     [SerializeField] private int actualGamePhase = 0;
+
+    //  TESTING INPUT
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ProcecarSecuences();
+        }
+    }
+
+    private void ProcecarSecuences()
+    {
+        localCarController.ProcesarSecuences(localBlocksSecuence);
+    }
 
     private void Awake()
     {

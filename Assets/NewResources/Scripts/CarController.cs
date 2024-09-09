@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,21 +9,39 @@ public class CarController : MonoBehaviour
     public const float moveDuration = 0.3f;
     public LayerMask obstacleLayer;         // Capa que define qué objetos son considerados obstáculos
 
+    private bool isMoving = false;
+
+    // TESTING INPUT
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!isMoving)
         {
-            MoveForward();
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                MoveForward();
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                TurnRight();
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                TurnLeft();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+    }
+
+    public void ProcesarSecuences(List<BlockObject> blockSecuence)
+    {
+        if( CheckIfSecuenceIsPosible(blockSecuence))
         {
-            TurnRight();
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
+            Debug.Log("El movimiento está bien");
+        }else
         {
-            TurnLeft();
+            Debug.LogError("El coche se la ha pegado :(");
         }
 
+        // Si el movimiento está bien, ejecutar la secuencia
     }
 
     public void MoveForward()
@@ -37,9 +56,28 @@ public class CarController : MonoBehaviour
         }
         else
         {
+            isMoving = true;
             // Si no hay obstáculo, mover el coche hacia adelante con un movimiento suave utilizando LeanTween
-            LeanTween.move(gameObject, transform.position + forward, moveDuration).setEase(LeanTweenType.easeInOutQuad);
+            LeanTween.move(gameObject, transform.position + forward, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => isMoving = false);
         }
+    }
+
+    // Girar el coche 90 grados hacia la derecha
+    public void TurnRight()
+    {
+        isMoving = true;
+        Quaternion targetRotation = transform.rotation * Quaternion.Euler(0, 90, 0);
+
+        LeanTween.rotate(gameObject, targetRotation.eulerAngles, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => isMoving = false);
+    }
+
+    // Girar el coche 90 grados hacia la izquierda
+    public void TurnLeft()
+    {
+        isMoving = true;
+        Quaternion targetRotation = transform.rotation * Quaternion.Euler(0, -90, 0);
+
+        LeanTween.rotate(gameObject, targetRotation.eulerAngles, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => isMoving = false);
     }
 
     public bool IsObstacleInFront()
@@ -59,19 +97,54 @@ public class CarController : MonoBehaviour
         }
     }
 
-        // Girar el coche 90 grados hacia la derecha
-        public void TurnRight()
+    public bool CheckIfSecuenceIsPosible(List<BlockObject> blockList)
     {
-        Quaternion targetRotation = transform.rotation * Quaternion.Euler(0, 90, 0);
+        // Crear una copia virtual de la posición y rotación actuales del coche
+        Vector3 virtualPosition = transform.position;
+        Quaternion virtualRotation = transform.rotation;
 
-        LeanTween.rotate(gameObject, targetRotation.eulerAngles, moveDuration).setEase(LeanTweenType.easeInOutQuad);
-    }
+        List<string> blockStringList = Utilities.BlockListToStringList(blockList);
 
-    // Girar el coche 90 grados hacia la izquierda
-    public void TurnLeft()
-    {
-        Quaternion targetRotation = transform.rotation * Quaternion.Euler(0, -90, 0);
+        // Recorrer cada movimiento en la secuencia
+        foreach (string movement in blockStringList)
+        {
+            // Simular el movimiento basado en el tipo de instrucción
+            if (movement == "MoveForward")
+            {
+                Vector3 forward = virtualRotation * Vector3.forward * TILE_DISTANCE;
+                RaycastHit hit;
 
-        LeanTween.rotate(gameObject, targetRotation.eulerAngles, moveDuration).setEase(LeanTweenType.easeInOutQuad);
+                // Comprobar si hay un obstáculo en la dirección del movimiento
+                if (Physics.Raycast(virtualPosition, forward, out hit, TILE_DISTANCE, obstacleLayer))
+                {
+                    Debug.LogError("Obstacle detected in simulated move. Sequence is invalid.");
+                    return false; // Secuencia no válida
+                }
+                else
+                {
+                    // Actualizar la posición virtual si no hay obstáculos
+                    virtualPosition += forward;
+                }
+            }
+            else if (movement == "Right")
+            {
+                // Simular una rotación de 90 grados hacia la derecha
+                virtualRotation *= Quaternion.Euler(0, 90, 0);
+            }
+            else if (movement == "Left")
+            {
+                // Simular una rotación de 90 grados hacia la izquierda
+                virtualRotation *= Quaternion.Euler(0, -90, 0);
+            }
+            else
+            {
+                Debug.LogError("Unknown movement command: " + movement);
+                return false; // Secuencia no válida debido a un comando desconocido
+            }
+        }
+
+        // Si la secuencia completa se simuló sin problemas, es válida
+        Debug.Log("Movement sequence is valid.");
+        return true;
     }
 }

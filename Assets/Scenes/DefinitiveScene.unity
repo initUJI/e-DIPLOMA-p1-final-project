@@ -8203,6 +8203,10 @@ MonoBehaviour:
   - {fileID: 1095846967}
   local_XRPlayer: {fileID: 875596926}
   socketManager: {fileID: 378001769}
+  localCarController: {fileID: 1766675438}
+  partnerCarController: {fileID: 0}
+  localBlocksSecuence: []
+  partnerBlocksSecuence: []
   actualGamePhase: 0
 --- !u!4 &378001768
 Transform:
@@ -31925,6 +31929,17 @@ Transform:
   m_Father: {fileID: 470908406}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1766675438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4401745809524402318, guid: 0184c24a75f15a74a84c715a37de9c32, type: 3}
+  m_PrefabInstance: {fileID: 910397981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13574b5092e53764a843afa7569a8236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1767101419
 GameObject:
   m_ObjectHideFlags: 0
