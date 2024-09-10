@@ -29,11 +29,12 @@ public class GameManager_V2 : MonoBehaviour
     private List<ShelfController_V2> localPlayerShelfsControllers;
 
     [Header("Local player Setup")]
-    [SerializeField] private CarController localCarController;
-    [SerializeField] private CarController partnerCarController;
+    [SerializeField] private CarController_V2 localCarController;
+    [SerializeField] private CarController_V2 partnerCarController;
 
     [SerializeField] private List<BlockObject> localBlocksSecuence;
     [SerializeField] private List<BlockObject> partnerBlocksSecuence;
+    [SerializeField] private PartnerMainBlock_Controller partnerMainBlockController;
 
     [SerializeField] private int actualGamePhase = 0;
 
@@ -43,7 +44,27 @@ public class GameManager_V2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             ProcecarSecuences();
+        }else if (Input.GetKeyDown(KeyCode.O))
+        {
+            UpdatePartnerBlocks();
         }
+    }
+
+    public void sendLocalSecuenceToServer()
+    {
+
+    }
+
+    public void receivePartnerSecuenceFromServer(List<string> partnerSecuence)
+    {
+        partnerBlocksSecuence = Utilities.StringListToBlockList(partnerSecuence);
+
+        partnerMainBlockController.updatePartnerBlocks(partnerBlocksSecuence);
+    }
+
+    private void UpdatePartnerBlocks()
+    {
+        partnerMainBlockController.updatePartnerBlocks(partnerBlocksSecuence);
     }
 
     private void ProcecarSecuences()
@@ -75,7 +96,8 @@ public class GameManager_V2 : MonoBehaviour
                 //Ha inicializado correctamente en el servidor
                 localPlayerInitialized = true;
 
-                InitializeLocalScenario(socketManager.playerID);
+                InitializeLocalScenario(2);
+                //InitializeLocalScenario(socketManager.playerID);
             }
         }
     }
@@ -94,7 +116,9 @@ public class GameManager_V2 : MonoBehaviour
         {
             // Si ya está disponible, inicializa el jugador local
             localPlayerInitialized = true;
-            InitializeLocalScenario(socketManager.playerID);
+            //InitializeLocalScenario(socketManager.playerID);
+            InitializeLocalScenario(2);
+
         }
     }
 
@@ -104,6 +128,7 @@ public class GameManager_V2 : MonoBehaviour
         {
             PlayableScenarios[0].SetActive(true);
             NonPlayableScenarios[1].SetActive(true);
+            partnerMainBlockController = PlayableScenarios[0].GetComponentInChildren<PartnerMainBlock_Controller>();
 
             //Se localiza el player en su lugar de Player1
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[0].position, PlayersInitialTransforms[0].rotation);
@@ -114,6 +139,7 @@ public class GameManager_V2 : MonoBehaviour
         {
             PlayableScenarios[1].SetActive(true);
             NonPlayableScenarios[0].SetActive(true);
+            partnerMainBlockController = PlayableScenarios[1].GetComponentInChildren<PartnerMainBlock_Controller>();
 
             //Se localiza el player en su lugar de Player2
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[1].position, PlayersInitialTransforms[1].rotation);

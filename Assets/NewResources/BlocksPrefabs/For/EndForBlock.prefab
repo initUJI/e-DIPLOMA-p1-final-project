@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 592926645561428643}
   - component: {fileID: 2640114850284859185}
   - component: {fileID: -3803885231821916592}
+  - component: {fileID: 5581620513957023789}
   m_Layer: 0
   m_Name: EndForBlock
   m_TagString: Block
@@ -235,6 +236,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockToAttach: {fileID: 0}
+--- !u!114 &5581620513957023789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207788813518633014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a429eb30d4cbe4cae4f0c84417ba2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5113890044353157555
 GameObject:
   m_ObjectHideFlags: 0

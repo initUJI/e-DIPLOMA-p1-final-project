@@ -12,7 +12,7 @@ public class MainBlock_Controller : MonoBehaviour
     public bool isBottomFilled = false;
 
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if(!isBottomFilled)
         {
@@ -35,5 +35,5 @@ public class MainBlock_Controller : MonoBehaviour
             isBottomFilled = false;
             bottomObject = null;
         }
-    }
+    }*/
 }

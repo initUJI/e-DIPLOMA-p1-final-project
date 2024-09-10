@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 882191336452917893}
   - component: {fileID: 6366926640743452943}
   - component: {fileID: -3731191543291584819}
+  - component: {fileID: 8830092224360144542}
   m_Layer: 0
   m_Name: ForBlock
   m_TagString: Block
@@ -839,6 +840,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockToAttach: {fileID: 0}
+--- !u!114 &8830092224360144542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6515503501265242032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a429eb30d4cbe4cae4f0c84417ba2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6946856906932553021
 GameObject:
   m_ObjectHideFlags: 0
