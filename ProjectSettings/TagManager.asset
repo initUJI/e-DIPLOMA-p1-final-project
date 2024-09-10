@@ -31,6 +31,9 @@ TagManager:
   - PLANT
   - OBSTACLE
   - Car
+  - ConditionBlock
+  - NumberBlock
+  - TurnDirectionBlock
   layers:
   - Default
   - TransparentFX

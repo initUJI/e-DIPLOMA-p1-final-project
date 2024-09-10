@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c58f38de88b1b148b92259220c7530c, type: 3}
   m_Name: BlockSetTest
   m_EditorClassIdentifier: 
-  moveForwardQuantity: 1
-  forQuantity: 1
-  endForQuantity: 1
-  ifQuantity: 1
-  endIfQuantity: 1
-  getHumidityQuantity: 1
-  turnQuantity: 1
-  rightQuantity: 1
-  leftQuantity: 1
-  number3_Quantity: 1
-  number4_Quantity: 1
-  number5_Quantity: 1
-  number6_Quantity: 1
-  number7_Quantity: 1
-  number8_Quantity: 1
-  number9_Quantity: 1
+  moveForwardQuantity: 3
+  forQuantity: 3
+  endForQuantity: 3
+  ifQuantity: 3
+  endIfQuantity: 33
+  getHumidityQuantity: 3
+  turnQuantity: 3
+  rightQuantity: 3
+  leftQuantity: 33
+  number3_Quantity: 3
+  number4_Quantity: 33
+  number5_Quantity: 3
+  number6_Quantity: 3
+  number7_Quantity: 33
+  number8_Quantity: 3
+  number9_Quantity: 3

@@ -23,8 +23,29 @@ public class ShelfController_V2 : MonoBehaviour
             blockQuantityVisual.text = availableBlockQuantity.ToString();
 
             //Se instancia el Holder
-            currentBlock = Instantiate(block.blockPrefab, blockPlacer.position, blockPlacer.rotation);
-            currentBlock.transform.parent = blockPlacer;
+            currentBlock = Instantiate(block.blockPrefab, blockPlacer.position, blockPlacer.rotation, null);
+            //currentBlock.transform.parent = blockPlacer;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject == currentBlock)
+        {
+            availableBlockQuantity -= 1;
+
+            if(availableBlockQuantity > 0)
+            {
+                blockQuantityVisual.text = availableBlockQuantity.ToString();
+
+                //Se instancia el Holder
+                currentBlock = Instantiate(block.blockPrefab, blockPlacer.position, blockPlacer.rotation, null);
+            }else
+            {
+                availableBlockQuantity = 0;
+
+                blockQuantityVisual.text = availableBlockQuantity.ToString();
+            }
         }
     }
 }
