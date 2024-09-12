@@ -7976,6 +7976,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a5b04cd385f25cd4e8b67504f9c60468, type: 2}
   partnerMainBlockController: {fileID: 0}
   actualGamePhase: 0
+  blockOptions:
+  - {fileID: 11400000, guid: ba08ba4c068f9384fb34ba60f0035e2c, type: 2}
+  - {fileID: 11400000, guid: a5b04cd385f25cd4e8b67504f9c60468, type: 2}
+  - {fileID: 11400000, guid: 44634febcfb7aee48be79a5216b1192a, type: 2}
+  - {fileID: 11400000, guid: 69505c2e0a09f8c4dafeb79e7f6e68e5, type: 2}
+  - {fileID: 11400000, guid: e9ed6e89ac3c3464bb4c3962fc358dcf, type: 2}
+  - {fileID: 11400000, guid: ec67fff94c3d20e4ebbadf72a69877c2, type: 2}
+  - {fileID: 11400000, guid: da23d139f4cdeb640855d821b2efa21f, type: 2}
+  - {fileID: 11400000, guid: 123055b473834d948bd54c14b3176f96, type: 2}
+  - {fileID: 11400000, guid: 947ed0c247674364dafb6961cef339df, type: 2}
+  - {fileID: 11400000, guid: effd7b22f50e0ef48b32318d4262ce42, type: 2}
+  - {fileID: 11400000, guid: 7ebba751434eeb645a0ae10be165f199, type: 2}
+  - {fileID: 11400000, guid: fc69160609965f74e9d8f44ad33062a0, type: 2}
+  - {fileID: 11400000, guid: 967f793c09ffefb478bee02d8e5f3e4c, type: 2}
+  - {fileID: 11400000, guid: 51c672a87383c5d40ba4860ecaffc128, type: 2}
+  - {fileID: 11400000, guid: 3d07fe32c9b2fb148a8e69b8b2870690, type: 2}
+  - {fileID: 11400000, guid: 6fd86d2868a040244a91ed1034bc32b2, type: 2}
 --- !u!4 &378001768
 Transform:
   m_ObjectHideFlags: 0
@@ -8005,6 +8022,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   roomID: 
+  onPlayerMove:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &380762898
 GameObject:
   m_ObjectHideFlags: 0

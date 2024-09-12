@@ -39,32 +39,35 @@ public class GameManager_V2 : MonoBehaviour
 
     [SerializeField] private int actualGamePhase = 0;
 
+    [SerializeField] private List<BlockObject> blockOptions;
+
     //  TESTING INPUT
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             ProcecarSecuences();
+
         }else if (Input.GetKeyDown(KeyCode.O))
         {
             UpdatePartnerBlocks();
         }else if (Input.GetKeyDown(KeyCode.I))
         {
-            List<string> blockNames = playerMainBlockController.getString();
-            Debug.Log(string.Join(", ", blockNames));
+            sendLocalSecuenceToServer();
         }
     }
 
     public void sendLocalSecuenceToServer()
     {
-        List<string> localStringSecuence = playerMainBlockController.getString();
-
-        //Aquí se mandaría al servidor
+        List<string> localStringSecuence = Utilities.BlockListToStringList(localBlocksSecuence);
+        socketManager.sendLocalSecuence(localStringSecuence);
     }
 
     public void receivePartnerSecuenceFromServer(List<string> partnerSecuence)
     {
-        partnerBlocksSecuence = Utilities.StringListToBlockList(partnerSecuence);
+        List<BlockObject> blockObjects = Utilities.StringListToBlockList(partnerSecuence, blockOptions);
+        Debug.Log("Secuencia convertida a BlockObjects: " + blockObjects.ToString());
+        partnerBlocksSecuence = blockObjects;
 
         partnerMainBlockController.updatePartnerBlocks(partnerBlocksSecuence);
     }
@@ -87,6 +90,7 @@ public class GameManager_V2 : MonoBehaviour
     private void Start()
     {
         InitializeLocalPlayer();
+        socketManager.onPlayerMove.AddListener(receivePartnerSecuenceFromServer);
     }
 
     private void InitializeLocalPlayer()
@@ -95,7 +99,7 @@ public class GameManager_V2 : MonoBehaviour
         {
             if(socketManager.roomID == null || socketManager.roomID == "")
             {
-                //Aún no se ha iniciado el player en el servidor
+                //Aï¿½n no se ha iniciado el player en el servidor
                 StartCoroutine(CheckRoomIDAgain());
             }
             else
@@ -113,15 +117,15 @@ public class GameManager_V2 : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        // Vuelve a comprobar si la roomID sigue siendo null o vacía
+        // Vuelve a comprobar si la roomID sigue siendo null o vacï¿½a
         if (socketManager.roomID == null || socketManager.roomID == "")
         {
-            // Si sigue siendo null o vacía, vuelve a iniciar el proceso
+            // Si sigue siendo null o vacï¿½a, vuelve a iniciar el proceso
             StartCoroutine(CheckRoomIDAgain());
         }
         else
         {
-            // Si ya está disponible, inicializa el jugador local
+            // Si ya estï¿½ disponible, inicializa el jugador local
             localPlayerInitialized = true;
             InitializeLocalScenario(socketManager.playerID);
         }
