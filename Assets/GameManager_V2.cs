@@ -26,6 +26,7 @@ public class GameManager_V2 : MonoBehaviour
     [Header("Local player Setup")]
     public GameObject local_XRPlayer;
     public GameSocket_Manager socketManager;
+    public MainBlock playerMainBlockController;
     private List<ShelfController_V2> localPlayerShelfsControllers;
 
     [Header("Local player Setup")]
@@ -47,12 +48,18 @@ public class GameManager_V2 : MonoBehaviour
         }else if (Input.GetKeyDown(KeyCode.O))
         {
             UpdatePartnerBlocks();
+        }else if (Input.GetKeyDown(KeyCode.I))
+        {
+            List<string> blockNames = playerMainBlockController.getString();
+            Debug.Log(string.Join(", ", blockNames));
         }
     }
 
     public void sendLocalSecuenceToServer()
     {
+        List<string> localStringSecuence = playerMainBlockController.getString();
 
+        //Aquí se mandaría al servidor
     }
 
     public void receivePartnerSecuenceFromServer(List<string> partnerSecuence)
@@ -74,7 +81,7 @@ public class GameManager_V2 : MonoBehaviour
 
     private void Awake()
     {
-        actualGameState = GameState.WAITING_FOR_PLAYERS;    
+        actualGameState = GameState.WAITING_FOR_PLAYERS;
     }
 
     private void Start()
@@ -96,8 +103,8 @@ public class GameManager_V2 : MonoBehaviour
                 //Ha inicializado correctamente en el servidor
                 localPlayerInitialized = true;
 
-                InitializeLocalScenario(2);
-                //InitializeLocalScenario(socketManager.playerID);
+
+                InitializeLocalScenario(socketManager.playerID);
             }
         }
     }
@@ -116,9 +123,7 @@ public class GameManager_V2 : MonoBehaviour
         {
             // Si ya está disponible, inicializa el jugador local
             localPlayerInitialized = true;
-            //InitializeLocalScenario(socketManager.playerID);
-            InitializeLocalScenario(2);
-
+            InitializeLocalScenario(socketManager.playerID);
         }
     }
 
@@ -127,6 +132,7 @@ public class GameManager_V2 : MonoBehaviour
         if (playerID == 1)
         {
             PlayableScenarios[0].SetActive(true);
+            playerMainBlockController = PlayableScenarios[0].GetComponentInChildren<MainBlock>();
             NonPlayableScenarios[1].SetActive(true);
             partnerMainBlockController = PlayableScenarios[0].GetComponentInChildren<PartnerMainBlock_Controller>();
 

@@ -41,6 +41,23 @@ public class TurnBlock : ActionCharacterBlock, WithRightSocket
         isFinished = true;
     }
 
+    public string getRightSocketString()
+    {
+        Block block = getSocketBlock(rightSocket);
+
+        if (block != null)
+        {
+            Debug.Log("Hay Right Socket");
+            return block.name;
+        }
+        else
+        {
+            Debug.Log("No hay Right Socket");
+        }
+
+        return null;
+    }
+
     public override bool IsFinished()
     {
         return base.IsFinished() && isFinished;

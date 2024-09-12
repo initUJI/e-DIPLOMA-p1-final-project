@@ -23,8 +23,24 @@ public class ForBlock : ConditionalBlock
         {
             StopCoroutine(forCoroutine);
         }
-
+        
         forCoroutine = StartCoroutine(c_ExecuteFor());
+    }
+
+    public string getRightSocketName()
+    {
+        Block block = getSocketBlock(rightSocket);
+
+        if(block != null)
+        {
+            Debug.Log("Hay Right Socket");
+            return block.name;
+        }else
+        {
+            Debug.Log("No hay Right Socket");
+        }
+
+        return null;
     }
 
     private IEnumerator ExecuteBlockChain()

@@ -10,12 +10,11 @@ using UnityEngine.XR.Interaction.Toolkit;
  */
 public class MainBlock : Block, WithBottomSocket
 {
-    public static bool paused;
     public static bool error;
 
     // Public variables to be set in the Unity inspector
     [SerializeField] XRSocketInteractor bottomSocket;
-    [SerializeField] GameObject canvasFail;
+    //[SerializeField] GameObject canvasFail;
 
     // Internal state management variables
     [HideInInspector] public ExecutableBlock currentBlock;
@@ -35,6 +34,11 @@ public class MainBlock : Block, WithBottomSocket
     int ifBlocks = 0;  // Track the number of active "If" blocks
     int endIfBlocks = 0;  // Track the number of completed "If" blocks
 
+    public void InitDebugFunction()
+    {
+        Debug.Log("Se ha añadido algo al socket");
+    }
+
     // Get the bottom socket for connecting blocks
     public XRSocketInteractor getBottomSocket()
     {
@@ -45,12 +49,11 @@ public class MainBlock : Block, WithBottomSocket
     public override void Start()
     {
         base.Start();
-        paused = false;
 
-        if (canvasFail != null)
+        /*if (canvasFail != null)
         {
             canvasFail.SetActive(false);  // Hide failure message by default
-        }
+        }*/
     }
 
     /* Start executing the blocks from the beginning.
@@ -58,17 +61,55 @@ public class MainBlock : Block, WithBottomSocket
      */
     public void Execute()
     {
-        if (!paused)
-        {
-            error = false;  // Reset error flag
+        error = false;  // Reset error flag
 
-            if (currentCoroutine != null)
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);  // Stop any previous executions
+        }
+
+        currentCoroutine = StartCoroutine(c_Execute());  // Start the coroutine for block execution
+    }
+
+    // Coroutine to handle the block execution process step-by-step with delays
+    public List<string> getString()
+    {
+        List<string> cadena = new List<string>();
+        currentBlock = (ExecutableBlock)getSocketBlock(bottomSocket);  // Get the first block connected to the socket
+
+        // Main loop to read each block in the sequence
+        while (currentBlock != null && !error)
+        {
+            string currentBlockName = currentBlock.name.Replace("(Clone)", "").Trim();
+            cadena.Add(currentBlockName);
+
+            //Aqui se van a tratar los casos especiales
+            if(currentBlockName == "ForBlock")
             {
-                StopCoroutine(currentCoroutine);  // Stop any previous executions
+                Debug.Log("Bucle Detectado!");
+                string possibleRightSocket = currentBlock.GetComponent<ForBlock>().getRightSocketName();
+
+                if(possibleRightSocket != null)
+                {
+                    cadena.Add(possibleRightSocket.Replace("(Clone)", "").Trim());
+                }
+
+            }
+            else if(currentBlockName == "TurnBlock")
+            {
+                Debug.Log("Turn Detectado!");
+                string possibleRightSocket = currentBlock.GetComponent<TurnBlock>().getRightSocketString();
+
+                if (possibleRightSocket != null)
+                {
+                    cadena.Add(possibleRightSocket.Replace("(Clone)", "").Trim());
+                }
             }
 
-            currentCoroutine = StartCoroutine(c_Execute());  // Start the coroutine for block execution
+            currentBlock = (ExecutableBlock)currentBlock.getSocketBlock(((WithBottomSocket)currentBlock).getBottomSocket());  // Move to the next block
         }
+
+        return cadena;
     }
 
     // Coroutine to handle the block execution process step-by-step with delays
@@ -85,8 +126,6 @@ public class MainBlock : Block, WithBottomSocket
         // Main loop to execute each block in the sequence
         while (currentBlock != null && !error)
         {
-            yield return new WaitUntil(() => !paused);  // Wait until the game is unpaused
-
             HandleBlockExecution(ref executingBlock);
 
             yield return new WaitUntil(() => !error);  // Wait until there's no error
@@ -169,57 +208,14 @@ public class MainBlock : Block, WithBottomSocket
     {
         if (allCorrect && forBlocks == endForBlocks && ifBlocks == endIfBlocks)
         {
-            completeLevel();
+            //todo ok se acaba el nivel
         }
-        else if (canvasFail != null)
+        /*else if (canvasFail != null)
         {
             canvasFail.SetActive(true);  // Show failure canvas
-        }
+        }*/
 
         Debug.Log("MainBlock : END");
-    }
-
-    // Toggle pause state
-    public void TooglePause()
-    {
-        paused = !paused;
-    }
-
-    // Complete the level if all conditions are met
-    private void completeLevel()
-    {
-
-    }
-
-    // Check if the target object is colliding with any objects in the list
-    bool IsCollidingWithAny(GameObject target, List<GameObject> objects)
-    {
-        Collider targetCollider = target.GetComponent<Collider>();
-
-        if (targetCollider == null)
-        {
-            Debug.LogError("Target object does not have a collider.");
-            return false;
-        }
-
-        foreach (GameObject obj in objects)
-        {
-            if (obj == null) continue;
-
-            Collider objCollider = obj.GetComponent<Collider>();
-            if (objCollider == null)
-            {
-                Debug.LogWarning($"Object in the list does not have a collider: {obj.name}");
-                continue;
-            }
-
-            if (targetCollider.bounds.Intersects(objCollider.bounds))
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
 

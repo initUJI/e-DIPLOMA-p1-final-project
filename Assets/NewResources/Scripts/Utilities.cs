@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Utilities
@@ -7,8 +8,9 @@ public static class Utilities
     {
         List<string> blockNames = new List<string>();
 
-        foreach (BlockObject block in blockList)
+        for (int i = 0; i < blockList.Count; i++)
         {
+            BlockObject block = blockList[i];
             blockNames.Add(block.blockName);
         }
 
@@ -24,12 +26,15 @@ public static class Utilities
         BlockObject[] allBlockObjects = Resources.LoadAll<BlockObject>("Blocks");
 
         // Buscar los BlockObject que coincidan con los nombres dados en blockNames
-        foreach (string blockName in blockList)
+        for (int i = 0; i < blockList.Count; i++)
         {
+            string blockName = blockList[i];
             bool found = false;
 
-            foreach (BlockObject block in allBlockObjects)
+            // Iterar sobre el array de BlockObjects
+            for (int j = 0; j < allBlockObjects.Length; j++)
             {
+                BlockObject block = allBlockObjects[j];
                 if (block.blockName == blockName)
                 {
                     blocks.Add(block);
