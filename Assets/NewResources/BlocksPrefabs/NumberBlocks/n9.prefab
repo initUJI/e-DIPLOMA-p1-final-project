@@ -283,11 +283,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4722741229816627551}
-  - component: {fileID: 5971441911409847099}
-  - component: {fileID: 4300159953871209481}
-  - component: {fileID: -2612569175075637960}
+  - component: {fileID: 4912333489984979570}
+  - component: {fileID: 6143162652267119564}
+  - component: {fileID: -7833203619312121701}
+  - component: {fileID: -4339102749373760880}
+  - component: {fileID: -4158087129744097940}
+  - component: {fileID: -415290802285699352}
   m_Layer: 9
-  m_Name: NumberBlock 6
+  m_Name: n9
   m_TagString: NumberBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,7 +312,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &5971441911409847099
+--- !u!54 &4912333489984979570
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,7 +328,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4300159953871209481
+--- !u!114 &6143162652267119564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,7 +480,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!65 &-2612569175075637960
+--- !u!65 &-7833203619312121701
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -490,6 +493,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0.01, z: 0}
+--- !u!114 &-4339102749373760880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722741229816627545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d574906cf48795743a89dcf201bcacd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationTime: 0.4
+  scaleFrameTime: 24
+  destroyWhenScaledToZero: 1
+  particleEffect: 1
+  effect: {fileID: 0}
+--- !u!114 &-4158087129744097940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722741229816627545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a51b21449138ec45b8648b6c01a8f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-415290802285699352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722741229816627545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22262f30cdabab42b78f64ed879b801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottomBlock: {fileID: 0}
+  associatedString: 9
 --- !u!1 &4722741230288771173
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: 9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}

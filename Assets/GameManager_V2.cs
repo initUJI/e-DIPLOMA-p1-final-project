@@ -38,8 +38,8 @@ public class GameManager_V2 : MonoBehaviour
     [SerializeField] private PartnerMainBlock_Controller partnerMainBlockController;
 
     [SerializeField] private int actualGamePhase = 0;
-
     [SerializeField] private List<BlockObject> blockOptions;
+    private bool mustUpdate = false;
 
     //  TESTING INPUT
     public void Update()
@@ -53,23 +53,30 @@ public class GameManager_V2 : MonoBehaviour
             UpdatePartnerBlocks();
         }else if (Input.GetKeyDown(KeyCode.I))
         {
+            List<string> blockNames = playerMainBlockController.getString();
+            Debug.Log(string.Join(", ", blockNames));
             sendLocalSecuenceToServer();
+        }
+
+        if (mustUpdate)
+        {
+            UpdatePartnerBlocks();
+            mustUpdate = false;
         }
     }
 
     public void sendLocalSecuenceToServer()
     {
-        List<string> localStringSecuence = Utilities.BlockListToStringList(localBlocksSecuence);
-        socketManager.sendLocalSecuence(localStringSecuence);
+        //List<string> localStringSecuence = Utilities.BlockListToStringList(localBlocksSecuence);
+        socketManager.sendLocalSecuence(playerMainBlockController.getString());
     }
 
     public void receivePartnerSecuenceFromServer(List<string> partnerSecuence)
     {
         List<BlockObject> blockObjects = Utilities.StringListToBlockList(partnerSecuence, blockOptions);
-        Debug.Log("Secuencia convertida a BlockObjects: " + blockObjects.ToString());
         partnerBlocksSecuence = blockObjects;
 
-        partnerMainBlockController.updatePartnerBlocks(partnerBlocksSecuence);
+        mustUpdate = true;
     }
 
     private void UpdatePartnerBlocks()

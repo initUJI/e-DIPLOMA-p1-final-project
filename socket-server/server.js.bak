@@ -39,7 +39,7 @@ io.on("connection", (socket) => {
   console.log(`User ${user} connected to room ${room}`);
 
   socket.on("play", (msg) => {
-    io.to(userRooms[user]).emit("move", msg);
+    socket.broadcast.to(userRooms[user]).emit("move", msg);
   });
 
   socket.on("disconnect", () => {

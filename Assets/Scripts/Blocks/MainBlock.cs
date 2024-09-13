@@ -84,10 +84,9 @@ public class MainBlock : Block, WithBottomSocket
             cadena.Add(currentBlockName);
 
             //Aqui se van a tratar los casos especiales
-            if(currentBlockName == "ForBlock")
+            if(currentBlockName == "For")
             {
-                Debug.Log("Bucle Detectado!");
-                string possibleRightSocket = currentBlock.GetComponent<ForBlock>().getRightSocketName();
+                string possibleRightSocket = currentBlock.gameObject.GetComponent<ForBlock>().getRightSocketName();
 
                 if(possibleRightSocket != null)
                 {
@@ -95,10 +94,9 @@ public class MainBlock : Block, WithBottomSocket
                 }
 
             }
-            else if(currentBlockName == "TurnBlock")
+            else if(currentBlockName == "Turn")
             {
-                Debug.Log("Turn Detectado!");
-                string possibleRightSocket = currentBlock.GetComponent<TurnBlock>().getRightSocketString();
+                string possibleRightSocket = currentBlock.gameObject.GetComponent<TurnBlock>().getRightSocketString();
 
                 if (possibleRightSocket != null)
                 {

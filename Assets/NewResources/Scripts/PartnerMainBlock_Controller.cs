@@ -5,7 +5,7 @@ using UnityEngine;
 public class PartnerMainBlock_Controller : MonoBehaviour
 {
     public List<BlockObject> partnerSecuence;
-    public Transform mainBlockBottomAttach;
+    [SerializeField] Transform mainBlockBottomAttach;
     private List<GameObject> visualPartnerBlocks = new List<GameObject>();
 
     public void updatePartnerBlocks(List<BlockObject> newPartnerSecuence)
@@ -17,17 +17,71 @@ public class PartnerMainBlock_Controller : MonoBehaviour
         // Posición inicial del primer bloque
         Transform currentAttachPoint = mainBlockBottomAttach;
 
-        // Obtener la rotación original y restarle 90 grados en el eje Y
-        Quaternion adjustedRotation = Quaternion.Euler(0, -90, 0) * currentAttachPoint.rotation;
 
-        // Iterar sobre la secuencia de bloques
-        foreach (BlockObject blockObject in partnerSecuence)
+        // Iterar sobre la secuencia de bloques con for
+        for (int i = 0; i < partnerSecuence.Count; i++)
         {
+            Quaternion adjustedRotation = Quaternion.Euler(0, -90, 0) * mainBlockBottomAttach.rotation;
+
+            BlockObject blockObject = partnerSecuence[i];
+
             // Instanciar el prefab del BlockObject
             GameObject newBlock = Instantiate(blockObject.blockPrefab, currentAttachPoint.position, adjustedRotation);
+            DisableScriptsOnParent(newBlock);
             visualPartnerBlocks.Add(newBlock);
 
-            DisableScriptsOnParent(newBlock);
+            
+            // Caso especial FOR_BLOCK
+            if (newBlock.name.Contains("For"))
+            {
+                
+
+                if ((i + 1) < partnerSecuence.Count)
+                {
+                    BlockObject possibleRightSocket = partnerSecuence[i + 1];
+
+                    if (possibleRightSocket != null)
+                    {
+                        if (possibleRightSocket.blockName == "n2" || possibleRightSocket.blockName == "n3" || possibleRightSocket.blockName == "n4"
+                            || possibleRightSocket.blockName == "n5" || possibleRightSocket.blockName == "n6" || possibleRightSocket.blockName == "n7"
+                            || possibleRightSocket.blockName == "n8" || possibleRightSocket.blockName == "n9")
+                        {
+                            Transform directionAttachPoint = newBlock.transform.Find("Right Socket/Attach");
+                            Debug.Log(directionAttachPoint);
+                            adjustedRotation = Quaternion.Euler(0, 90, 0) * newBlock.transform.rotation;
+                            
+                            GameObject rightTurnSocketBlock = Instantiate(partnerSecuence[i + 1].blockPrefab, directionAttachPoint.position, adjustedRotation);
+                            visualPartnerBlocks.Add(rightTurnSocketBlock);
+                            DisableScriptsOnParent(rightTurnSocketBlock);
+                            i++;
+                        }
+                    }
+                }
+            }
+            // Caso especial de TURN_BLOCK
+            else if (newBlock.name.Contains("Turn"))
+            {
+                adjustedRotation = Quaternion.Euler(0, 90, 0) * newBlock.transform.rotation;
+                newBlock.transform.rotation = adjustedRotation;
+
+                if ((i+1) < partnerSecuence.Count)
+                {
+                    BlockObject possibleRightSocket = partnerSecuence[i + 1];
+
+                    if (possibleRightSocket != null)
+                    {
+                        if (possibleRightSocket.blockName == "Right" || possibleRightSocket.blockName == "Left")
+                        {
+                            Transform directionAttachPoint = newBlock.transform.Find("Right Socket/Attach");
+                            GameObject rightTurnSocketBlock = Instantiate(partnerSecuence[i + 1].blockPrefab, directionAttachPoint.position, adjustedRotation);
+                            visualPartnerBlocks.Add(rightTurnSocketBlock);
+                            DisableScriptsOnParent(rightTurnSocketBlock);
+                            i++;
+                        }
+                    }
+                }
+            }
+
 
             // Buscar el siguiente punto de anclaje en el nuevo bloque instanciado
             Transform nextAttachPoint = newBlock.transform.Find("BottomSocket/Attach");

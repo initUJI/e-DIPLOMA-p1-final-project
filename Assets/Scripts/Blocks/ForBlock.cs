@@ -30,6 +30,7 @@ public class ForBlock : ConditionalBlock
     public string getRightSocketName()
     {
         Block block = getSocketBlock(rightSocket);
+        Debug.Log(block);
 
         if(block != null)
         {
