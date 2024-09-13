@@ -36,4 +36,11 @@ public abstract class Block : MonoBehaviour
     {
         return GetType().ToString();
     }
+
+    public void UpdatedBottomBlock()
+    {
+        // Find GameManager 
+        GameManager_V2 gameManager = FindObjectOfType<GameManager_V2>();
+        gameManager.sendLocalSecuenceToServer();
+    }
 }

@@ -13,6 +13,7 @@ public class GameSocket_Manager : MonoBehaviour
     public int playerID;
     public string roomID;
     public UnityEvent<List<string>> onPlayerMove = new UnityEvent<List<string>>();
+    public UnityEvent onPlayerReady = new UnityEvent();
 
 
     // Start is called before the first frame update
@@ -58,6 +59,11 @@ public class GameSocket_Manager : MonoBehaviour
             onPlayerMove.Invoke(seq.actions);
         });
 
+        socket.On("execute", response =>
+        {
+            onPlayerReady.Invoke();
+        });
+
         socket.Connect();
     }
 
@@ -70,6 +76,11 @@ public class GameSocket_Manager : MonoBehaviour
         string json = JsonUtility.ToJson(localSequence);
         socket.Emit("play", json);
 
+    }
+
+    public void sendPlayerReady()
+    {
+        socket.Emit("ready", "");
     }
 }
 
