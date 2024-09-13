@@ -22,6 +22,7 @@ public class GameManager_V2 : MonoBehaviour
     public List<GameObject> PlayableScenarios;  // Escenarios donde los jugadores pueden interactuar
     public List<GameObject> NonPlayableScenarios;
     public List<Transform> PlayersInitialTransforms;
+    public List<CarController_V2> PlayersCarControllers;
 
     [Header("Local player Setup")]
     public GameObject local_XRPlayer;
@@ -149,6 +150,10 @@ public class GameManager_V2 : MonoBehaviour
             partnerMainBlockController = PlayableScenarios[0].GetComponentInChildren<PartnerMainBlock_Controller>();
             playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
 
+            // Se setean los CarControllers segun el PlayerID que haya tocado
+            localCarController = PlayersCarControllers[0];
+            partnerCarController = PlayersCarControllers[1];
+
             //Se localiza el player en su lugar de Player1
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[0].position, PlayersInitialTransforms[0].rotation);
             localPlayerShelfsControllers = PlayableScenarios[0].GetComponentsInChildren<ShelfController_V2>().ToList();
@@ -157,9 +162,14 @@ public class GameManager_V2 : MonoBehaviour
         }else if(playerID == 2)
         {
             PlayableScenarios[1].SetActive(true);
+            playerMainBlockController = PlayableScenarios[1].GetComponentInChildren<MainBlock>();
             NonPlayableScenarios[0].SetActive(true);
             partnerMainBlockController = PlayableScenarios[1].GetComponentInChildren<PartnerMainBlock_Controller>();
             playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
+
+            // Se setean los CarControllers segun el PlayerID que haya tocado
+            localCarController = PlayersCarControllers[1];
+            partnerCarController = PlayersCarControllers[0];
 
             //Se localiza el player en su lugar de Player2
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[1].position, PlayersInitialTransforms[1].rotation);
