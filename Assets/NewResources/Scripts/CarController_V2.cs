@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class CarController_V2 : MonoBehaviour
 {
     public const float TILE_DISTANCE = 0.3f;
     public const float moveDuration = 0.3f;
-    public LayerMask obstacleLayer;         // Capa que define qué objetos son considerados obstáculos
+    public LayerMask obstacleLayer;         // Capa que define quï¿½ objetos son considerados obstï¿½culos
 
     private bool isMoving = false;
+    private List<string> procesedBlockList = new List<string>();
 
     // TESTING INPUT
     public void Update()
@@ -31,34 +33,93 @@ public class CarController_V2 : MonoBehaviour
         }
     }
 
-    public void ProcesarSecuences(List<BlockObject> blockSecuence)
+    public IEnumerator ProcesarSecuences(List<BlockObject> blockSecuence)
     {
-        if( CheckIfSecuenceIsPosible(blockSecuence))
+        if (!CheckIfSecuenceIsPosible(blockSecuence))
         {
-            Debug.Log("El movimiento está bien");
-        }else
-        {
-            Debug.LogError("El coche se la ha pegado :(");
+            Debug.LogError("La secuencia es incorrecta");
+            yield break;
         }
+        Debug.Log(procesedBlockList.Count);
 
-        // Si el movimiento está bien, ejecutar la secuencia
+        Vector3 initPosition = this.transform.position;
+        Quaternion initRotation = this.transform.rotation;
+
+        for (int i = 0; i < procesedBlockList.Count; i++)
+        { 
+            Debug.Log(procesedBlockList[i]);
+            switch (procesedBlockList[i])
+            {
+                case "MoveForward":
+                    bool canMove = MoveForward();
+                    if (!canMove)
+                    {
+                        Debug.LogError("El coche se ha chocado");
+                        this.transform.position = initPosition;
+                        this.transform.rotation = initRotation;
+                        yield break;
+                    }
+                    else {
+                        yield return new WaitForSeconds(1f);
+                    }
+                    break;
+                case "Right":
+                    TurnRight();
+                    yield return new WaitForSeconds(1f);
+                    break;
+                case "Left":
+                    TurnLeft();
+                    yield return new WaitForSeconds(1f);
+                    break;
+                case "If":
+                    if (!IsObstacleInFront())
+                    {
+                        for (int j = i + 1; j < procesedBlockList.Count; j++)
+                        {
+                            if (procesedBlockList[j] == "EndIf")
+                            {
+                                i = j;
+                                break;
+                            }
+                        }
+                    }
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
-    public void MoveForward()
+    IEnumerator WaitBeforeContinuing()
     {
-        // 1º Realizar un check con un raycast desde el GameObject hacia adelante
+        Debug.Log("Antes de esperar.");
+
+        // Espera durante 0.5 segundos
+        yield return new WaitForSeconds(1f);
+
+        // DespuÃ©s de esperar 0.5 segundos, continÃºa aquÃ­
+        Debug.Log("DespuÃ©s de esperar medio segundo.");
+    }
+
+    public bool MoveForward()
+    {
+        // 1ï¿½ Realizar un check con un raycast desde el GameObject hacia adelante
         Vector3 forward = transform.TransformDirection(Vector3.forward) * TILE_DISTANCE;
 
         if (IsObstacleInFront())
         {
-            // Si el raycast golpea un obstáculo, lanzar un error y no ejecutar el movimiento
+            // Si el raycast golpea un obstï¿½culo, lanzar un error y no ejecutar el movimiento
             Debug.LogError("Obstacle detected! Cannot move forward.");
+            return false;
         }
         else
         {
+            Debug.Log("Moving forward...");
             isMoving = true;
-            // Si no hay obstáculo, mover el coche hacia adelante con un movimiento suave utilizando LeanTween
+            // Si no hay obstï¿½culo, mover el coche hacia adelante con un movimiento suave utilizando LeanTween
             LeanTween.move(gameObject, transform.position + forward, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => isMoving = false);
+            return true;
         }
     }
 
@@ -87,7 +148,7 @@ public class CarController_V2 : MonoBehaviour
 
         if (Physics.Raycast(transform.position, forward, out hit, TILE_DISTANCE, obstacleLayer))
         {
-            // Si el raycast golpea un obstáculo, lanzar un error y no ejecutar el movimiento
+            // Si el raycast golpea un obstï¿½culo, lanzar un error y no ejecutar el movimiento
             Debug.LogError("Obstacle detected! Cannot move forward.");
             return true;
         }
@@ -99,51 +160,71 @@ public class CarController_V2 : MonoBehaviour
 
     public bool CheckIfSecuenceIsPosible(List<BlockObject> blockList)
     {
-        // Crear una copia virtual de la posición y rotación actuales del coche
-        Vector3 virtualPosition = transform.position;
-        Quaternion virtualRotation = transform.rotation;
-
+        // Crear una copia virtual de la posiciï¿½n y rotaciï¿½n actuales del coche
         List<string> blockStringList = Utilities.BlockListToStringList(blockList);
+        procesedBlockList = new List<string>();
 
-        // Recorrer cada movimiento en la secuencia
-        foreach (string movement in blockStringList)
+        for (int i = 0; i < blockStringList.Count; i++)
         {
-            // Simular el movimiento basado en el tipo de instrucción
-            if (movement == "MoveForward")
+            if (blockStringList[i] == "For")
             {
-                Vector3 forward = virtualRotation * Vector3.forward * TILE_DISTANCE;
-                RaycastHit hit;
-
-                // Comprobar si hay un obstáculo en la dirección del movimiento
-                if (Physics.Raycast(virtualPosition, forward, out hit, TILE_DISTANCE, obstacleLayer))
+                int j = 1;
+                string block_repeats = blockStringList[i + j];
+                if (Regex.IsMatch(block_repeats, @"^n\d+$"))
                 {
-                    Debug.LogError("Obstacle detected in simulated move. Sequence is invalid.");
-                    return false; // Secuencia no válida
+                    j++;
+                    List<string> repeatedBlockList = new List<string>();
+                    while (blockStringList[i + j] != "EndFor")
+                    {
+                        repeatedBlockList.Add(blockStringList[i + j]);
+                        j++;
+                        if (i + j >= blockStringList.Count)
+                        {
+                            Debug.LogError("For block not closed");
+                            return false;
+                        }
+                    }
+
+                    int n = int.Parse(block_repeats.Substring(1));
+                    for (int k = 0; k < n; k++)
+                    {
+                        procesedBlockList.AddRange(repeatedBlockList);
+                    }
+                    i = i + j;
                 }
                 else
                 {
-                    // Actualizar la posición virtual si no hay obstáculos
-                    virtualPosition += forward;
+                    Debug.LogError("Invalid For block format" );
+                    return false;
                 }
             }
-            else if (movement == "Right")
+            else if (blockStringList[i] == "If")
             {
-                // Simular una rotación de 90 grados hacia la derecha
-                virtualRotation *= Quaternion.Euler(0, 90, 0);
+                int j = 1;
+                while (blockStringList[i + j] != "EndIf")
+                {
+                    j++;
+                    if (i + j >= blockStringList.Count)
+                    {
+                        Debug.LogError("If block not closed");
+                        return false;
+                    }
+                }
+                procesedBlockList.Add(blockStringList[i]);
             }
-            else if (movement == "Left")
+            else if (blockStringList[i] == "Turn")
             {
-                // Simular una rotación de 90 grados hacia la izquierda
-                virtualRotation *= Quaternion.Euler(0, -90, 0);
+                if (i + 1 >= blockStringList.Count || (blockStringList[i + 1] != "Right" && blockStringList[i + 1] != "Left"))
+                {
+                    Debug.LogError("Invalid Turn block format");
+                    return false;
+                }
             }
             else
             {
-                Debug.LogError("Unknown movement command: " + movement);
-                return false; // Secuencia no válida debido a un comando desconocido
+                procesedBlockList.Add(blockStringList[i]);
             }
         }
-
-        // Si la secuencia completa se simuló sin problemas, es válida
         Debug.Log("Movement sequence is valid.");
         return true;
     }

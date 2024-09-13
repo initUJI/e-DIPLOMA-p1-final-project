@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
 /*
@@ -25,6 +26,7 @@ public class MainBlock : Block, WithBottomSocket
     Coroutine currentCoroutine;
     [HideInInspector] public bool activeIf = false;
     [HideInInspector] public IfBlock ifBlock;
+    public UnityEvent onStart = new UnityEvent();
 
     bool activeFor = false;
     ForBlock forBlock;
@@ -36,7 +38,7 @@ public class MainBlock : Block, WithBottomSocket
 
     public void InitDebugFunction()
     {
-        Debug.Log("Se ha añadido algo al socket");
+        Debug.Log("Se ha aï¿½adido algo al socket");
     }
 
     // Get the bottom socket for connecting blocks
@@ -61,14 +63,15 @@ public class MainBlock : Block, WithBottomSocket
      */
     public void Execute()
     {
-        error = false;  // Reset error flag
+        /* error = false;  // Reset error flag
 
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);  // Stop any previous executions
         }
 
-        currentCoroutine = StartCoroutine(c_Execute());  // Start the coroutine for block execution
+        currentCoroutine = StartCoroutine(c_Execute());  // Start the coroutine for block execution */
+        onStart.Invoke();
     }
 
     // Coroutine to handle the block execution process step-by-step with delays

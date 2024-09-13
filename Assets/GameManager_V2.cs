@@ -57,7 +57,7 @@ public class GameManager_V2 : MonoBehaviour
             Debug.Log(string.Join(", ", blockNames));
             sendLocalSecuenceToServer();
         }
-
+        
         if (mustUpdate)
         {
             UpdatePartnerBlocks();
@@ -86,7 +86,7 @@ public class GameManager_V2 : MonoBehaviour
 
     private void ProcecarSecuences()
     {
-        localCarController.ProcesarSecuences(localBlocksSecuence);
+        StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
     }
 
     private void Awake()
@@ -98,6 +98,8 @@ public class GameManager_V2 : MonoBehaviour
     {
         InitializeLocalPlayer();
         socketManager.onPlayerMove.AddListener(receivePartnerSecuenceFromServer);
+        socketManager.onPlayerReady.AddListener(ProcecarSecuences);
+        playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
     }
 
     private void InitializeLocalPlayer()

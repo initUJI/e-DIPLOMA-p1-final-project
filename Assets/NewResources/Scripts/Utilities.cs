@@ -22,12 +22,9 @@ public static class Utilities
     {
         List<BlockObject> blocks = new List<BlockObject>();
 
-        Debug.Log("BlockList: " + blockList.Count);
-
         for (int i = 0; i < blockList.Count; i++)
         {
             bool found = false;
-            Debug.Log("BlockName: " + blockList[i]);
             for (int j = 0; j < options.Count; j++)
             {
                 BlockObject block = options[j];

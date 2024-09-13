@@ -66,9 +66,9 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3273361488406401312}
         m_TargetAssemblyTypeName: Block, Assembly-CSharp
-        m_MethodName: TransmitNextBlocksToReferent
+        m_MethodName: UpdatedBottomBlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -568,3 +568,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f91eaa1d041fb4e8feed6bca5eb4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottomBlock: {fileID: 0}
