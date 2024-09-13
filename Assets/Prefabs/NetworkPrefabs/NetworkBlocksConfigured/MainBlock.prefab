@@ -529,7 +529,6 @@ GameObject:
   - component: {fileID: 1355446503751321449}
   - component: {fileID: 872068066066825089}
   - component: {fileID: 1299526951709129028}
-  - component: {fileID: 8157967033657856293}
   - component: {fileID: 6136091082598125110}
   - component: {fileID: 7040906740860919656}
   - component: {fileID: 4549234539662065862}
@@ -620,7 +619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 7040906740860919656}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -658,9 +658,9 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4549234539662065862}
-        m_TargetAssemblyTypeName: MainButtonsController, Assembly-CSharp
-        m_MethodName: Pressed
+      - m_Target: {fileID: 3186954815173167913}
+        m_TargetAssemblyTypeName: MainBlock, Assembly-CSharp
+        m_MethodName: Execute
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -737,20 +737,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8157967033657856293
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7932482410820836980}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4166572282488909205, guid: bf31bd525618c7244a0532a861c3dac5, type: 3}
 --- !u!114 &6136091082598125110
 MonoBehaviour:
   m_ObjectHideFlags: 0
