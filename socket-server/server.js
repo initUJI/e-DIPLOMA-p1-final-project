@@ -11,8 +11,8 @@ const io = new Server(app, {
   },
 });
 
-
 const userRooms = {};
+const userPlayed = {};
 let currentRoom = 1;
 const pairedRooms = {};
 const userSockets = {};
@@ -107,8 +107,11 @@ io.on("connection", (socket) => {
   userRooms[user] = room;
   userPlayed[user] = false;
   socket.join(room);
-  socket.emit("joined-room", room);
-  
+  socket.emit("joined-room", {
+    room: userRooms[user],
+    user: roomUsers + 1,
+  });
+
   console.log(`User ${user} connected to room ${room}`);
 
   socket.on("update", (msg) => {
