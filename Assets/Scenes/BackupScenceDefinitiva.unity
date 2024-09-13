@@ -6105,7 +6105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &297579736
 Transform:
   m_ObjectHideFlags: 0
@@ -8023,6 +8023,9 @@ MonoBehaviour:
   playerID: 0
   roomID: 
   onPlayerMove:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerReady:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &380762898
