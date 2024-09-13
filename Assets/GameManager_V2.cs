@@ -99,7 +99,6 @@ public class GameManager_V2 : MonoBehaviour
         InitializeLocalPlayer();
         socketManager.onPlayerMove.AddListener(receivePartnerSecuenceFromServer);
         socketManager.onPlayerReady.AddListener(ProcecarSecuences);
-        playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
     }
 
     private void InitializeLocalPlayer()
@@ -148,6 +147,7 @@ public class GameManager_V2 : MonoBehaviour
             playerMainBlockController = PlayableScenarios[0].GetComponentInChildren<MainBlock>();
             NonPlayableScenarios[1].SetActive(true);
             partnerMainBlockController = PlayableScenarios[0].GetComponentInChildren<PartnerMainBlock_Controller>();
+            playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
 
             //Se localiza el player en su lugar de Player1
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[0].position, PlayersInitialTransforms[0].rotation);
@@ -159,6 +159,7 @@ public class GameManager_V2 : MonoBehaviour
             PlayableScenarios[1].SetActive(true);
             NonPlayableScenarios[0].SetActive(true);
             partnerMainBlockController = PlayableScenarios[1].GetComponentInChildren<PartnerMainBlock_Controller>();
+            playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
 
             //Se localiza el player en su lugar de Player2
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[1].position, PlayersInitialTransforms[1].rotation);

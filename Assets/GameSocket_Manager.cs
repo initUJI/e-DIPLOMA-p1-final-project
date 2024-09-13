@@ -16,7 +16,7 @@ public class GameSocket_Manager : MonoBehaviour
     public UnityEvent onPlayerReady = new UnityEvent();
 
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
         socket = new SocketIOUnity("http://localhost:3000", new SocketIOOptions
@@ -29,14 +29,25 @@ public class GameSocket_Manager : MonoBehaviour
             Transport = SocketIOClient.Transport.TransportProtocol.WebSocket
         });
 
+        Debug.Log(socket.Connected);
+
         socket.OnConnected += (sender, e) =>
         {
-            Debug.Log("Connected");
+            Debug.Log("Connected for real");
         };
+
+        socket.OnError += (sender, e) =>
+        {
+            Debug.Log("Error: " + e);
+        };
+
+        socket.On("connect_error", (err) => {
+            Debug.LogError("Connection error: " + err);
+        });
 
         socket.On("joined-room", response =>
         {
-            /* Do Something with data! */
+            /* Do Something with data */  
             string res = response.ToString();
             res = res.Replace("]", "");
             res = res.Replace("[", "");
@@ -64,7 +75,26 @@ public class GameSocket_Manager : MonoBehaviour
             onPlayerReady.Invoke();
         });
 
-        socket.Connect();
+        socket.On("connect_error", (err) => {
+        // the reason of the error, for example "xhr poll error"
+        Debug.Log(err.ToString());
+        });
+
+         socket.OnDisconnected += (sender, e) =>
+        {
+            Debug.LogWarning("Disconnected from server: " + e);
+        };
+
+        // Attempt to connect
+        try
+        {
+            socket.Connect();
+            Debug.Log("Attempting to connect...");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Exception while trying to connect: " + ex.Message);
+        }
     }
 
     public void sendLocalSecuence(List<string> localStringSecuence)
@@ -74,8 +104,7 @@ public class GameSocket_Manager : MonoBehaviour
             actions = localStringSecuence
         };
         string json = JsonUtility.ToJson(localSequence);
-        socket.Emit("play", json);
-
+        socket.Emit("update", json);
     }
 
     public void sendPlayerReady()
