@@ -41,6 +41,7 @@ public class GameManager_V2 : MonoBehaviour
     [SerializeField] private int actualGamePhase = 0;
     [SerializeField] private List<BlockObject> blockOptions;
     private bool mustUpdate = false;
+    private bool canProcess = false;
 
     //  TESTING INPUT
     public void Update()
@@ -64,6 +65,11 @@ public class GameManager_V2 : MonoBehaviour
             UpdatePartnerBlocks();
             mustUpdate = false;
         }
+        if (canProcess)
+        {
+            ProcecarSecuences();
+            canProcess = false;
+        }
     }
 
     public void sendLocalSecuenceToServer()
@@ -85,7 +91,7 @@ public class GameManager_V2 : MonoBehaviour
         partnerMainBlockController.updatePartnerBlocks(partnerBlocksSecuence);
     }
 
-    private void ProcecarSecuences()
+    public void ProcecarSecuences()
     {
         StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
     }
@@ -95,11 +101,17 @@ public class GameManager_V2 : MonoBehaviour
         actualGameState = GameState.WAITING_FOR_PLAYERS;
     }
 
+    private void CallToProcess()
+    {
+        canProcess = true;
+    }
+
     private void Start()
     {
         InitializeLocalPlayer();
         socketManager.onPlayerMove.AddListener(receivePartnerSecuenceFromServer);
-        socketManager.onPlayerReady.AddListener(ProcecarSecuences);
+        socketManager.onPlayerReady.AddListener(CallToProcess);
+
     }
 
     private void InitializeLocalPlayer()

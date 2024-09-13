@@ -7967,16 +7967,14 @@ MonoBehaviour:
   playerMainBlockController: {fileID: 0}
   localCarController: {fileID: 0}
   partnerCarController: {fileID: 0}
-  localBlocksSecuence: []
-  partnerBlocksSecuence:
-  - {fileID: 11400000, guid: da23d139f4cdeb640855d821b2efa21f, type: 2}
+  localBlocksSecuence:
   - {fileID: 11400000, guid: 6fd86d2868a040244a91ed1034bc32b2, type: 2}
-  - {fileID: 11400000, guid: 44634febcfb7aee48be79a5216b1192a, type: 2}
+  - {fileID: 11400000, guid: 3d07fe32c9b2fb148a8e69b8b2870690, type: 2}
   - {fileID: 11400000, guid: da23d139f4cdeb640855d821b2efa21f, type: 2}
-  - {fileID: 11400000, guid: ba08ba4c068f9384fb34ba60f0035e2c, type: 2}
-  - {fileID: 11400000, guid: e9ed6e89ac3c3464bb4c3962fc358dcf, type: 2}
   - {fileID: 11400000, guid: da23d139f4cdeb640855d821b2efa21f, type: 2}
-  - {fileID: 11400000, guid: a5b04cd385f25cd4e8b67504f9c60468, type: 2}
+  - {fileID: 11400000, guid: da23d139f4cdeb640855d821b2efa21f, type: 2}
+  - {fileID: 11400000, guid: da23d139f4cdeb640855d821b2efa21f, type: 2}
+  partnerBlocksSecuence: []
   partnerMainBlockController: {fileID: 0}
   actualGamePhase: 0
   blockOptions:
