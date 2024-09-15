@@ -19,7 +19,8 @@ public class GameSocket_Manager : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-        socket = new SocketIOUnity("http://150.128.97.41:3000", new SocketIOOptions
+        //        socket = new SocketIOUnity("http://150.128.97.41:3000", new SocketIOOptions
+        socket = new SocketIOUnity("http://localhost:3000", new SocketIOOptions
         {
             Query = new Dictionary<string, string>
         {

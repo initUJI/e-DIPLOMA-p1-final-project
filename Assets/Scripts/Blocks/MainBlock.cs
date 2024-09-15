@@ -28,6 +28,8 @@ public class MainBlock : Block, WithBottomSocket
     [HideInInspector] public IfBlock ifBlock;
     public UnityEvent onStart = new UnityEvent();
 
+    private GameManager_V2 gameManager;
+
     bool activeFor = false;
     ForBlock forBlock;
 
@@ -47,6 +49,11 @@ public class MainBlock : Block, WithBottomSocket
         return bottomSocket;
     }
 
+    public void setGameManager(GameManager_V2 gameManager)
+    {
+        this.gameManager = gameManager;
+    }
+
     // Initialization logic
     public override void Start()
     {
@@ -63,15 +70,11 @@ public class MainBlock : Block, WithBottomSocket
      */
     public void Execute()
     {
-        /* error = false;  // Reset error flag
-
-        if (currentCoroutine != null)
+        // Primero se comprueba que la secuencia no tiene ningún error (que no falta ninguna cosa tipo If-EndIf, etc)
+        if (gameManager.CheckIfLocalSecuenceIsCorrect())
         {
-            StopCoroutine(currentCoroutine);  // Stop any previous executions
+            onStart.Invoke();
         }
-
-        currentCoroutine = StartCoroutine(c_Execute());  // Start the coroutine for block execution */
-        onStart.Invoke();
     }
 
     // Coroutine to handle the block execution process step-by-step with delays

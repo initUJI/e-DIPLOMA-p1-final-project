@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using TMPro;
 
 public class CarController_V2 : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CarController_V2 : MonoBehaviour
 
     private bool isMoving = false;
     private List<string> procesedBlockList = new List<string>();
+    private TextMeshProUGUI playerMainBlockText;
 
     // TESTING INPUT
     public void Update()
@@ -31,6 +33,11 @@ public class CarController_V2 : MonoBehaviour
                 TurnLeft();
             }
         }
+    }
+
+    public void setPlayerText(TextMeshProUGUI playerText)
+    {
+        playerMainBlockText = playerText;
     }
 
     public IEnumerator ProcesarSecuences(List<BlockObject> blockSecuence)
@@ -54,7 +61,8 @@ public class CarController_V2 : MonoBehaviour
                     bool canMove = MoveForward();
                     if (!canMove)
                     {
-                        Debug.LogError("El coche se ha chocado");
+                        //Debug.LogError("El coche se ha chocado");
+                        playerMainBlockText.text = "Car crashed, reseting position...";
                         this.transform.position = initPosition;
                         this.transform.rotation = initRotation;
                         yield break;
@@ -89,6 +97,9 @@ public class CarController_V2 : MonoBehaviour
                     break;
             }
         }
+
+        //Habrá que limpiar el mainBlock cara a hacer el nuevo turno
+        playerMainBlockText.text = "Your code";
     }
 
     IEnumerator WaitBeforeContinuing()
@@ -180,7 +191,8 @@ public class CarController_V2 : MonoBehaviour
                         j++;
                         if (i + j >= blockStringList.Count)
                         {
-                            Debug.LogError("For block not closed");
+                            //Debug.LogError("For block not closed");
+                            playerMainBlockText.text = "ERROR: For block not closed!";
                             return false;
                         }
                     }
@@ -195,6 +207,7 @@ public class CarController_V2 : MonoBehaviour
                 else
                 {
                     Debug.LogError("Invalid For block format" );
+                    playerMainBlockText.text = "ERROR: Number Block on repeat missing";
                     return false;
                 }
             }
@@ -207,6 +220,7 @@ public class CarController_V2 : MonoBehaviour
                     if (i + j >= blockStringList.Count)
                     {
                         Debug.LogError("If block not closed");
+                        playerMainBlockText.text = "ERROR: Missing end-if block";
                         return false;
                     }
                 }
@@ -217,6 +231,7 @@ public class CarController_V2 : MonoBehaviour
                 if (i + 1 >= blockStringList.Count || (blockStringList[i + 1] != "Right" && blockStringList[i + 1] != "Left"))
                 {
                     Debug.LogError("Invalid Turn block format");
+                    playerMainBlockText.text = "ERROR: Direction block missing";
                     return false;
                 }
             }
@@ -225,7 +240,13 @@ public class CarController_V2 : MonoBehaviour
                 procesedBlockList.Add(blockStringList[i]);
             }
         }
+        playerMainBlockText.text = "Code is OK. Wait for partner code.";
         Debug.Log("Movement sequence is valid.");
         return true;
+    }
+
+    public void setCustomPlayerLogText(string newText)
+    {
+        playerMainBlockText.text = newText;
     }
 }

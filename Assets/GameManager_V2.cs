@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class GameManager_V2 : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class GameManager_V2 : MonoBehaviour
     [Header("Player Scenarios")]
     public List<GameObject> PlayableScenarios;  // Escenarios donde los jugadores pueden interactuar
     public List<GameObject> NonPlayableScenarios;
+    public TextMeshProUGUI actualTurnText;
     public List<Transform> PlayersInitialTransforms;
     public List<CarController_V2> PlayersCarControllers;
 
     [Header("Local player Setup")]
     public GameObject local_XRPlayer;
+    public PlayerBlacscreenCanvas XRPlayer_FaderSphere;
     public GameSocket_Manager socketManager;
     public MainBlock playerMainBlockController;
     private List<ShelfController_V2> localPlayerShelfsControllers;
@@ -67,6 +70,8 @@ public class GameManager_V2 : MonoBehaviour
         }
         if (canProcess)
         {
+            localCarController.setCustomPlayerLogText("EXECUTING CODE");
+
             ProcecarSecuences();
             canProcess = false;
         }
@@ -94,6 +99,12 @@ public class GameManager_V2 : MonoBehaviour
     public void ProcecarSecuences()
     {
         StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
+        StartCoroutine(partnerCarController.ProcesarSecuences(localBlocksSecuence));
+    }
+
+    public bool CheckIfLocalSecuenceIsCorrect()
+    {
+        return localCarController.CheckIfSecuenceIsPosible(localBlocksSecuence);
     }
 
     private void Awake()
@@ -161,10 +172,13 @@ public class GameManager_V2 : MonoBehaviour
             NonPlayableScenarios[1].SetActive(true);
             partnerMainBlockController = PlayableScenarios[0].GetComponentInChildren<PartnerMainBlock_Controller>();
             playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
+            XRPlayer_FaderSphere = local_XRPlayer.GetComponentInChildren<PlayerBlacscreenCanvas>();
+            XRPlayer_FaderSphere.faderSphereNewState(0);
 
             // Se setean los CarControllers segun el PlayerID que haya tocado
             localCarController = PlayersCarControllers[0];
             partnerCarController = PlayersCarControllers[1];
+            localCarController.setPlayerText(playerMainBlockController.gameObject.GetComponentInChildren<TextMeshProUGUI>());
 
             //Se localiza el player en su lugar de Player1
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[0].position, PlayersInitialTransforms[0].rotation);
@@ -178,10 +192,13 @@ public class GameManager_V2 : MonoBehaviour
             NonPlayableScenarios[0].SetActive(true);
             partnerMainBlockController = PlayableScenarios[1].GetComponentInChildren<PartnerMainBlock_Controller>();
             playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
+            XRPlayer_FaderSphere = local_XRPlayer.GetComponentInChildren<PlayerBlacscreenCanvas>();
+            XRPlayer_FaderSphere.faderSphereNewState(0);
 
             // Se setean los CarControllers segun el PlayerID que haya tocado
             localCarController = PlayersCarControllers[1];
             partnerCarController = PlayersCarControllers[0];
+            localCarController.setPlayerText(playerMainBlockController.gameObject.GetComponentInChildren<TextMeshProUGUI>());
 
             //Se localiza el player en su lugar de Player2
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[1].position, PlayersInitialTransforms[1].rotation);
