@@ -1,0 +1,24 @@
+userID;fecha
+anom;13/09/2024_09:10
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726211446,62652;,13852;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726211449,30155;2,81361;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726211450,54964;4,06112;Test1;ENTRA_HEAD;Limit (8): Part of the level
+1726211461,24713;14,75874;Test1;SALE_HEAD;Limit (5): Part of the level
+1726211461,49605;15,00769;Test1;ENTRA_HEAD;Limit (5): Part of the level
+1726211487,65450;41,16734;Test1;SALE_HEAD;Limit (17): Part of the level
+1726211487,66898;41,18126;Test1;ENTRA_HEAD;Limit (16): Part of the level
+1726211498,30547;51,81800;Test1;SALE_HEAD;Grass: Part of the level
+1726211498,72201;52,23471;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211524,11347;77,62688;Test1;SALE_HEAD;Limit (15): Part of the level
+1726211524,12846;77,64172;Test1;ENTRA_HEAD;Limit (16): Part of the level
+1726211525,49343;79,00668;Test1;SALE_HEAD;Limit (16): Part of the level
+1726211525,85527;79,36842;Test1;ENTRA_HEAD;Limit (15): Part of the level
+1726211525,86864;79,38253;Test1;SALE_HEAD;Limit (15): Part of the level
+1726211525,97989;79,49320;Test1;ENTRA_HEAD;Limit (15): Part of the level
+1726211526,11960;79,63327;Test1;SALE_HEAD;Limit (15): Part of the level
+1726211526,14790;79,66102;Test1;ENTRA_HEAD;Limit (16): Part of the level
+1726211529,25338;82,76681;Test1;SALE_HEAD;Water: Part of the level
+1726211529,30840;82,82217;Test1;ENTRA_HEAD;WallS: Part of the level
+1726211529,64218;83,15578;Test1;SALE_HEAD;ButtonS: Part of the level
+1726211532,21782;85,73187;Test1;ENTRA_HEAD;attach3: Part of RoboCola

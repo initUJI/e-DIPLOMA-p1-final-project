@@ -1,0 +1,18 @@
+userID;fecha
+anom;13/09/2024_10:39
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726216768,28782;,15077;Test1;ENTRA_HEAD;Grass: Part of the level
+1726216772,52589;4,38910;Test1;SALE_HEAD;Water: Part of the level
+1726216773,48816;5,35079;Test1;ENTRA_HEAD;Grass: Part of the level
+1726216775,75808;7,62098;Test1;SALE_HEAD;Water: Part of the level
+1726216779,55977;11,42262;Test1;ENTRA_HEAD;Water: Part of the level
+1726216779,81017;11,67320;Test1;SALE_HEAD;Water: Part of the level
+1726216790,94845;22,81113;Test1;ENTRA_HEAD;Water: Part of the level
+1726216793,31387;25,17671;Test1;SALE_HEAD;Water: Part of the level
+1726216793,46834;25,33114;Test1;ENTRA_HEAD;Water: Part of the level
+1726216793,50934;25,37243;Test1;SALE_HEAD;Water: Part of the level
+1726216798,74436;30,60772;Test1;ENTRA_HEAD;Limit (3): Part of the level
+1726216799,38552;31,24829;Test1;SALE_HEAD;Water: Part of the level
+1726216799,60816;31,47092;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726216801,23544;33,09898;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726216802,93424;34,79711;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------

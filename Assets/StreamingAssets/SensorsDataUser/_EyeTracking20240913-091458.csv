@@ -1,0 +1,50 @@
+userID;fecha
+anom;13/09/2024_09:14
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726211698,66476;,14357;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726211701,36193;2,84184;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726211702,51229;3,99138;Test1;ENTRA_HEAD;Limit (15): Part of the level
+1726211703,44665;4,92569;Test1;SALE_HEAD;WallN: Part of the level
+1726211705,84252;7,32185;Test1;ENTRA_HEAD;WallN: Part of the level
+1726211706,73205;8,21190;Test1;SALE_HEAD;WallN: Part of the level
+1726211706,79019;8,26941;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211708,15266;9,63240;Test1;SALE_HEAD;Grass: Part of the level
+1726211708,84960;10,32964;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211710,77137;12,25116;Test1;SALE_HEAD;Grass: Part of the level
+1726211711,23120;12,71041;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211712,09226;13,57248;Test1;SALE_HEAD;Brick (5): Part of the level
+1726211713,23566;14,71544;Test1;ENTRA_HEAD;Brick (5): Part of the level
+1726211721,53114;23,01161;Test1;SALE_HEAD;Grass: Part of the level
+1726211724,94295;26,42344;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211727,07223;28,55280;Test1;SALE_HEAD;Brick (1): Part of the level
+1726211728,10436;29,58424;Test1;ENTRA_HEAD;Right Socket: Part of -------STATIC LEVEL--------
+1726211728,18731;29,66773;Test1;SALE_HEAD;Right Socket: Part of -------STATIC LEVEL--------
+1726211728,23000;29,71022;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211728,34171;29,82164;Test1;SALE_HEAD;Grass: Part of the level
+1726211728,36901;29,84899;Test1;ENTRA_HEAD;BaseShield: Part of BaseShield
+1726211728,88433;30,36398;Test1;SALE_HEAD;ArduinoHighMats: Part of ArduinoHighMats
+1726211728,92615;30,40585;Test1;ENTRA_HEAD;ArduinoHighMats: Part of RoboCola
+1726211729,05133;30,53140;Test1;SALE_HEAD;ArduinoHighMats: Part of RoboCola
+1726211729,17564;30,65566;Test1;ENTRA_HEAD;ArduinoHighMats: Part of RoboCola
+1726211729,25912;30,73973;Test1;SALE_HEAD;ArduinoHighMats: Part of RoboCola
+1726211729,31399;30,79445;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211730,06699;31,54722;Test1;SALE_HEAD;WallN: Part of the level
+1726211730,15050;31,63112;Test1;ENTRA_HEAD;WallN: Part of the level
+1726211730,52682;32,00679;Test1;SALE_HEAD;BaseShield: Part of BaseShield
+1726211730,67981;32,15983;Test1;ENTRA_HEAD;ButtonBlue: Part of the level
+1726211730,79083;32,27095;Test1;SALE_HEAD;ArduinoHighMats: Part of RoboCola
+1726211730,80514;32,28540;Test1;ENTRA_HEAD;Right Socket: Part of -------STATIC LEVEL--------
+1726211730,84649;32,32662;Test1;SALE_HEAD;Right Socket: Part of -------STATIC LEVEL--------
+1726211730,97106;32,45102;Test1;ENTRA_HEAD;Brick (5): Part of the level
+1726211737,40285;38,88365;Test1;SALE_HEAD;Grass: Part of the level
+1726211737,50081;38,98120;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211737,58387;39,06469;Test1;SALE_HEAD;Grass: Part of the level
+1726211737,75033;39,23090;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726211754,93172;56,41245;Test1;SALE_HEAD;Brick (5): Part of the level
+1726211755,38972;56,87052;Test1;ENTRA_HEAD;Cylinder: Part of -------STATIC LEVEL--------
+1726211755,44703;56,92781;Test1;SALE_HEAD;Cylinder: Part of -------STATIC LEVEL--------
+1726211756,15840;57,63897;Test1;ENTRA_HEAD;Right Socket: Part of -------STATIC LEVEL--------
+1726211756,29462;57,77554;Test1;SALE_HEAD;Right Socket: Part of -------STATIC LEVEL--------
+1726211756,37874;57,85982;Test1;ENTRA_HEAD;Grass: Part of the level
+1726211761,23941;62,72052;Test1;SALE_HEAD;Grass: Part of the level
+1726211763,63337;65,11420;Test1;ENTRA_HEAD;Grass: Part of the level

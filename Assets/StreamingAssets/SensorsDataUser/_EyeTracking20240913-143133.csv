@@ -1,0 +1,44 @@
+userID;fecha
+anom;13/09/2024_14:31
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726230693,81036;,20921;Test1;ENTRA_HEAD;Grass: Part of the level
+1726230702,17589;8,57473;Test1;SALE_HEAD;Water: Part of the level
+1726230702,55218;8,95075;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230703,47204;9,87063;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230703,58258;9,98174;Test1;ENTRA_HEAD;Water: Part of the level
+1726230703,77917;10,17756;Test1;SALE_HEAD;Grass: Part of the level
+1726230703,87619;10,27459;Test1;ENTRA_HEAD;BaseShield: Part of ArduinoCompleto
+1726230704,62692;11,02621;Test1;SALE_HEAD;BaseShield: Part of ArduinoCompleto
+1726230705,18440;11,58370;Test1;ENTRA_HEAD;BaseShield: Part of ArduinoCompleto
+1726230706,99502;13,39363;Test1;SALE_HEAD;BaseShield: Part of ArduinoCompleto
+1726230707,48194;13,88050;Test1;ENTRA_HEAD;BaseShield: Part of ArduinoCompleto
+1726230707,52297;13,92222;Test1;SALE_HEAD;BaseShield: Part of ArduinoCompleto
+1726230707,53758;13,93607;Test1;ENTRA_HEAD;Grass: Part of the level
+1726230719,05002;25,44939;Test1;SALE_HEAD;Water: Part of the level
+1726230719,06396;25,46353;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230725,32969;31,72865;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726230725,41292;31,81221;Test1;ENTRA_HEAD;Platform: Part of -------STATIC LEVEL--------
+1726230729,78332;36,18254;Test1;SALE_HEAD;Platform: Part of -------STATIC LEVEL--------
+1726230730,35207;36,75098;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230731,27190;37,67132;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230731,34094;37,74060;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230731,62051;38,01933;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230731,71791;38,11744;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230731,95506;38,35407;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230732,06666;38,46602;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230732,17790;38,57690;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230732,24776;38,64676;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230732,33163;38,73075;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230732,41526;38,81413;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230732,44210;38,84184;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230732,60964;39,00919;Test1;ENTRA_HEAD;BaseShield: Part of BaseShield
+1726230732,62304;39,02277;Test1;SALE_HEAD;BaseShield: Part of BaseShield
+1726230732,77745;39,17671;Test1;ENTRA_HEAD;BaseShield: Part of BaseShield
+1726230732,80501;39,20409;Test1;SALE_HEAD;BaseShield: Part of BaseShield
+1726230732,97181;39,37145;Test1;ENTRA_HEAD;attach: Part of ArduinoHighMats
+1726230737,83186;44,23078;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230738,34639;44,74580;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230739,08521;45,48420;Test1;SALE_HEAD;Limit (3): Part of the level
+1726230739,18165;45,58125;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230739,73856;46,13791;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230739,90559;46,30499;Test1;ENTRA_HEAD;attach: Part of ArduinoHighMats

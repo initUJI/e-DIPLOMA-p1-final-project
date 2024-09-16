@@ -1,0 +1,33 @@
+userID;fecha
+anom;16/09/2024_13:02
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726484545,26708;,09261;Test1;ENTRA_HEAD;Grass: Part of the level
+1726484549,50563;4,33084;Test1;SALE_HEAD;Grass: Part of the level
+1726484549,98380;4,80949;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484550,65382;5,47862;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484551,29765;6,12317;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484561,70396;16,52896;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484562,21946;17,04487;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484562,33116;17,15598;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484562,42797;17,25335;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484562,62292;17,44786;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484563,48541;18,31099;Test1;ENTRA_HEAD;attach3: Part of FullBot
+1726484563,50091;18,32569;Test1;SALE_HEAD;attach3: Part of FullBot
+1726484567,14796;21,97337;Test1;ENTRA_HEAD;attach3: Part of FullBot
+1726484570,15575;24,98060;Test1;SALE_HEAD;attach3: Part of FullBot
+1726484570,93568;25,76054;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484573,54861;28,37409;Test1;ENTRA_HEAD;Grass: Part of the level
+1726484573,71667;28,54144;Test1;SALE_HEAD;Box 1: Part of the level
+1726484573,73011;28,55532;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484574,27599;29,10089;Test1;SALE_HEAD;Cube: Part of Cube
+1726484574,63833;29,46330;Test1;ENTRA_HEAD;Grass: Part of the level
+1726484578,71848;33,54379;Test1;SALE_HEAD;Grass: Part of the level
+1726484578,77375;33,59940;Test1;ENTRA_HEAD;Cylinder: Part of -------STATIC LEVEL--------
+1726484578,78817;33,61292;Test1;SALE_HEAD;Cylinder: Part of -------STATIC LEVEL--------
+1726484578,88578;33,71064;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484579,63840;34,46372;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726484580,20817;35,03311;Test1;ENTRA_HEAD;Cylinder: Part of -------STATIC LEVEL--------
+1726484580,22253;35,04783;Test1;SALE_HEAD;Cylinder: Part of -------STATIC LEVEL--------
+1726484580,68188;35,50735;Test1;ENTRA_HEAD;Grass: Part of the level
+1726484581,12652;35,95190;Test1;SALE_HEAD;Grass: Part of the level
+1726484581,16980;35,99533;Test1;ENTRA_HEAD;Grass: Part of the level

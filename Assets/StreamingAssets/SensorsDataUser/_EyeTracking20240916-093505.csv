@@ -1,0 +1,11 @@
+userID;fecha
+anom;16/09/2024_09:35
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726472105,91981;,07903;Test1;ENTRA_HEAD;Grass: Part of the level
+1726472108,48713;2,64658;Test1;SALE_HEAD;Grass: Part of the level
+1726472109,19714;3,35641;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726472110,14448;4,30396;Test1;SALE_HEAD;Water: Part of the level
+1726472110,32615;4,48516;Test1;ENTRA_HEAD;Water: Part of the level
+1726472116,13361;10,29281;Test1;SALE_HEAD;Water: Part of the level
+1726472116,18899;10,34800;Test1;ENTRA_HEAD;attach3: Part of FullBot
+1726472116,80196;10,96089;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------

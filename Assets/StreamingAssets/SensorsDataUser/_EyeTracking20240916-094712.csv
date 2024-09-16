@@ -1,0 +1,8 @@
+userID;fecha
+anom;16/09/2024_09:47
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726472832,68072;,08308;Test1;ENTRA_HEAD;Grass: Part of the level
+1726472852,04715;19,44919;Test1;SALE_HEAD;attach3: Part of FullBot
+1726472852,52278;19,92494;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726472852,60523;20,00779;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726472852,81498;20,21731;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------

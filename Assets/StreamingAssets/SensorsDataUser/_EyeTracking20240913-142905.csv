@@ -1,0 +1,28 @@
+userID;fecha
+anom;13/09/2024_14:29
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726230545,92504;,22192;Test1;ENTRA_HEAD;Grass: Part of the level
+1726230556,36640;10,66401;Test1;SALE_HEAD;Grass: Part of the level
+1726230556,51779;10,81511;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230556,53163;10,82913;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230556,57370;10,87115;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230556,92350;11,22076;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230557,07590;11,37371;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230571,26318;25,56051;Test1;SALE_HEAD;Water: Part of the level
+1726230571,29006;25,58809;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230573,04543;27,34329;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230573,32417;27,62168;Test1;ENTRA_HEAD;Water: Part of the level
+1726230577,27912;31,57719;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726230577,79298;32,09087;Test1;ENTRA_HEAD;Water: Part of the level
+1726230578,07135;32,36969;Test1;SALE_HEAD;Water: Part of the level
+1726230578,30889;32,60645;Test1;ENTRA_HEAD;attach: Part of ArduinoHighMats
+1726230578,32278;32,62040;Test1;SALE_HEAD;attach: Part of ArduinoHighMats
+1726230578,46191;32,75932;Test1;ENTRA_HEAD;attach: Part of ArduinoHighMats
+1726230578,48995;32,78735;Test1;SALE_HEAD;attach: Part of ArduinoHighMats
+1726230578,61435;32,91213;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230579,58880;33,88718;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726230580,14641;34,44415;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726230583,69610;37,99406;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726230584,76899;39,06664;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726230598,79979;53,09793;Test1;SALE_HEAD;Water: Part of the level
+1726230598,81513;53,11282;Test1;ENTRA_HEAD;attach: Part of ArduinoHighMats

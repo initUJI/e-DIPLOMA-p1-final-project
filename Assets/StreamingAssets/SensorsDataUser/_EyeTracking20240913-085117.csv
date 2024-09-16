@@ -1,0 +1,15 @@
+userID;fecha
+anom;13/09/2024_08:51
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726210277,39645;,12682;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726210280,06423;2,79502;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726210281,21235;3,94234;Test1;ENTRA_HEAD;Limit (16): Part of the level
+1726210291,69553;14,42603;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726210291,82113;14,55156;Test1;ENTRA_HEAD;Grass: Part of the level
+1726210292,01290;14,74301;Test1;SALE_HEAD;Limit (15): Part of the level
+1726210292,90753;15,63844;Test1;ENTRA_HEAD;BaseShield: Part of BaseShield
+1726210293,18297;15,91312;Test1;SALE_HEAD;BaseShield: Part of BaseShield
+1726210306,44062;29,17175;Test1;ENTRA_HEAD;Limit (21): Part of the level
+1726210306,63082;29,36135;Test1;SALE_HEAD;Limit (17): Part of the level
+1726210311,34771;34,07901;Test1;ENTRA_HEAD;Limit (14): Part of the level
+1726210315,00852;37,73988;Test1;SALE_HEAD;Limit (15): Part of the level
