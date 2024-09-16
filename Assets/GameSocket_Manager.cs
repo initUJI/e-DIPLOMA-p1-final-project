@@ -14,6 +14,7 @@ public class GameSocket_Manager : MonoBehaviour
     public string roomID;
     public UnityEvent<List<string>> onPlayerMove = new UnityEvent<List<string>>();
     public UnityEvent onPlayerReady = new UnityEvent();
+    public UnityEvent onRoomReady = new UnityEvent();
 
 
     // Start is called before the first frame update 
@@ -74,6 +75,11 @@ public class GameSocket_Manager : MonoBehaviour
         socket.On("execute", response =>
         {
             onPlayerReady.Invoke();
+        });
+
+        socket.On("room-ready", response =>
+        {
+            onRoomReady.Invoke();
         });
 
         socket.On("connect_error", (err) => {
