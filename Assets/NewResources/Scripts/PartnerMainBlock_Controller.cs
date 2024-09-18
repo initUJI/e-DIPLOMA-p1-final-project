@@ -34,8 +34,6 @@ public class PartnerMainBlock_Controller : MonoBehaviour
             // Caso especial FOR_BLOCK
             if (newBlock.name.Contains("For"))
             {
-                
-
                 if ((i + 1) < partnerSecuence.Count)
                 {
                     BlockObject possibleRightSocket = partnerSecuence[i + 1];
@@ -99,7 +97,7 @@ public class PartnerMainBlock_Controller : MonoBehaviour
         }
     }
 
-    private void ClearPreviousBlocks()
+    public void ClearPreviousBlocks()
     {
         foreach (GameObject block in visualPartnerBlocks)
         {

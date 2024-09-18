@@ -4,6 +4,7 @@ using UnityEngine;
 using SocketIOClient;
 using UnityEngine.Events;
 using System.Text.RegularExpressions;
+using System;
 
 public class GameSocket_Manager : MonoBehaviour
 {
@@ -20,12 +21,14 @@ public class GameSocket_Manager : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-        //        socket = new SocketIOUnity("http://150.128.97.41:3000", new SocketIOOptions
-        socket = new SocketIOUnity("http://localhost:3000", new SocketIOOptions
+        string uniqueIdentifier = "UNITY_" + Guid.NewGuid().ToString();
+
+        socket = new SocketIOUnity("http://150.128.97.41:3000", new SocketIOOptions
+        //socket = new SocketIOUnity("http://localhost:3000", new SocketIOOptions
         {
             Query = new Dictionary<string, string>
         {
-            {"user", "UNITY" }
+            {"user", uniqueIdentifier }
         }
             ,
             Transport = SocketIOClient.Transport.TransportProtocol.WebSocket
@@ -59,6 +62,7 @@ public class GameSocket_Manager : MonoBehaviour
 
             playerID = rInfo.user;
             roomID = rInfo.room;
+
         });
 
         socket.On("move", response =>
@@ -79,6 +83,7 @@ public class GameSocket_Manager : MonoBehaviour
 
         socket.On("room-ready", response =>
         {
+            Debug.Log("Que empiece el juego.");
             onRoomReady.Invoke();
         });
 

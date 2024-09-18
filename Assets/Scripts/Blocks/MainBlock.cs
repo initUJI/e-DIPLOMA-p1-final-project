@@ -73,6 +73,7 @@ public class MainBlock : Block, WithBottomSocket
         // Primero se comprueba que la secuencia no tiene ningún error (que no falta ninguna cosa tipo If-EndIf, etc)
         if (gameManager.CheckIfLocalSecuenceIsCorrect())
         {
+            gameManager.setXRInteractionNewState(false);
             onStart.Invoke();
         }
     }
@@ -110,7 +111,7 @@ public class MainBlock : Block, WithBottomSocket
                 }
             }
 
-            currentBlock = (ExecutableBlock)currentBlock.getSocketBlock(((WithBottomSocket)currentBlock).getBottomSocket());  // Move to the next block
+            currentBlock = (ExecutableBlock)currentBlock.getSocketBlock(((WithBottomSocket)currentBlock).getBottomSocket());  // Move to the next block 
         }
 
         return cadena;
@@ -146,6 +147,51 @@ public class MainBlock : Block, WithBottomSocket
         }
 
         EndExecution();
+    }
+
+    public void ClearPreviousBlocks()
+    {
+        // Recopilar bloques y eliminarlos
+        List<GameObject> playerBlocks = new List<GameObject>();
+
+        currentBlock = (ExecutableBlock)getSocketBlock(bottomSocket);  // Get the first block connected to the socket
+
+        // Main loop to read each block in the sequence
+        while (currentBlock != null && !error)
+        {
+            playerBlocks.Add(currentBlock.gameObject);
+            string currentBlockName = currentBlock.name.Replace("(Clone)", "").Trim();
+
+
+            //Aqui se van a tratar los casos especiales
+            if (currentBlockName == "For")
+            {
+                GameObject possibleRightSocket = currentBlock.gameObject.GetComponent<ForBlock>().getRightSocketObject();
+
+                if (possibleRightSocket != null)
+                {
+                    playerBlocks.Add(possibleRightSocket);
+                }
+
+            }
+            else if (currentBlockName == "Turn")
+            {
+                GameObject possibleTurnRightSocket = currentBlock.gameObject.GetComponent<TurnBlock>().getRightSocketObject();
+
+                if (possibleTurnRightSocket != null)
+                {
+                    playerBlocks.Add(possibleTurnRightSocket);
+                }
+            }
+
+            currentBlock = (ExecutableBlock)currentBlock.getSocketBlock(((WithBottomSocket)currentBlock).getBottomSocket());  // Move to the next block
+        }
+
+        //Se destruyen los cosos
+        foreach(GameObject currentObj in playerBlocks)
+        {
+            Destroy(currentObj);
+        }
     }
 
     // Reset block counters for loops and conditionals

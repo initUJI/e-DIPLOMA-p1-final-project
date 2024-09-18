@@ -11,7 +11,12 @@ public class PlayerBlacscreenCanvas : MonoBehaviour
 
     public void faderSphereNewState(int newState)
     {
-        LeanTween.alphaCanvas(faderSphere_Text.GetComponent<CanvasGroup>(), 0, 2);
+        LeanTween.alphaCanvas(faderSphere_Text.GetComponent<CanvasGroup>(), newState, 2);
         LeanTween.alpha(faderSphere_Gameobject, newState, 3);
+    }
+
+    public void setNewText(string newText)
+    {
+        faderSphere_Text.text = newText;
     }
 }

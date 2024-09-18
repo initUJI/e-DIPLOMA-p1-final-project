@@ -20,5 +20,6 @@ public class EndForBlock : ActionCharacterBlock
     public override bool IsFinished()
     {
         return base.IsFinished() && isFinished;
+
     }
 }

@@ -10,26 +10,30 @@ public class TrashController : MonoBehaviour
     public float particleDuration = 3f; // Duración de las partículas en segundos
 
     private Vector3 AnimMovement = new Vector3(0, -0.7f, 0);  // La basura baja
-
+    public GameManager_V2 gameManager;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Trash1)
         {
             StartCoroutine(ActivateParticles(TrashParticles1, Trash1, AnimMovement));
+            gameManager.incrementGamePhase();
         }
         else if (other.gameObject == Trash2)
         {
             StartCoroutine(ActivateParticles(TrashParticles2, Trash2, AnimMovement));
+            gameManager.incrementGamePhase();
         }
         else if (other.gameObject == Trash3)
         {
             StartCoroutine(ActivateParticles(TrashParticles3, Trash3, AnimMovement));
+            gameManager.incrementGamePhase();
 
         }
         else if (other.gameObject == Trash4)
         {
             StartCoroutine(ActivateParticles(TrashParticles4, Trash4, AnimMovement));
+            gameManager.incrementGamePhase();
         }
     }
 

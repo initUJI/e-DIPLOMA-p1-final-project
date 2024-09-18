@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager_V2 : MonoBehaviour
 {
@@ -28,13 +29,15 @@ public class GameManager_V2 : MonoBehaviour
 
     [Header("Local player Setup")]
     public GameObject local_XRPlayer;
+    public XRRayInteractor[] local_XRLineInteractors;
     public PlayerBlacscreenCanvas XRPlayer_FaderSphere;
     public GameSocket_Manager socketManager;
     public MainBlock playerMainBlockController;
     private List<ShelfController_V2> localPlayerShelfsControllers;
+    [SerializeField] private ParticleSystem confettiPS;
 
     [Header("Local player Setup")]
-    [SerializeField] private CarController_V2 localCarController;
+    [SerializeField] public CarController_V2 localCarController;
     [SerializeField] private CarController_V2 partnerCarController;
 
     [SerializeField] private List<BlockObject> localBlocksSecuence;
@@ -42,6 +45,7 @@ public class GameManager_V2 : MonoBehaviour
     [SerializeField] private PartnerMainBlock_Controller partnerMainBlockController;
 
     [SerializeField] private int actualGamePhase = 0;
+    private int actualTurn = 1;
     [SerializeField] private List<BlockObject> blockOptions;
     private bool mustUpdate = false;
     private bool canProcess = false;
@@ -49,11 +53,10 @@ public class GameManager_V2 : MonoBehaviour
     //  TESTING INPUT
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        /*if (Input.GetKeyDown(KeyCode.P))
         {
-            ProcecarSecuences();
-
-        }else if (Input.GetKeyDown(KeyCode.O))
+            StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence));
+        }*//*else if (Input.GetKeyDown(KeyCode.O))
         {
             UpdatePartnerBlocks();
         }else if (Input.GetKeyDown(KeyCode.I))
@@ -62,7 +65,7 @@ public class GameManager_V2 : MonoBehaviour
             Debug.Log(string.Join(", ", blockNames));
             sendLocalSecuenceToServer();
         }
-        
+        */
         if (mustUpdate)
         {
             UpdatePartnerBlocks();
@@ -71,7 +74,7 @@ public class GameManager_V2 : MonoBehaviour
         if (canProcess)
         {
             localCarController.setCustomPlayerLogText("EXECUTING CODE");
-
+            
             ProcecarSecuences();
             canProcess = false;
         }
@@ -80,13 +83,21 @@ public class GameManager_V2 : MonoBehaviour
     public void sendLocalSecuenceToServer()
     {
         //List<string> localStringSecuence = Utilities.BlockListToStringList(localBlocksSecuence);
-        socketManager.sendLocalSecuence(playerMainBlockController.getString());
+        List<string> localStringSecuence = playerMainBlockController.getString();
+
+        socketManager.sendLocalSecuence(localStringSecuence);
+
+        //Se actualiza localmente
+        List<BlockObject> actualBlockSecuence = Utilities.StringListToBlockList(localStringSecuence, blockOptions);
+        this.localBlocksSecuence = actualBlockSecuence;
+
     }
 
     public void receivePartnerSecuenceFromServer(List<string> partnerSecuence)
     {
         List<BlockObject> blockObjects = Utilities.StringListToBlockList(partnerSecuence, blockOptions);
         partnerBlocksSecuence = blockObjects;
+
 
         mustUpdate = true;
     }
@@ -99,7 +110,8 @@ public class GameManager_V2 : MonoBehaviour
     public void ProcecarSecuences()
     {
         StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
-        StartCoroutine(partnerCarController.ProcesarSecuences(localBlocksSecuence));
+        Debug.Log("La sentencia partner esta así de grande: " + partnerBlocksSecuence.Count);
+        StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence));
     }
 
     public bool CheckIfLocalSecuenceIsCorrect()
@@ -110,6 +122,7 @@ public class GameManager_V2 : MonoBehaviour
     private void Awake()
     {
         actualGameState = GameState.WAITING_FOR_PLAYERS;
+        setXRInteractionNewState(false);
     }
 
     private void CallToProcess()
@@ -122,7 +135,15 @@ public class GameManager_V2 : MonoBehaviour
         InitializeLocalPlayer();
         socketManager.onPlayerMove.AddListener(receivePartnerSecuenceFromServer);
         socketManager.onPlayerReady.AddListener(CallToProcess);
+        socketManager.onRoomReady.AddListener(playerJoined);
+    }
 
+    private void playerJoined()
+    {
+        // Desactivar fader y activar las interacciones del XR
+        Debug.Log("que empiece el juego");
+        setXRInteractionNewState(true);
+        XRPlayer_FaderSphere.faderSphereNewState(0);
     }
 
     private void InitializeLocalPlayer()
@@ -138,7 +159,6 @@ public class GameManager_V2 : MonoBehaviour
             {
                 //Ha inicializado correctamente en el servidor
                 localPlayerInitialized = true;
-
 
                 InitializeLocalScenario(socketManager.playerID);
             }
@@ -172,8 +192,8 @@ public class GameManager_V2 : MonoBehaviour
             NonPlayableScenarios[1].SetActive(true);
             partnerMainBlockController = PlayableScenarios[0].GetComponentInChildren<PartnerMainBlock_Controller>();
             playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
+            playerMainBlockController.setGameManager(this);
             XRPlayer_FaderSphere = local_XRPlayer.GetComponentInChildren<PlayerBlacscreenCanvas>();
-            XRPlayer_FaderSphere.faderSphereNewState(0);
 
             // Se setean los CarControllers segun el PlayerID que haya tocado
             localCarController = PlayersCarControllers[0];
@@ -183,7 +203,8 @@ public class GameManager_V2 : MonoBehaviour
             //Se localiza el player en su lugar de Player1
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[0].position, PlayersInitialTransforms[0].rotation);
             localPlayerShelfsControllers = PlayableScenarios[0].GetComponentsInChildren<ShelfController_V2>().ToList();
-            
+
+            XRPlayer_FaderSphere.setNewText("Player: " + playerID + " joined. Room name: " + socketManager.roomID + ". Waiting for partner.");
             SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
         }else if(playerID == 2)
         {
@@ -192,8 +213,8 @@ public class GameManager_V2 : MonoBehaviour
             NonPlayableScenarios[0].SetActive(true);
             partnerMainBlockController = PlayableScenarios[1].GetComponentInChildren<PartnerMainBlock_Controller>();
             playerMainBlockController.onStart.AddListener(socketManager.sendPlayerReady);
+            playerMainBlockController.setGameManager(this);
             XRPlayer_FaderSphere = local_XRPlayer.GetComponentInChildren<PlayerBlacscreenCanvas>();
-            XRPlayer_FaderSphere.faderSphereNewState(0);
 
             // Se setean los CarControllers segun el PlayerID que haya tocado
             localCarController = PlayersCarControllers[1];
@@ -204,11 +225,25 @@ public class GameManager_V2 : MonoBehaviour
             local_XRPlayer.transform.SetPositionAndRotation(PlayersInitialTransforms[1].position, PlayersInitialTransforms[1].rotation);
             localPlayerShelfsControllers = PlayableScenarios[1].GetComponentsInChildren<ShelfController_V2>().ToList();
 
+            XRPlayer_FaderSphere.setNewText("Player: " + playerID + " joined. Room name: " + socketManager.roomID + ". Waiting for partner.");
             SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
         }
         else
         {
             Debug.LogError("Player_ID out of bounds!");
+        }
+    }
+
+    public void incrementGamePhase()
+    {
+        actualGamePhase++;
+
+        if(actualGamePhase > playerBlocksSets.Count)
+        {
+            // Hacer el fin del juego (INCOMPLETO)
+            localCarController.setCustomPlayerLogText("Game Finished! Congratulations!");
+            confettiPS.Play();
+            setXRInteractionNewState(false);
         }
     }
 
@@ -315,6 +350,39 @@ public class GameManager_V2 : MonoBehaviour
 
                     break;
             }
+        }
+    }
+
+    public void InitializeNextTurn()
+    {
+        // Hay que sumar turno
+        actualTurn++;
+        actualTurnText.text = "Turn " + actualTurn;
+
+        // Borrar bloques (los del mainBlock y los de las estanterías para hacer los nuevos)
+        partnerMainBlockController.ClearPreviousBlocks();
+        playerMainBlockController.ClearPreviousBlocks();
+
+        // Asegurar que se eliminan todos los bloques de la escena (hasta los que están más apartados)
+        /*Block[] remainingBlocks = GameObject.FindObjectsOfType<Block>();
+        foreach(Block actualBlock in remainingBlocks)
+        {
+            if(actualBlock.gameObject != playerMainBlockController.gameObject)
+            {
+                Destroy(actualBlock.gameObject);
+            }
+        }*/
+
+        // Crear los bloques teniendo en cuenta la fase en la que se encuentra el jugador
+        SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
+    }
+
+    public void setXRInteractionNewState(bool newState)
+    {
+        foreach(XRRayInteractor xrLine in local_XRLineInteractors)
+        {
+            xrLine.GetComponent<LineRenderer>().enabled = newState;
+            xrLine.enabled = newState;
         }
     }
 }

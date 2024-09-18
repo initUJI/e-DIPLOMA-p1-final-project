@@ -13,6 +13,8 @@ public class WallsController : MonoBehaviour
 
     // Valores de movimiento para las compuertas y paredes
     public Material levelBoxMaterial;
+    public GameManager_V2 gameManager;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,22 +22,26 @@ public class WallsController : MonoBehaviour
        {
            Debug.Log("Botón Norte activado");
            StartCoroutine(MoveObject(northWall, wallMovement,ButtonN));
-       }
-       else if (other.gameObject == ButtonS)
+           gameManager.incrementGamePhase();
+        }
+        else if (other.gameObject == ButtonS)
        {
            Debug.Log("Botón Sur activado");
            StartCoroutine(MoveObject(southWall, wallMovement, ButtonS));
-       }
-       else if (other.gameObject == ButtonE)
+           gameManager.incrementGamePhase();
+        }
+        else if (other.gameObject == ButtonE)
        {
            Debug.Log("Botón Este activado");
            StartCoroutine(MoveObject(eastWall, wallMovement, ButtonE));
-       }
-       else if (other.gameObject == ButtonW)
+           gameManager.incrementGamePhase();
+        }
+        else if (other.gameObject == ButtonW)
        {
            Debug.Log("Botón Oeste activado");
            StartCoroutine(MoveObject(westWall, wallMovement, ButtonW));
-       }
+           gameManager.incrementGamePhase();
+        }
     }
 
     IEnumerator MoveObject(GameObject obj, Vector3 moveDirection, GameObject button)

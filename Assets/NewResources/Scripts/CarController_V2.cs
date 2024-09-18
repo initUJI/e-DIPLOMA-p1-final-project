@@ -10,15 +10,22 @@ public class CarController_V2 : MonoBehaviour
     public const float TILE_DISTANCE = 0.3f;
     public const float moveDuration = 0.3f;
     public LayerMask obstacleLayer;         // Capa que define qu� objetos son considerados obst�culos
+    public GameManager_V2 gameManager;
 
     private bool isMoving = false;
     private List<string> procesedBlockList = new List<string>();
     private TextMeshProUGUI playerMainBlockText;
 
+
+    public void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager_V2>();
+    }
+
     // TESTING INPUT
     public void Update()
     {
-        if (!isMoving)
+        /*if (!isMoving)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -32,7 +39,7 @@ public class CarController_V2 : MonoBehaviour
             {
                 TurnLeft();
             }
-        }
+        }*/
     }
 
     public void setPlayerText(TextMeshProUGUI playerText)
@@ -40,21 +47,17 @@ public class CarController_V2 : MonoBehaviour
         playerMainBlockText = playerText;
     }
 
-    public IEnumerator ProcesarSecuences(List<BlockObject> blockSecuence)
+    public IEnumerator ProcesarSecuences(List<BlockObject> blockSecuence, bool isPartnerSecuence = false)
     {
-        if (!CheckIfSecuenceIsPosible(blockSecuence))
-        {
-            Debug.LogError("La secuencia es incorrecta");
-            yield break;
-        }
-        Debug.Log(procesedBlockList.Count);
+        CheckIfSecuenceIsPosible(blockSecuence);
+
+        Debug.Log("Secuencia completa: " + string.Join(", ", blockSecuence));
 
         Vector3 initPosition = this.transform.position;
         Quaternion initRotation = this.transform.rotation;
 
         for (int i = 0; i < procesedBlockList.Count; i++)
         { 
-            Debug.Log(procesedBlockList[i]);
             switch (procesedBlockList[i])
             {
                 case "MoveForward":
@@ -62,7 +65,7 @@ public class CarController_V2 : MonoBehaviour
                     if (!canMove)
                     {
                         //Debug.LogError("El coche se ha chocado");
-                        playerMainBlockText.text = "Car crashed, reseting position...";
+                        if(isPartnerSecuence) playerMainBlockText.text = "Car crashed, reseting position...";
                         this.transform.position = initPosition;
                         this.transform.rotation = initRotation;
                         yield break;
@@ -98,35 +101,44 @@ public class CarController_V2 : MonoBehaviour
             }
         }
 
-        //Habrá que limpiar el mainBlock cara a hacer el nuevo turno
-        playerMainBlockText.text = "Your code";
+
+        if(this == gameManager.localCarController)
+        {
+            playerMainBlockText.text = "Your code";  //Habrá que limpiar el mainBlock cara a hacer el nuevo turno
+            gameManager.setXRInteractionNewState(true);
+        }else
+        {
+            //Debug.Log("Se va a iniciar el siguiente turno");
+            gameManager.InitializeNextTurn();
+        }
     }
 
     IEnumerator WaitBeforeContinuing()
     {
-        Debug.Log("Antes de esperar.");
+        //Debug.Log("Antes de esperar.");
 
         // Espera durante 0.5 segundos
         yield return new WaitForSeconds(1f);
 
         // Después de esperar 0.5 segundos, continúa aquí
-        Debug.Log("Después de esperar medio segundo.");
+        //Debug.Log("Después de esperar medio segundo.");
     }
 
     public bool MoveForward()
     {
         // 1� Realizar un check con un raycast desde el GameObject hacia adelante
+        //Debug.Log("Partner moviendose");
         Vector3 forward = transform.TransformDirection(Vector3.forward) * TILE_DISTANCE;
 
         if (IsObstacleInFront())
         {
             // Si el raycast golpea un obst�culo, lanzar un error y no ejecutar el movimiento
-            Debug.LogError("Obstacle detected! Cannot move forward.");
+            //Debug.LogError("Obstacle detected! Cannot move forward.");
             return false;
         }
         else
         {
-            Debug.Log("Moving forward...");
+            //Debug.Log("Moving forward...");
             isMoving = true;
             // Si no hay obst�culo, mover el coche hacia adelante con un movimiento suave utilizando LeanTween
             LeanTween.move(gameObject, transform.position + forward, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => isMoving = false);
@@ -160,7 +172,7 @@ public class CarController_V2 : MonoBehaviour
         if (Physics.Raycast(transform.position, forward, out hit, TILE_DISTANCE, obstacleLayer))
         {
             // Si el raycast golpea un obst�culo, lanzar un error y no ejecutar el movimiento
-            Debug.LogError("Obstacle detected! Cannot move forward.");
+            //Debug.LogError("Obstacle detected! Cannot move forward.");
             return true;
         }
         else
@@ -180,25 +192,37 @@ public class CarController_V2 : MonoBehaviour
             if (blockStringList[i] == "For")
             {
                 int j = 1;
+                if (i+j >= blockStringList.Count)
+                {
+                    Debug.LogError("For before block not closed");
+                    playerMainBlockText.text = "ERROR: For block not closed!";
+                    return false;
+                }
                 string block_repeats = blockStringList[i + j];
                 if (Regex.IsMatch(block_repeats, @"^n\d+$"))
                 {
                     j++;
                     List<string> repeatedBlockList = new List<string>();
+                    List<BlockObject> blocksList = new List<BlockObject>();
                     while (blockStringList[i + j] != "EndFor")
                     {
                         repeatedBlockList.Add(blockStringList[i + j]);
+                        blocksList.Add(blockList[i + j]);
+                        Debug.Log(blockList[i + j]);
                         j++;
                         if (i + j >= blockStringList.Count)
                         {
-                            //Debug.LogError("For block not closed");
+                            Debug.LogError("For analized block not closed");
                             playerMainBlockText.text = "ERROR: For block not closed!";
                             return false;
                         }
                     }
-
+                    if (!CheckIfSecuenceIsPosible(blocksList))
+                    {
+                        return false;
+                    }
                     int n = int.Parse(block_repeats.Substring(1));
-                    for (int k = 0; k < n; k++)
+                    for (int k = 0; k < n - 1; k++)
                     {
                         procesedBlockList.AddRange(repeatedBlockList);
                     }
@@ -206,7 +230,7 @@ public class CarController_V2 : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("Invalid For block format" );
+                    //Debug.LogError("Invalid For block format" );
                     playerMainBlockText.text = "ERROR: Number Block on repeat missing";
                     return false;
                 }
@@ -214,12 +238,17 @@ public class CarController_V2 : MonoBehaviour
             else if (blockStringList[i] == "If")
             {
                 int j = 1;
+                if (i + j >= blockStringList.Count)
+                {
+                    playerMainBlockText.text = "ERROR: Missing end-if block!";
+                    return false;
+                }
                 while (blockStringList[i + j] != "EndIf")
                 {
                     j++;
                     if (i + j >= blockStringList.Count)
                     {
-                        Debug.LogError("If block not closed");
+                        //Debug.LogError("If block not closed");
                         playerMainBlockText.text = "ERROR: Missing end-if block";
                         return false;
                     }
@@ -230,7 +259,7 @@ public class CarController_V2 : MonoBehaviour
             {
                 if (i + 1 >= blockStringList.Count || (blockStringList[i + 1] != "Right" && blockStringList[i + 1] != "Left"))
                 {
-                    Debug.LogError("Invalid Turn block format");
+                    //Debug.LogError("Invalid Turn block format");
                     playerMainBlockText.text = "ERROR: Direction block missing";
                     return false;
                 }
@@ -241,7 +270,7 @@ public class CarController_V2 : MonoBehaviour
             }
         }
         playerMainBlockText.text = "Code is OK. Wait for partner code.";
-        Debug.Log("Movement sequence is valid.");
+        //Debug.Log("Movement sequence is valid.");
         return true;
     }
 

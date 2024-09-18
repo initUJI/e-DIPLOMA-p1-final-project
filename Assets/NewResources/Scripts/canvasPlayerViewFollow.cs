@@ -14,6 +14,8 @@ public class canvasPlayerViewFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        interfaz.position = jugador.position;
+
         // Obtener la dirección actual del jugador
         Vector3 direccionJugador = jugador.forward;
         direccionJugador.y = 0f;

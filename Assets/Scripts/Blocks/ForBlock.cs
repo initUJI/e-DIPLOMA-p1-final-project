@@ -27,6 +27,23 @@ public class ForBlock : ConditionalBlock
         forCoroutine = StartCoroutine(c_ExecuteFor());
     }
 
+    public GameObject getRightSocketObject()
+    {
+        Block block = getSocketBlock(rightSocket);
+
+        if (block != null)
+        {
+            Debug.Log("Hay Right Socket");
+            return block.gameObject;
+        }
+        else
+        {
+            Debug.Log("No hay Right Socket");
+        }
+
+        return null;
+    }
+
     public string getRightSocketName()
     {
         Block block = getSocketBlock(rightSocket);

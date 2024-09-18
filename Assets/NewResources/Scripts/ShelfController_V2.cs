@@ -14,6 +14,11 @@ public class ShelfController_V2 : MonoBehaviour
 
     public void SetupShelfController()
     {
+        if(currentBlock != null)
+        {
+            Destroy(currentBlock);
+        }
+
         //Se actualiza el texto del holder
         if(availableBlockQuantity == 0)
         {
