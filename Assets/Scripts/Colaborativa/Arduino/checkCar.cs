@@ -41,10 +41,10 @@ public class checkCar : MonoBehaviour
         // Verifica si todas las piezas están colocadas correctamente
         if (placa && senULT && shield &&(!humiditySensorRequired || senHUM))
         {
-            //ParticleSystem carParticle = carParticle.GetComponent<ParticleSystem>();
+            ParticleSystem carPar = carParticle.GetComponent<ParticleSystem>();
             //Debug.Log("Iniciando secuencia de finalización.");
 
-            //carParticle.Play();
+            carPar.Play();
 
             StartCoroutine(CompleteSequence());
             Debug.Log("Todos los componentes están colocados correctamente.");
