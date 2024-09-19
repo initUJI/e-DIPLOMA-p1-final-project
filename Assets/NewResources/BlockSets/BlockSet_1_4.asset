@@ -21,6 +21,7 @@ MonoBehaviour:
   turnQuantity: 2
   rightQuantity: 2
   leftQuantity: 2
+  number2_Quantity: 1
   number3_Quantity: 1
   number4_Quantity: 1
   number5_Quantity: 1

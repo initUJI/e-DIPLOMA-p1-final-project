@@ -18,10 +18,10 @@ MonoBehaviour:
   ifQuantity: 1
   endIfQuantity: 1
   getHumidityQuantity: 0
-  objectQuantity: 1
   turnQuantity: 1
   rightQuantity: 1
   leftQuantity: 1
+  number2_Quantity: 1
   number3_Quantity: 1
   number4_Quantity: 1
   number5_Quantity: 1

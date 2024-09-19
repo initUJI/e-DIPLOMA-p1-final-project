@@ -73,7 +73,7 @@ public class canvasPlayerViewFollow : MonoBehaviour
             rotacionActual.x = 0;
             rotacionActual.z = 0;
 
-            Debug.Log("Angulo actual = " + rotacionActual.y + " |  Angulo objetivo = " + rotacionObjetivo.y);
+            //Debug.Log("Angulo actual = " + rotacionActual.y + " |  Angulo objetivo = " + rotacionObjetivo.y);
 
             float rotacionInterpolada = Mathf.LerpAngle(rotacionActual.y, rotacionObjetivo.y, Time.deltaTime * velocidadRotacion);
 

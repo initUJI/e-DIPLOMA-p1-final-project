@@ -19,6 +19,7 @@ public class BlockSet : ScriptableObject
     public int rightQuantity;
     public int leftQuantity;
 
+    public int number2_Quantity;
     public int number3_Quantity;
     public int number4_Quantity;
     public int number5_Quantity;

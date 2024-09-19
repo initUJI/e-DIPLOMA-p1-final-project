@@ -53,10 +53,10 @@ public class GameManager_V2 : MonoBehaviour
     //  TESTING INPUT
     public void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence));
-        }*//*else if (Input.GetKeyDown(KeyCode.O))
+            incrementGamePhase();
+        }/*else if (Input.GetKeyDown(KeyCode.O))
         {
             UpdatePartnerBlocks();
         }else if (Input.GetKeyDown(KeyCode.I))
@@ -110,13 +110,12 @@ public class GameManager_V2 : MonoBehaviour
     public void ProcecarSecuences()
     {
         StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
-        Debug.Log("La sentencia partner esta así de grande: " + partnerBlocksSecuence.Count);
-        StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence));
+        StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence, true));
     }
 
     public bool CheckIfLocalSecuenceIsCorrect()
     {
-        return localCarController.CheckIfSecuenceIsPosible(localBlocksSecuence);
+        return localCarController.CheckIfSecuenceIsPosible(localBlocksSecuence, 1);
     }
 
     private void Awake()
@@ -226,6 +225,7 @@ public class GameManager_V2 : MonoBehaviour
             localPlayerShelfsControllers = PlayableScenarios[1].GetComponentsInChildren<ShelfController_V2>().ToList();
 
             XRPlayer_FaderSphere.setNewText("Player: " + playerID + " joined. Room name: " + socketManager.roomID + ". Waiting for partner.");
+
             SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
         }
         else
@@ -238,7 +238,7 @@ public class GameManager_V2 : MonoBehaviour
     {
         actualGamePhase++;
 
-        if(actualGamePhase > playerBlocksSets.Count)
+        if(actualGamePhase >= playerBlocksSets.Count)
         {
             // Hacer el fin del juego (INCOMPLETO)
             localCarController.setCustomPlayerLogText("Game Finished! Congratulations!");
@@ -309,6 +309,12 @@ public class GameManager_V2 : MonoBehaviour
                     break;
                 case ("n3"):
                     sf.availableBlockQuantity = actualBlockSet.number3_Quantity;
+
+                    sf.SetupShelfController();
+
+                    break;
+                case ("n2"):
+                    sf.availableBlockQuantity = actualBlockSet.number2_Quantity;
 
                     sf.SetupShelfController();
 

@@ -7391,6 +7391,7 @@ MonoBehaviour:
   XRPlayer_FaderSphere: {fileID: 1727788311}
   socketManager: {fileID: 378001769}
   playerMainBlockController: {fileID: 0}
+  confettiPS: {fileID: 0}
   localCarController: {fileID: 0}
   partnerCarController: {fileID: 0}
   localBlocksSecuence: []
@@ -27032,7 +27033,6 @@ MonoBehaviour:
   purpleGate: {fileID: 1520447976213032974}
   moveSpeed: 0.8
   levelBoxMaterial: {fileID: 2100000, guid: f16882457d051f34280adb662b7f562e, type: 2}
-  gameManager: {fileID: 378001767}
 --- !u!114 &1603415319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29138,7 +29138,6 @@ MonoBehaviour:
   purpleGate: {fileID: 1520447976213032974}
   moveSpeed: 0.8
   levelBoxMaterial: {fileID: 2100000, guid: f16882457d051f34280adb662b7f562e, type: 2}
-  gameManager: {fileID: 378001767}
 --- !u!114 &1766675440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35021,7 +35020,7 @@ GameObject:
   - component: {fileID: 1520447974357480534}
   - component: {fileID: 1520447974357480535}
   - component: {fileID: 1520447974357480532}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35393,7 +35392,7 @@ GameObject:
   - component: {fileID: 1520447974667366109}
   - component: {fileID: 1520447974667366106}
   - component: {fileID: 1520447974667366107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36073,7 +36072,7 @@ GameObject:
   - component: {fileID: 1520447976226337161}
   - component: {fileID: 1520447976226337158}
   - component: {fileID: 1520447976226337159}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36698,7 +36697,7 @@ GameObject:
   - component: {fileID: 2230200693927574845}
   - component: {fileID: 2230200693927574846}
   - component: {fileID: 2230200693927574847}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36858,7 +36857,7 @@ GameObject:
   - component: {fileID: 2230200694217683233}
   - component: {fileID: 2230200694217683234}
   - component: {fileID: 2230200694217683235}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36875,7 +36874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200694257334166}
   - component: {fileID: 2230200694257334167}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (2)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -36951,7 +36950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200694475161851}
   - component: {fileID: 2230200694475161850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (1)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -36970,7 +36969,7 @@ GameObject:
   - component: {fileID: 2230200694535652940}
   - component: {fileID: 2230200694535652943}
   - component: {fileID: 2230200694535652942}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37065,7 +37064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200694739619047}
   - component: {fileID: 2230200694739619046}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -37111,7 +37110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200694840617932}
   - component: {fileID: 2230200694840617933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (3)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -37159,7 +37158,7 @@ GameObject:
   - component: {fileID: 2230200694856777372}
   - component: {fileID: 2230200694856777375}
   - component: {fileID: 2230200694856777374}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37256,7 +37255,7 @@ GameObject:
   - component: {fileID: 2230200695008062390}
   - component: {fileID: 2230200695008062389}
   - component: {fileID: 2230200695008062388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37353,7 +37352,7 @@ GameObject:
   - component: {fileID: 2230200695018038932}
   - component: {fileID: 2230200695018038935}
   - component: {fileID: 2230200695018038934}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37477,7 +37476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200695207245585}
   - component: {fileID: 2230200695207245584}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (7)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -37574,7 +37573,7 @@ GameObject:
   - component: {fileID: 2230200695464724171}
   - component: {fileID: 2230200695464724168}
   - component: {fileID: 2230200695464724169}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37593,7 +37592,7 @@ GameObject:
   - component: {fileID: 2230200695639038486}
   - component: {fileID: 2230200695639038485}
   - component: {fileID: 2230200695639038484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37688,7 +37687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200695656369990}
   - component: {fileID: 2230200695656369991}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (5)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -37735,7 +37734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200695806614124}
   - component: {fileID: 2230200695806614125}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (6)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
@@ -37781,7 +37780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2230200695830091598}
   - component: {fileID: 2230200695830091599}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brick (4)
   m_TagString: OBSTACLE
   m_Icon: {fileID: 0}
