@@ -1,0 +1,6 @@
+userID;fecha
+anom;16/09/2024_09:39
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726472357,33853;,08272;Test1;ENTRA_HEAD;Grass: Part of the level
+1726472368,30298;11,04692;Test1;SALE_HEAD;Water: Part of the level
+1726472368,37277;11,11656;Test1;ENTRA_HEAD;attach3: Part of FullBot

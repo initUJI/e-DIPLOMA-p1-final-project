@@ -1,0 +1,38 @@
+userID;fecha
+anom;13/09/2024_09:31
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726212681,36986;,15565;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726212684,16609;2,95216;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726212685,21137;3,99731;Test1;ENTRA_HEAD;Limit (14): Part of the level
+1726212685,22367;4,00973;Test1;SALE_HEAD;Limit (14): Part of the level
+1726212685,23642;4,02277;Test1;ENTRA_HEAD;Limit (15): Part of the level
+1726212685,34934;4,13549;Test1;SALE_HEAD;Limit (15): Part of the level
+1726212685,36367;4,14962;Test1;ENTRA_HEAD;Limit (16): Part of the level
+1726212685,64101;4,42691;Test1;SALE_HEAD;Limit (16): Part of the level
+1726212689,16721;7,95357;Test1;ENTRA_HEAD;Limit (5): Part of the level
+1726212691,47746;10,26355;Test1;SALE_HEAD;Limit (12): Part of the level
+1726212692,24338;11,02962;Test1;ENTRA_HEAD;UltrasonicSensor: Part of UltrasonicSensor
+1726212692,32747;11,11332;Test1;SALE_HEAD;UltrasonicSensor: Part of UltrasonicSensor
+1726212692,55018;11,33626;Test1;ENTRA_HEAD;UltrasonicSensor: Part of RoboCola
+1726212692,73101;11,51747;Test1;SALE_HEAD;UltrasonicSensor: Part of RoboCola
+1726212694,15152;12,93775;Test1;ENTRA_HEAD;UltrasonicSensor: Part of RoboCola
+1726212694,66326;13,44989;Test1;SALE_HEAD;UltrasonicSensor: Part of UltrasonicSensor
+1726212695,28051;14,06660;Test1;ENTRA_HEAD;UltrasonicSensor: Part of UltrasonicSensor
+1726212695,80871;14,59548;Test1;SALE_HEAD;UltrasonicSensor: Part of UltrasonicSensor
+1726212696,22583;15,01169;Test1;ENTRA_HEAD;Limit (15): Part of the level
+1726212708,07344;26,86049;Test1;SALE_HEAD;Grass: Part of the level
+1726212708,14095;26,92752;Test1;ENTRA_HEAD;Grass: Part of the level
+1726212724,98527;43,77167;Test1;SALE_HEAD;WallN: Part of the level
+1726212725,00271;43,78957;Test1;ENTRA_HEAD;Grass: Part of the level
+1726212725,61376;44,40096;Test1;SALE_HEAD;Grass: Part of the level
+1726212725,67103;44,45744;Test1;ENTRA_HEAD;WallN: Part of the level
+1726212725,85198;44,63844;Test1;SALE_HEAD;WallN: Part of the level
+1726212726,17143;44,95874;Test1;ENTRA_HEAD;Grass: Part of the level
+1726212726,60347;45,39066;Test1;SALE_HEAD;Grass: Part of the level
+1726212726,63200;45,41859;Test1;ENTRA_HEAD;Grass: Part of the level
+1726212726,64577;45,43240;Test1;SALE_HEAD;Grass: Part of the level
+1726212726,66998;45,45693;Test1;ENTRA_HEAD;Grass: Part of the level
+1726212726,68730;45,47456;Test1;SALE_HEAD;Grass: Part of the level
+1726212727,02156;45,80868;Test1;ENTRA_HEAD;Grass: Part of the level
+1726212728,95186;47,73853;Test1;SALE_HEAD;Grass: Part of the level
+1726212729,34251;48,12929;Test1;ENTRA_HEAD;Cube AKA player: Part of Cube AKA player

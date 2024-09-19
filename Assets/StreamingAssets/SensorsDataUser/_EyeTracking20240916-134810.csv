@@ -1,0 +1,22 @@
+userID;fecha
+anom;16/09/2024_13:48
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726487311,42981;21,22691;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487312,18332;21,97985;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487312,43359;22,23031;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487315,38597;25,18260;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487320,84479;30,64149;Test1;ENTRA_HEAD;attach: Part of ArduinoHighMats
+1726487320,85863;30,65547;Test1;SALE_HEAD;attach: Part of ArduinoHighMats
+1726487323,54472;33,34184;Test1;ENTRA_HEAD;attach3: Part of FullBot
+1726487325,21557;35,01257;Test1;SALE_HEAD;attach3: Part of FullBot
+1726487325,85585;35,65315;Test1;ENTRA_HEAD;attach3: Part of FullBot
+1726487332,41356;42,21030;Test1;SALE_HEAD;attach3: Part of FullBot
+1726487332,84495;42,64228;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487333,83328;43,63029;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487333,84773;43,64465;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487333,86156;43,65826;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487333,87483;43,67222;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487333,90396;43,70051;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487335,93585;45,73239;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726487338,94248;48,73962;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726487342,36652;52,16370;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------

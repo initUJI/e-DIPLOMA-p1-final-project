@@ -31,14 +31,15 @@ TagManager:
   - PLANT
   - OBSTACLE
   - Car
-  - ConditionBlock
-  - NumberBlock
-  - TurnDirectionBlock
+  - ArduinoPlaca
+  - ArduinoSenosres
+  - ArduinoChasis
+  - ArduinoSHIELD
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - ObstacleObject
+  - 
   - Water
   - UI
   - InsideBlock
@@ -46,12 +47,12 @@ TagManager:
   - InsideBlockObject
   - InsideBlockNumber
   - InsideBlockDirection
-  - OutOfBoundsLayer
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ArduinoPlaca
+  - ArduinoSensores
+  - ArduinoChasis
+  - ArduinoSHIELD
+  - ArduinoSensorULT
+  - ArduinoSensorHUM
   - 
   - 
   - 

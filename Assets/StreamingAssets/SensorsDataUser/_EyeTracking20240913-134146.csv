@@ -1,0 +1,25 @@
+userID;fecha
+anom;13/09/2024_13:41
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726227706,99154;,18847;Test1;ENTRA_HEAD;Grass: Part of the level
+1726227712,12693;5,32399;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726227713,43711;6,63381;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726227713,45138;6,64821;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726227716,73804;9,93476;Test1;ENTRA_HEAD;Water: Part of the level
+1726227720,23340;13,43047;Test1;SALE_HEAD;attach: Part of ArduinoHighMats
+1726227720,24625;13,44355;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726227721,27627;14,47366;Test1;SALE_HEAD;Grass: Part of the level
+1726227722,12577;15,32336;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726227728,93405;22,13107;Test1;SALE_HEAD;attach: Part of ArduinoHighMats
+1726227729,01675;22,21443;Test1;ENTRA_HEAD;Grass: Part of the level
+1726227729,44916;22,64629;Test1;SALE_HEAD;Grass: Part of the level
+1726227729,47695;22,67401;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
+1726227731,77380;24,97113;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726227731,84378;25,04098;Test1;ENTRA_HEAD;Platform: Part of -------STATIC LEVEL--------
+1726227732,12110;25,31891;Test1;SALE_HEAD;Platform: Part of -------STATIC LEVEL--------
+1726227732,42736;25,62521;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726227735,35331;28,55061;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726227735,44868;28,64630;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726227735,85413;29,05110;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726227735,94958;29,14746;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726227747,47444;40,67193;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto

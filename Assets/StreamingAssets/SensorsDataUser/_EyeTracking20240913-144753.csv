@@ -1,0 +1,14 @@
+userID;fecha
+anom;13/09/2024_14:47
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726231673,53520;,24232;Test1;ENTRA_HEAD;Grass: Part of the level
+1726231692,30310;19,01096;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726231692,47016;19,17802;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726231694,14076;20,84877;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726231694,82298;21,53104;Test1;ENTRA_HEAD;Platform: Part of -------STATIC LEVEL--------
+1726231696,53645;23,24402;Test1;SALE_HEAD;Platform: Part of -------STATIC LEVEL--------
+1726231699,84893;26,55686;Test1;ENTRA_HEAD;Water: Part of the level
+1726231700,40495;27,11345;Test1;SALE_HEAD;Center Wall: Part of -------STATIC LEVEL--------
+1726231700,78179;27,48959;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726231701,44923;28,15718;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
+1726231701,92284;28,63097;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------

@@ -1,0 +1,8 @@
+userID;fecha
+anom;16/09/2024_09:58
+unixTimestamp;Timestamp;Situacion;Accion;Objeto
+1726473494,92624;,08170;Test1;ENTRA_HEAD;Grass: Part of the level
+1726473497,22995;2,38633;Test1;SALE_HEAD;Grass: Part of the level
+1726473499,28302;4,43866;Test1;ENTRA_HEAD;Table: Part of -------STATIC LEVEL--------
+1726473499,61735;4,77299;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------
+1726473500,16830;5,32404;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
