@@ -35,11 +35,12 @@ TagManager:
   - ArduinoSenosres
   - ArduinoChasis
   - ArduinoSHIELD
+  - NumberBlock
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ObstacleObject
   - Water
   - UI
   - InsideBlock
@@ -53,7 +54,7 @@ TagManager:
   - ArduinoSHIELD
   - ArduinoSensorULT
   - ArduinoSensorHUM
-  - 
+  - OutOfBoundsLayer
   - 
   - 
   - 

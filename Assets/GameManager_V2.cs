@@ -26,8 +26,10 @@ public class GameManager_V2 : MonoBehaviour
     public TextMeshProUGUI actualTurnText;
     public List<Transform> PlayersInitialTransforms;
     public List<CarController_V2> PlayersCarControllers;
+    public GameObject executingPopup_prefab;
 
     [Header("Local player Setup")]
+    public PlayerSettings playerSettings;
     public GameObject local_XRPlayer;
     public XRRayInteractor[] local_XRLineInteractors;
     public PlayerBlacscreenCanvas XRPlayer_FaderSphere;
@@ -55,8 +57,10 @@ public class GameManager_V2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            incrementGamePhase();
-        }/*else if (Input.GetKeyDown(KeyCode.O))
+            showExecutingPopup();
+        }
+
+        /*else if (Input.GetKeyDown(KeyCode.O))
         {
             UpdatePartnerBlocks();
         }else if (Input.GetKeyDown(KeyCode.I))
@@ -66,6 +70,10 @@ public class GameManager_V2 : MonoBehaviour
             sendLocalSecuenceToServer();
         }
         */
+
+
+
+        // EL REAL UPDATE (NO TOCAR)
         if (mustUpdate)
         {
             UpdatePartnerBlocks();
@@ -74,10 +82,19 @@ public class GameManager_V2 : MonoBehaviour
         if (canProcess)
         {
             localCarController.setCustomPlayerLogText("EXECUTING CODE");
-            
+            showExecutingPopup();
             ProcecarSecuences();
             canProcess = false;
         }
+    }
+
+    public void showExecutingPopup()
+    {
+        //GetChild(0).GetChild(0). --> Para acceder desde el XROrigin a la cámara que representa la cabeza
+        Vector3 spawnPosition = local_XRPlayer.transform.GetChild(0).GetChild(0).position + local_XRPlayer.transform.GetChild(0).GetChild(0).forward * 0.5f;
+        Quaternion spawnRotation = Quaternion.LookRotation(spawnPosition - local_XRPlayer.transform.GetChild(0).GetChild(0).position);
+
+        Instantiate(executingPopup_prefab, spawnPosition, spawnRotation);
     }
 
     public void sendLocalSecuenceToServer()
@@ -121,7 +138,7 @@ public class GameManager_V2 : MonoBehaviour
     private void Awake()
     {
         actualGameState = GameState.WAITING_FOR_PLAYERS;
-        setXRInteractionNewState(false);
+        setXRInteractionNewState(false, true);
     }
 
     private void CallToProcess()
@@ -383,12 +400,27 @@ public class GameManager_V2 : MonoBehaviour
         SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
     }
 
-    public void setXRInteractionNewState(bool newState)
+    public void setXRInteractionNewState(bool newState, bool firstIteration = false)
     {
-        foreach(XRRayInteractor xrLine in local_XRLineInteractors)
+        if(firstIteration)
         {
-            xrLine.GetComponent<LineRenderer>().enabled = newState;
-            xrLine.enabled = newState;
+            foreach (XRRayInteractor xrLine in local_XRLineInteractors)
+            {
+                xrLine.GetComponent<LineRenderer>().enabled = newState;
+                xrLine.enabled = newState;
+            }
+        }else
+        {
+            if(playerSettings.isPlayerRightHanded)
+            {
+                local_XRLineInteractors[0].GetComponent<LineRenderer>().enabled = newState;
+                local_XRLineInteractors[0].enabled = newState;
+            }else
+            {
+                local_XRLineInteractors[1].GetComponent<LineRenderer>().enabled = newState;
+                local_XRLineInteractors[1].enabled = newState;
+            }
         }
+        
     }
 }

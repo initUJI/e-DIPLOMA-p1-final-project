@@ -99,11 +99,11 @@ public class ColaLevelsManager : MonoBehaviour
                 break;
             case "Walls":
                 Debug.Log("Cargando escena: DefinitiveScene_Walls");
-                SceneManager.LoadScene("DefinitiveScene_Walls");
+                SceneManager.LoadScene("Zombies_CollaborativeLevel");
                 break;
             case "Trash":
                 Debug.Log("Cargando escena: DefinitiveScene_Trash");
-                SceneManager.LoadScene("DefinitiveScene_Trash");
+                SceneManager.LoadScene("Trash_CollaborativeLevel");
                 break;
             default:
                 Debug.LogError("Nivel seleccionado no válido.");
