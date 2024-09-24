@@ -3479,7 +3479,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1345389756}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CenterWallController, Assembly-CSharp
         m_MethodName: centerWallUp
         m_Mode: 1
@@ -6417,6 +6417,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1112954412}
+  - {fileID: 1088387494}
   m_Father: {fileID: 1882866327}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7873,6 +7874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualGameState: 0
   playerBlocksSets:
+  - {fileID: 11400000, guid: 44fad5f11a01fa14e8b382f3c79ecba4, type: 2}
   - {fileID: 11400000, guid: 7b02923af72147a4b83922d307ac6edc, type: 2}
   - {fileID: 11400000, guid: 34f8469153a64e14798dd9d853cee67a, type: 2}
   - {fileID: 11400000, guid: 2e0672c7c54f6d94894027d874163387, type: 2}
@@ -7884,6 +7886,7 @@ MonoBehaviour:
   - {fileID: 1314202786}
   - {fileID: 876554486}
   actualTurnText: {fileID: 1112954413}
+  objectivesAcomplishedText: {fileID: 1088387495}
   PlayersInitialTransforms:
   - {fileID: 1714263505}
   - {fileID: 1095846967}
@@ -13855,8 +13858,7 @@ GameObject:
   - component: {fileID: 654544858}
   - component: {fileID: 654544857}
   - component: {fileID: 654544856}
-  - component: {fileID: 654544855}
-  - component: {fileID: 654544854}
+  - component: {fileID: 654544860}
   m_Layer: 0
   m_Name: Center Wall
   m_TagString: Untagged
@@ -13872,7 +13874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654544852}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 1.9499999, z: 3}
+  m_LocalPosition: {x: 0, y: 1.95, z: 3}
   m_LocalScale: {x: 0.3, y: 0.35, z: 0.45}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13881,39 +13883,6 @@ Transform:
   m_Father: {fileID: 2045979182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
---- !u!114 &654544854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654544852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dcbcc319fdbddb419092145e5d04915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &654544855
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654544852}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e424d32a4ba2f2c469e6228ada8874a6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &654544856
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13995,6 +13964,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654544852}
   m_Mesh: {fileID: 641409660000648139, guid: bd24efd92d5a134499b08d61dc8201e7, type: 3}
+--- !u!114 &654544860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654544852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d925516f3ac98b14892c06cd9813ddec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperPosition: {x: 0, y: 1.95, z: 3}
+  lowerPosition: {x: 0, y: 0.356, z: 0}
+  moveDuration: 0.7
 --- !u!1 &657289819
 GameObject:
   m_ObjectHideFlags: 0
@@ -14078,9 +14062,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654544854}
-        m_TargetAssemblyTypeName: CenterWallController, Assembly-CSharp
-        m_MethodName: centerWallDown
+      - m_Target: {fileID: 654544860}
+        m_TargetAssemblyTypeName: panelMover, Assembly-CSharp
+        m_MethodName: TogglePanelPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24631,6 +24615,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086917130}
   m_CullTransparentMesh: 1
+--- !u!1001 &1088387493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 315322759}
+    m_Modifications:
+    - target: {fileID: 6381789289819285522, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_Name
+      value: ObjectiveText
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 230.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.71716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.71716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.71716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.9122
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381789289819285524, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+      propertyPath: m_text
+      value: 'Remaining Walls: '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+--- !u!224 &1088387494 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6381789289819285523, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+  m_PrefabInstance: {fileID: 1088387493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1088387495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6381789290846650606, guid: 3211182fbac2afa4c9e5381582627bde, type: 3}
+  m_PrefabInstance: {fileID: 1088387493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1093192248
 GameObject:
   m_ObjectHideFlags: 0
@@ -31935,9 +32048,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1345389756}
-        m_TargetAssemblyTypeName: CenterWallController, Assembly-CSharp
-        m_MethodName: centerWallDown
+      - m_Target: {fileID: 1345389762}
+        m_TargetAssemblyTypeName: panelMover, Assembly-CSharp
+        m_MethodName: TogglePanelPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31998,8 +32111,7 @@ GameObject:
   - component: {fileID: 1345389760}
   - component: {fileID: 1345389759}
   - component: {fileID: 1345389758}
-  - component: {fileID: 1345389757}
-  - component: {fileID: 1345389756}
+  - component: {fileID: 1345389762}
   m_Layer: 0
   m_Name: Center Wall
   m_TagString: Untagged
@@ -32024,39 +32136,6 @@ Transform:
   m_Father: {fileID: 548733166}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
---- !u!114 &1345389756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345389754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dcbcc319fdbddb419092145e5d04915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1345389757
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345389754}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e424d32a4ba2f2c469e6228ada8874a6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &1345389758
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32138,6 +32217,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345389754}
   m_Mesh: {fileID: 641409660000648139, guid: bd24efd92d5a134499b08d61dc8201e7, type: 3}
+--- !u!114 &1345389762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345389754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d925516f3ac98b14892c06cd9813ddec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperPosition: {x: 0, y: 1.95, z: 3}
+  lowerPosition: {x: 0, y: 0.356, z: 3}
+  moveDuration: 0.7
 --- !u!1001 &1351118127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46524,7 +46618,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654544854}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CenterWallController, Assembly-CSharp
         m_MethodName: centerWallUp
         m_Mode: 1

@@ -74,10 +74,11 @@ public class CarController_V2 : MonoBehaviour
                         {
                             if (playerMainBlockText != null)  playerMainBlockText.text = "Your code";  //Habrá que limpiar el mainBlock cara a hacer el nuevo turno
                             gameManager.setXRInteractionNewState(true);
+                            gameManager.isCarFinished(0);
                         }
                         else
                         {
-                            gameManager.InitializeNextTurn();
+                            gameManager.isCarFinished(1);
                         }
 
 
@@ -86,6 +87,12 @@ public class CarController_V2 : MonoBehaviour
                     else {
                         yield return new WaitForSeconds(1f);
                     }
+                    break;
+                case "GetHumidity":
+                    //Lógica del getHumidity
+                    gameObject.GetComponent<PlantsController>().tryToGetHumidity();
+                    yield return new WaitForSeconds(1f);
+
                     break;
                 case "Right":
                     TurnRight();
@@ -119,10 +126,12 @@ public class CarController_V2 : MonoBehaviour
         {
             if (playerMainBlockText != null) playerMainBlockText.text = "Your code";  //Habrá que limpiar el mainBlock cara a hacer el nuevo turno
             gameManager.setXRInteractionNewState(true);
-        }else
+            gameManager.isCarFinished(0);
+        }
+        else
         {
             //Debug.Log("Se va a iniciar el siguiente turno");
-            gameManager.InitializeNextTurn();
+            gameManager.isCarFinished(1);
         }
     }
 

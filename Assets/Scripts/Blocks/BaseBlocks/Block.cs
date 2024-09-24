@@ -22,6 +22,16 @@ public abstract class Block : MonoBehaviour
         return block;
     }
 
+    public void OnSocketPlaced()
+    {
+        XRController[] xrCont = (XRController[]) GameObject.FindObjectsOfType(typeof(XRController));
+
+        foreach(XRController control in xrCont)
+        {
+            control.SendHapticImpulse(0.3f, 0.2f);
+        }
+    }
+
     public void ResetNextBlocks()
     {
         Block currentBlock = bottomBlock;

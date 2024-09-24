@@ -66,6 +66,12 @@ public class TrashController : MonoBehaviour
             {
                 Debug.LogWarning("No se encontró el sistema de partículas en el objeto: " + particleSystemObject.name);
             }
+
+            Collider collider = trash.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
         }
     }
     // Coroutine para detener las partículas después de 3 segundos

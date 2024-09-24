@@ -24,6 +24,7 @@ public class GameManager_V2 : MonoBehaviour
     public List<GameObject> PlayableScenarios;  // Escenarios donde los jugadores pueden interactuar
     public List<GameObject> NonPlayableScenarios;
     public TextMeshProUGUI actualTurnText;
+    public TextMeshProUGUI objectivesAcomplishedText;
     public List<Transform> PlayersInitialTransforms;
     public List<CarController_V2> PlayersCarControllers;
     public GameObject executingPopup_prefab;
@@ -51,6 +52,7 @@ public class GameManager_V2 : MonoBehaviour
     [SerializeField] private List<BlockObject> blockOptions;
     private bool mustUpdate = false;
     private bool canProcess = false;
+    private bool[] isCarsMovementFinished = { false, false };
 
     //  TESTING INPUT
     public void Update()
@@ -97,6 +99,16 @@ public class GameManager_V2 : MonoBehaviour
         Instantiate(executingPopup_prefab, spawnPosition, spawnRotation);
     }
 
+    public void showNewTurnPopup()
+    {
+        //GetChild(0).GetChild(0). --> Para acceder desde el XROrigin a la cámara que representa la cabeza
+        Vector3 spawnPosition = local_XRPlayer.transform.GetChild(0).GetChild(0).position + local_XRPlayer.transform.GetChild(0).GetChild(0).forward * 0.5f;
+        Quaternion spawnRotation = Quaternion.LookRotation(spawnPosition - local_XRPlayer.transform.GetChild(0).GetChild(0).position);
+
+        GameObject newPopup = Instantiate(executingPopup_prefab, spawnPosition, spawnRotation);
+        newPopup.GetComponent<TextMeshPro>().text = "Starting Turn " + actualTurn;
+    }
+
     public void sendLocalSecuenceToServer()
     {
         //List<string> localStringSecuence = Utilities.BlockListToStringList(localBlocksSecuence);
@@ -126,8 +138,47 @@ public class GameManager_V2 : MonoBehaviour
 
     public void ProcecarSecuences()
     {
+        for (int i = 0; i < isCarsMovementFinished.Length; i++)
+        {
+            isCarsMovementFinished[i] = false;
+        }
+
         StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
         StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence, true));
+        StartCoroutine(WaitForNextTurn());
+    }
+
+    private IEnumerator WaitForNextTurn()
+    {
+        while (true)
+        {
+            bool allCarsFinished = true;
+
+            // Comprobamos el array de booleanos
+            for (int i = 0; i < isCarsMovementFinished.Length; i++)
+            {
+                if (!isCarsMovementFinished[i])
+                {
+                    allCarsFinished = false;
+                    break;  // Si uno es false, ya no seguimos comprobando
+                }
+            }
+
+            if (allCarsFinished)
+            {
+                // Ejecuta la acción si todos los coches han terminado
+                InitializeNextTurn();
+                yield break;  // Detenemos la corrutina si se ha cumplido la condición
+            }
+
+            // Esperamos un segundo antes de volver a comprobar
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    public void isCarFinished(int carID)
+    {
+        isCarsMovementFinished[carID] = true;
     }
 
     public bool CheckIfLocalSecuenceIsCorrect()
@@ -254,8 +305,9 @@ public class GameManager_V2 : MonoBehaviour
     public void incrementGamePhase()
     {
         actualGamePhase++;
+        objectivesAcomplishedText.text = actualGamePhase + "/" + playerBlocksSets.Count;
 
-        if(actualGamePhase >= playerBlocksSets.Count)
+        if (actualGamePhase >= playerBlocksSets.Count)
         {
             // Hacer el fin del juego (INCOMPLETO)
             localCarController.setCustomPlayerLogText("Game Finished! Congratulations!");
@@ -382,6 +434,8 @@ public class GameManager_V2 : MonoBehaviour
         actualTurn++;
         actualTurnText.text = "Turn " + actualTurn;
 
+        showNewTurnPopup();
+
         // Borrar bloques (los del mainBlock y los de las estanterías para hacer los nuevos)
         partnerMainBlockController.ClearPreviousBlocks();
         playerMainBlockController.ClearPreviousBlocks();
@@ -411,7 +465,7 @@ public class GameManager_V2 : MonoBehaviour
             }
         }else
         {
-            if(playerSettings.isPlayerRightHanded)
+            if(!playerSettings.isPlayerRightHanded)
             {
                 local_XRLineInteractors[0].GetComponent<LineRenderer>().enabled = newState;
                 local_XRLineInteractors[0].enabled = newState;

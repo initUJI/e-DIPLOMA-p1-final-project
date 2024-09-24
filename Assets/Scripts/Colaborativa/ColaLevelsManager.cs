@@ -95,7 +95,7 @@ public class ColaLevelsManager : MonoBehaviour
         {
             case "Plants":
                 Debug.Log("Cargando escena: DefinitiveScene_Plants");
-                SceneManager.LoadScene("DefinitiveScene_Plants");
+                SceneManager.LoadScene("Plants_CollaborativeLevel");
                 break;
             case "Walls":
                 Debug.Log("Cargando escena: DefinitiveScene_Walls");
