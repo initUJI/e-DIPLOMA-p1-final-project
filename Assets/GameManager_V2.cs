@@ -23,7 +23,7 @@ public class GameManager_V2 : MonoBehaviour
     [Header("Player Scenarios")]
     public List<GameObject> PlayableScenarios;  // Escenarios donde los jugadores pueden interactuar
     public List<GameObject> NonPlayableScenarios;
-    public TextMeshProUGUI actualTurnText;
+    public TextMeshProUGUI actuaRoundText;
     public TextMeshProUGUI objectivesAcomplishedText;
     public List<Transform> PlayersInitialTransforms;
     public List<CarController_V2> PlayersCarControllers;
@@ -48,7 +48,7 @@ public class GameManager_V2 : MonoBehaviour
     [SerializeField] private PartnerMainBlock_Controller partnerMainBlockController;
 
     [SerializeField] private int actualGamePhase = 0;
-    private int actualTurn = 1;
+    private int actualRound = 1;
     [SerializeField] private List<BlockObject> blockOptions;
     private bool mustUpdate = false;
     private bool canProcess = false;
@@ -99,14 +99,14 @@ public class GameManager_V2 : MonoBehaviour
         Instantiate(executingPopup_prefab, spawnPosition, spawnRotation);
     }
 
-    public void showNewTurnPopup()
+    public void showNewRoundPopup()
     {
         //GetChild(0).GetChild(0). --> Para acceder desde el XROrigin a la cámara que representa la cabeza
         Vector3 spawnPosition = local_XRPlayer.transform.GetChild(0).GetChild(0).position + local_XRPlayer.transform.GetChild(0).GetChild(0).forward * 0.5f;
         Quaternion spawnRotation = Quaternion.LookRotation(spawnPosition - local_XRPlayer.transform.GetChild(0).GetChild(0).position);
 
         GameObject newPopup = Instantiate(executingPopup_prefab, spawnPosition, spawnRotation);
-        newPopup.GetComponent<TextMeshPro>().text = "Starting Turn " + actualTurn;
+        newPopup.GetComponent<TextMeshPro>().text = "Starting coding phase";
     }
 
     public void sendLocalSecuenceToServer()
@@ -145,10 +145,10 @@ public class GameManager_V2 : MonoBehaviour
 
         StartCoroutine(localCarController.ProcesarSecuences(localBlocksSecuence));
         StartCoroutine(partnerCarController.ProcesarSecuences(partnerBlocksSecuence, true));
-        StartCoroutine(WaitForNextTurn());
+        StartCoroutine(WaitForNextRound());
     }
 
-    private IEnumerator WaitForNextTurn()
+    private IEnumerator WaitForNextRound()
     {
         while (true)
         {
@@ -167,7 +167,7 @@ public class GameManager_V2 : MonoBehaviour
             if (allCarsFinished)
             {
                 // Ejecuta la acción si todos los coches han terminado
-                InitializeNextTurn();
+                InitializeNextRound();
                 yield break;  // Detenemos la corrutina si se ha cumplido la condición
             }
 
@@ -428,13 +428,13 @@ public class GameManager_V2 : MonoBehaviour
         }
     }
 
-    public void InitializeNextTurn()
+    public void InitializeNextRound()
     {
         // Hay que sumar turno
-        actualTurn++;
-        actualTurnText.text = "Turn " + actualTurn;
+        actualRound++;
+        actuaRoundText.text = "Round " + actualRound;
 
-        showNewTurnPopup();
+        showNewRoundPopup();
 
         // Borrar bloques (los del mainBlock y los de las estanterías para hacer los nuevos)
         partnerMainBlockController.ClearPreviousBlocks();

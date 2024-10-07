@@ -3479,9 +3479,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CenterWallController, Assembly-CSharp
-        m_MethodName: centerWallUp
+      - m_Target: {fileID: 1345389762}
+        m_TargetAssemblyTypeName: panelMover, Assembly-CSharp
+        m_MethodName: TogglePanelPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7885,7 +7885,7 @@ MonoBehaviour:
   NonPlayableScenarios:
   - {fileID: 1314202786}
   - {fileID: 876554486}
-  actualTurnText: {fileID: 1112954413}
+  actuaRoundText: {fileID: 1112954413}
   objectivesAcomplishedText: {fileID: 1088387495}
   PlayersInitialTransforms:
   - {fileID: 1714263505}
@@ -46618,9 +46618,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CenterWallController, Assembly-CSharp
-        m_MethodName: centerWallUp
+      - m_Target: {fileID: 654544860}
+        m_TargetAssemblyTypeName: panelMover, Assembly-CSharp
+        m_MethodName: TogglePanelPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

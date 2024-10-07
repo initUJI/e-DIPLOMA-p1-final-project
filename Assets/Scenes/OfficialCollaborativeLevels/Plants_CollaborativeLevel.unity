@@ -8023,7 +8023,7 @@ MonoBehaviour:
   NonPlayableScenarios:
   - {fileID: 1314202786}
   - {fileID: 876554486}
-  actualTurnText: {fileID: 1112954413}
+  actuaRoundText: {fileID: 1112954413}
   objectivesAcomplishedText: {fileID: 6381789290343181529}
   PlayersInitialTransforms:
   - {fileID: 1714263505}

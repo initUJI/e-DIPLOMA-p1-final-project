@@ -23,8 +23,8 @@ public class GameSocket_Manager : MonoBehaviour
     {
         string uniqueIdentifier = "UNITY_" + Guid.NewGuid().ToString();
 
-        socket = new SocketIOUnity("http://150.128.97.41:3000", new SocketIOOptions
-        //socket = new SocketIOUnity("http://localhost:3000", new SocketIOOptions
+        //socket = new SocketIOUnity("http://150.128.97.41:3000", new SocketIOOptions
+        socket = new SocketIOUnity("http://localhost:3000", new SocketIOOptions
         {
             Query = new Dictionary<string, string>
         {
