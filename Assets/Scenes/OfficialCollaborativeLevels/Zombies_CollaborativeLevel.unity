@@ -7874,7 +7874,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualGameState: 0
   playerBlocksSets:
-  - {fileID: 11400000, guid: 44fad5f11a01fa14e8b382f3c79ecba4, type: 2}
   - {fileID: 11400000, guid: 7b02923af72147a4b83922d307ac6edc, type: 2}
   - {fileID: 11400000, guid: 34f8469153a64e14798dd9d853cee67a, type: 2}
   - {fileID: 11400000, guid: 2e0672c7c54f6d94894027d874163387, type: 2}
