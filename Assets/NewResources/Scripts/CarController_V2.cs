@@ -162,6 +162,8 @@ public class CarController_V2 : MonoBehaviour
         {
             //Debug.Log("Moving forward...");
             isMoving = true;
+            EventsManager eventsManager = FindObjectOfType<EventsManager>();
+            eventsManager.characterMoving(forward.ToString());
             // Si no hay obst�culo, mover el coche hacia adelante con un movimiento suave utilizando LeanTween
             LeanTween.move(gameObject, transform.position + forward, moveDuration).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() => isMoving = false);
             return true;

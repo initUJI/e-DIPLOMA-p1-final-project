@@ -8150,18 +8150,22 @@ MonoBehaviour:
   NonPlayableScenarios:
   - {fileID: 1849874122}
   - {fileID: 1221593981}
-  actualTurnText: {fileID: 0}
+  actuaRoundText: {fileID: 0}
+  objectivesAcomplishedText: {fileID: 0}
   PlayersInitialTransforms:
   - {fileID: 1714263505}
   - {fileID: 1095846967}
   PlayersCarControllers:
   - {fileID: 1766675438}
   - {fileID: 1603415316}
+  executingPopup_prefab: {fileID: 0}
+  playerSettings: {fileID: 0}
   local_XRPlayer: {fileID: 875596926}
   local_XRLineInteractors: []
   XRPlayer_FaderSphere: {fileID: 1288016911}
   socketManager: {fileID: 378001769}
   playerMainBlockController: {fileID: 0}
+  confettiPS: {fileID: 0}
   localCarController: {fileID: 0}
   partnerCarController: {fileID: 0}
   localBlocksSecuence:
@@ -22133,8 +22137,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Turn 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -38895,7 +38899,8 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 458506712683173021, guid: e8b52ebbff75f8742bd2a4c146746461, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e8b52ebbff75f8742bd2a4c146746461, type: 3}
 --- !u!1 &458506713674940018 stripped
 GameObject:
@@ -38953,6 +38958,26 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &458506713674940021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 458506712683173018, guid: e8b52ebbff75f8742bd2a4c146746461, type: 3}
+  m_PrefabInstance: {fileID: 458506713674940017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &458506713674940022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458506713674940021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66100650b2d92dc4f952de40327bcc7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrOrigin: {fileID: 875596926}
+  popAudio: {fileID: 722362659}
+  buttonAudio: {fileID: 469227323}
 --- !u!65 &677778465438870743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40495,5 +40520,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emotibit
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5204407791422986682, guid: 7a6f49b82c49a7143bf530e6d7903021, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a6f49b82c49a7143bf530e6d7903021, type: 3}
+--- !u!1 &7884532309538490547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6174271600544037040, guid: 7a6f49b82c49a7143bf530e6d7903021, type: 3}
+  m_PrefabInstance: {fileID: 7884532309538490546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7884532309538490548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884532309538490547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e291f40c524fd6746b5ea7dca2bb8697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7884532309538490549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884532309538490547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96cdf7cd377c934cad074c138f0264a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  biometricRecord:
+    start: 
+    end: 
+    values: []
+  generalRecord:
+    start: 
+    end: 
+    values: []
+  computerRecord:
+    start: 
+    end: 
+    values: []
+  isRecording: 0
+  isDebugMode: 0
+  dataTimeout: 3
+  isReady: 1

@@ -33,6 +33,9 @@ public class checkCar : MonoBehaviour
         {
             Debug.LogError("Referencia a ColaLevelsManager no asignada.");
         }
+
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("MONTAGE SCENE STARTED");
     }
     void Update()
     {
@@ -56,39 +59,56 @@ public class checkCar : MonoBehaviour
     public void placaColocated()
     {
         placa = true;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("ARDUINO BOARD COLOCATED");
     }
     public void placaExit()
     {
         placa = false;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("ARDUINO BOARD REMOVED");
     }
 
     public void sensorHUMColocated()
     {
         senHUM = true;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("HUMIDITY SENSOR COLOCATED");
     }
     public void sensorHUMExit()
     {
         senHUM = false;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("HUMIDITY SENSOR REMOVED");
     }
 
     public void senosorULTColocated()
     {
         senULT = true;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("ULTRASONIC SENSOR COLOCATED");
     }
 
     public void sensorULTExit()
     {
         senULT = false;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("ULTRASONIC SENSOR REMOVED");
+
     }
 
     public void shieldColocated()
     {
         shield = true;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("BASE SHIELD COLOCATED");
     }
 
     public void shieldExit()
     {
         shield = false;
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("BASE SHIELD REMOVED");
     }
 
     IEnumerator CompleteSequence()
@@ -123,6 +143,8 @@ public class checkCar : MonoBehaviour
         if (colaLevelsManager != null)
         {
             Debug.Log("Notificando a ColaLevelsManager que el montaje está completo.");
+            EventsManager eventsManager = FindObjectOfType<EventsManager>();
+            eventsManager.messageOther("CAR MONTAGE COMPLETED");
             colaLevelsManager.NotifyAssemblyComplete();
         }
         else

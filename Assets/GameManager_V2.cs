@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 
 public class GameManager_V2 : MonoBehaviour
 {
@@ -194,6 +195,8 @@ public class GameManager_V2 : MonoBehaviour
 
     private void CallToProcess()
     {
+        EventsManager events = FindObjectOfType<EventsManager>();
+        events.playPressed();
         canProcess = true;
     }
 
@@ -209,6 +212,8 @@ public class GameManager_V2 : MonoBehaviour
     {
         // Desactivar fader y activar las interacciones del XR
         Debug.Log("que empiece el juego");
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("PLAYER JOINED THE GAME");
         setXRInteractionNewState(true);
         XRPlayer_FaderSphere.faderSphereNewState(0);
     }
@@ -307,11 +312,15 @@ public class GameManager_V2 : MonoBehaviour
         actualGamePhase++;
         objectivesAcomplishedText.text = actualGamePhase + "/" + playerBlocksSets.Count;
 
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("START PHASE: " + actualGamePhase);
+
         if (actualGamePhase >= playerBlocksSets.Count)
         {
             // Hacer el fin del juego (INCOMPLETO)
             localCarController.setCustomPlayerLogText("Game Finished! Congratulations!");
             confettiPS.Play();
+            eventsManager.levelCompleted(SceneManager.GetActiveScene().name);
             setXRInteractionNewState(false);
         }
     }
@@ -434,6 +443,8 @@ public class GameManager_V2 : MonoBehaviour
         actualRound++;
         actuaRoundText.text = "Round " + actualRound;
 
+        EventsManager eventsManager = FindObjectOfType<EventsManager>();
+        eventsManager.messageOther("START ROUND: " + actualRound);
         showNewRoundPopup();
 
         // Borrar bloques (los del mainBlock y los de las estanterías para hacer los nuevos)

@@ -21,6 +21,7 @@ public class EventsManager : MonoBehaviour
     private float timer = 0;
     private float timeShowingError = 10f;
     private XRSocketInteractor socket;
+    private Vector3 lastPosition;
 
     void Awake()
     {
@@ -29,13 +30,18 @@ public class EventsManager : MonoBehaviour
 
     void Start()
     {
+        SubscribeToAllSocketEvents();
+        SubscribeToAllGrabEvents();
         SetupUI();
         SetupFilePath();
         SetupXROrigin();
 
+        lastPosition = xrOrigin.transform.position;
+
         Data initialData = new Data(userID, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),/* "actualLevel",*/ "action");
         writeInJson(initialData);
     }
+
 
     private void SetupUI()
     {
@@ -79,16 +85,22 @@ public class EventsManager : MonoBehaviour
         writeInJson(data);
     }
 
+    public void levelCompleted(string name) // El nombre de este método se mantiene como "levelCompleted"
+    {
+        Data data = new Data(userID, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), /*levelManager.getActualLevel().ToString(),*/ $"LEVEL COMPLETED: {name}");
+        writeInJson(data);
+    }
+
+    public void messageOther(string m) // El nombre de este método se mantiene como "levelCompleted"
+    {
+        Data data = new Data(userID, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), /*levelManager.getActualLevel().ToString(),*/ m);
+        writeInJson(data);
+    }
+
     public void sceneCleaned()
     {
         buttonAudio.GetComponent<AudioSource>().Play();
         RecordEvent("SCENE CLEANED, ALL BLOCKS RESET");
-    }
-
-    public void clueUsed(string clue)
-    {
-        buttonAudio.GetComponent<AudioSource>().Play();
-        RecordEvent($"USED CLUE: {clue}");
     }
 
     public void testStandUsed(string direction)
@@ -116,6 +128,28 @@ public class EventsManager : MonoBehaviour
     {
         buttonAudio.GetComponent<AudioSource>().Play();
         RecordEvent($"DELETED BLOCK: {block.name}");
+    }
+
+    public void SubscribeToAllGrabEvents()
+    {
+        // Find all XRGrabInteractable components in the scene
+        XRGrabInteractable[] grabInteractables = FindObjectsOfType<XRGrabInteractable>();
+
+        foreach (XRGrabInteractable grab in grabInteractables)
+        {
+            subscribeGrabEvents(grab);
+        }
+    }
+
+    public void SubscribeToAllSocketEvents()
+    {
+        // Find all XRSocketInteractor components in the scene
+        XRSocketInteractor[] sockets = FindObjectsOfType<XRSocketInteractor>();
+
+        foreach (XRSocketInteractor xRSocket in sockets)
+        {
+            subscribeSocketsEvents(xRSocket);
+        }
     }
 
     public void subscribeGrabEvents(XRGrabInteractable grab)
@@ -281,6 +315,11 @@ public class EventsManager : MonoBehaviour
         if (xrOrigin != null)
         {
             xrOrigin.transform.position = new Vector3(xrOrigin.transform.position.x, 0, xrOrigin.transform.position.z);
+            // Check if the position has changed significantly to infer completion
+            if (Vector3.Distance(lastPosition, xrOrigin.transform.position) > 1f) // Set a threshold for movement
+            {
+                OnTeleportationEnd();
+            }
         }
 
         if (canvas.activeInHierarchy)
@@ -296,6 +335,11 @@ public class EventsManager : MonoBehaviour
     }
 
     private void OnTeleportationEnd(LocomotionSystem locomotionSystem)
+    {
+        RecordEvent("TELEPORTATION");
+    }
+
+    private void OnTeleportationEnd()
     {
         RecordEvent("TELEPORTATION");
     }
