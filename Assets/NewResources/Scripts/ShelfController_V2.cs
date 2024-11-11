@@ -29,6 +29,7 @@ public class ShelfController_V2 : MonoBehaviour
 
             //Se instancia el Holder
             currentBlock = Instantiate(block.blockPrefab, blockPlacer.position, blockPlacer.rotation, null);
+            currentBlock.GetComponent<Block>().myShelfController = this.gameObject;
             //currentBlock.transform.parent = blockPlacer;
         }
     }
@@ -45,12 +46,35 @@ public class ShelfController_V2 : MonoBehaviour
 
                 //Se instancia el Holder
                 currentBlock = Instantiate(block.blockPrefab, blockPlacer.position, blockPlacer.rotation, null);
-            }else
+                currentBlock.GetComponent<Block>().myShelfController = this.gameObject;
+
+            }
+            else
             {
                 availableBlockQuantity = 0;
 
                 blockQuantityVisual.text = availableBlockQuantity.ToString();
             }
         }
+    }
+
+    public void blockDeleted()
+    {
+        bool shelfIsEmpty = false;
+        if(availableBlockQuantity == 0)
+        {
+            shelfIsEmpty = true;
+        }
+
+        availableBlockQuantity++;
+        blockQuantityVisual.text = availableBlockQuantity.ToString();
+
+        if(shelfIsEmpty)
+        {
+            currentBlock = Instantiate(block.blockPrefab, blockPlacer.position, blockPlacer.rotation, null);
+            currentBlock.GetComponent<Block>().myShelfController = this.gameObject;
+
+        }
+
     }
 }

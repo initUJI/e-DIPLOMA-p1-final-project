@@ -62,6 +62,8 @@ public class PlantsController : MonoBehaviour
             ActivateParticles(PlantParticles1);
             gameManager.incrementGamePhase();
 
+            Plant1.transform.GetChild(1).gameObject.SetActive(false);
+
             Collider collider = Plant1.GetComponent<Collider>();
             if (collider != null)
             {
@@ -73,6 +75,8 @@ public class PlantsController : MonoBehaviour
         {
             ActivateParticles(PlantParticles2);
             gameManager.incrementGamePhase();
+
+            Plant2.transform.GetChild(1).gameObject.SetActive(false);
 
             Collider collider = Plant2.GetComponent<Collider>();
             if (collider != null)
@@ -86,6 +90,8 @@ public class PlantsController : MonoBehaviour
             ActivateParticles(PlantParticles3);
             gameManager.incrementGamePhase();
 
+            Plant3.transform.GetChild(1).gameObject.SetActive(false);
+
             Collider collider = Plant3.GetComponent<Collider>();
             if (collider != null)
             {
@@ -97,6 +103,8 @@ public class PlantsController : MonoBehaviour
         {
             ActivateParticles(PlantParticles4);
             gameManager.incrementGamePhase();
+
+            Plant4.transform.GetChild(1).gameObject.SetActive(false);
 
             Collider collider = Plant4.GetComponent<Collider>();
             if (collider != null)

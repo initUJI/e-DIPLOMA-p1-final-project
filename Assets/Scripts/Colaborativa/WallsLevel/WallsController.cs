@@ -59,9 +59,12 @@ public class WallsController : MonoBehaviour
         }
 
         obj.transform.position = endPosition; // Asegurarse de que llegue a la posición final
+        
         // Si se proporcionó un botón, desactívalo y cambia su material
         if (button != null)
         {
+            button.transform.GetChild(0).gameObject.SetActive(false);
+
             // Desactiva el Collider del botón
             Collider collider = button.GetComponent<Collider>();
             if (collider != null)

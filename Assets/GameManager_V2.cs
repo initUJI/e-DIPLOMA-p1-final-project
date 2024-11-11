@@ -207,6 +207,7 @@ public class GameManager_V2 : MonoBehaviour
 
     private void playerJoined()
     {
+
         // Desactivar fader y activar las interacciones del XR
         Debug.Log("que empiece el juego");
         setXRInteractionNewState(true);
@@ -300,6 +301,12 @@ public class GameManager_V2 : MonoBehaviour
         {
             Debug.LogError("Player_ID out of bounds!");
         }
+    }
+
+    public void refreshLocalAvailableBlocks()
+    {
+        SetLocalAvailableBlocks(playerBlocksSets[actualGamePhase]);
+
     }
 
     public void incrementGamePhase()

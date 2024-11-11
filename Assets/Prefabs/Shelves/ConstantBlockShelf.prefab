@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 4849361858314858638}
   - component: {fileID: 3808753710082774479}
   - component: {fileID: 7494666534467787734}
-  - component: {fileID: 1087310402}
   m_Layer: 0
   m_Name: ConstantBlockShelf
   m_TagString: Untagged
@@ -162,19 +161,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
---- !u!114 &1087310402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362628165029908827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f514ef86f46687448627e8667b46132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 2213961587670265618, guid: 062183cf02b459d4fbb128a55a8e82b0, type: 3}
-  attach: {fileID: 3471840588420917804}
-  currentBlock: {fileID: 0}
-  joystickValue: {x: 0, y: 0}

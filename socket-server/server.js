@@ -1,8 +1,8 @@
 import { Server } from "socket.io";
 import express from "express";
 
-const app = express().listen(process.env.PORT, () => {
-  console.log(`Server running on http://localhost:${process.env.PORT}`);
+const app = express().listen(process.env.PORT || 3000, () => {
+  console.log(`Server running on port ${process.env.PORT || 3000}`);
 });
 
 const io = new Server(app, {
@@ -12,107 +12,54 @@ const io = new Server(app, {
 });
 
 const userRooms = {};
+const userPlayerNumber = {};
 const userPlayed = {};
 let currentRoom = 1;
-const pairedRooms = {};
-const userSockets = {};
-let connectedUsers = 0;
 
-// Opción 1 - Dos usuarios se conectan a la misma sala.
-// Cada vez que un usuario emita el mensaje play, el otro de la misma recibirá el mensaje move.
+// Dos usuarios se conectan a la misma sala.
+// Cada vez que un usuario emita el mensaje update, el otro de la misma room recibirá el mensaje move.
+// Cuando los dos emitan el mensaje ready, se enviará un mensaje de ejecución.
 // No hay limite de salas. Solo hay dos usuarios por sala. No hay limite de usuarios.
-/* io.on("connection", (socket) => {
-  const user = socket.handshake.query.user;
-  let room = `room-${currentRoom}`;
-  const roomUsers = io.sockets.adapter.rooms.get(room)?.size || 0;
-  if (roomUsers >= process.env.MAX_USERS_ROOM) {
-    currentRoom++;
-  }
-  room = `room-${currentRoom}`;
-  userRooms[user] = room;
-  socket.join(room);
-  socket.emit("joined-room", {
-    room: userRooms[user],
-    user: roomUsers + 1,
-  });
-  
-  console.log(`User ${user} connected to room ${room}`);
-
-  socket.on("play", (msg) => {
-    console.log(`User ${user} played ${msg}`);
-    //socket.broadcast.to(userRooms[user]).emit("move", msg);
-    io.to(userRooms[user]).emit("move", msg);
-  });
-
-  socket.on("disconnect", () => {
-    console.log(`User ${user} disconnected from room ${room}`);
-    if (!io.sockets.adapter.rooms.get(room)) {
-      delete userRooms[user];
-      console.log(`Room ${room} deleted`);
-    }
-  });
-}); */
-
-// Opción 1.2 - Dos usuarios se conectan a la misma sala.
-// Cada vez que un usuario emita el mensaje play, el otro de la misma recibirá el mensaje move.
-// Cuando los dos hayan jugado, se enviará un mensaje de ejecución.
-// No hay limite de salas. Solo hay dos usuarios por sala. No hay limite de usuarios.
-/* io.on("connection", (socket) => {
-  const user = socket.handshake.query.user;
-  let room = `room-${currentRoom}`;
-  const roomUsers = io.sockets.adapter.rooms.get(room)?.size || 0;
-  if (roomUsers >= process.env.MAX_USERS_ROOM) {
-    currentRoom++;
-  }
-  room = `room-${currentRoom}`;
-  userRooms[user] = room;
-  userPlayed[user] = false;
-  socket.join(room);
-  socket.emit("joined-room", room);
-  
-  console.log(`User ${user} connected to room ${room}`);
-
-  socket.on("play", (msg) => {
-    userPlayed[user] = true;
-    socket.broadcast.to(userRooms[user]).emit("move", msg);
-
-    if (Object.keys(userPlayed).every((u) => userPlayed[u])) {
-      io.to(userRooms[user]).emit("execute");
-      userPlayed[Object.keys(userPlayed)[0]] = false;
-      userPlayed[Object.keys(userPlayed)[1]] = false;
-    }
-  });
-
-  socket.on("disconnect", () => {
-    console.log(`User ${user} disconnected from room ${room}`);
-    if (!io.sockets.adapter.rooms.get(room)) {
-      delete userRooms[user];
-      console.log(`Room ${room} deleted`);
-    }
-  });
-}); */
-
-// Opción 1.3 - Dos usuarios se conectan a la misma sala.
-// Cada vez que un usuario emita el mensaje play, el otro de la misma recibirá el mensaje move.
-// Cuando los emitan el mensaje play, se enviará un mensaje de ejecución.
-// No hay limite de salas. Solo hay dos usuarios por sala. No hay limite de usuarios.
+// Cuando un usuario entra por primera vez, se le asigna una sala y emite el mensaje de joined-room. Si la sala está llena, se crea una nueva.
+// Cuando los dos usuarios se han unido a la sala, se emite un mensaje de room-ready.
+// Cuando un usuario se desconecta, se elimina la sala.
 io.on("connection", (socket) => {
   const user = socket.handshake.query.user;
   let room = `room-${currentRoom}`;
   const roomUsers = io.sockets.adapter.rooms.get(room)?.size || 0;
-  if (roomUsers >= process.env.MAX_USERS_ROOM) {
-    currentRoom++;
+  if (!userRooms[user]) {
+    if (roomUsers >= process.env.MAX_USERS_ROOM) {
+      currentRoom++;
+    }
+    room = `room-${currentRoom}`;
+    userRooms[user] = room;
+    userPlayed[user] = false;
+    userPlayerNumber[user] = roomUsers + 1;
+    socket.join(room);
+    socket.emit("joined-room", {
+      room: userRooms[user],
+      user: userPlayerNumber[user],
+    });
+  } else {
+    socket.emit("joined-room", {
+      room: userRooms[user],
+      user: userPlayerNumber[user],
+    });
   }
-  room = `room-${currentRoom}`;
-  userRooms[user] = room;
-  userPlayed[user] = false;
-  socket.join(room);
-  socket.emit("joined-room", {
-    room: userRooms[user],
-    user: roomUsers + 1,
-  });
 
-  console.log(`User ${user} connected to room ${room}`);
+  console.log(
+    `User ${user} connected to room ${room}. Total users connected ${
+      io.sockets.adapter.rooms.get(userRooms[user])?.size
+    } / ${process.env.MAX_USERS_ROOM}`
+  );
+
+  if (
+    io.sockets.adapter.rooms.get(userRooms[user])?.size >=
+    process.env.MAX_USERS_ROOM
+  ) {
+    console.log(`Room ${userRooms[user]} is ready`);
+    io.to(userRooms[user]).emit("room-ready");
+  }
 
   socket.on("update", (msg) => {
     socket.to(userRooms[user]).emit("move", msg);
@@ -120,74 +67,41 @@ io.on("connection", (socket) => {
 
   socket.on("ready", () => {
     userPlayed[user] = true;
-    if (Object.keys(userPlayed).every((u) => userPlayed[u])) {
+    console.log(`${user} is ready. Waiting for the other player.`);
+    // Get all users of the same room as the user
+    const currentUserRoom = userRooms[user];
+    const usersInRoom = Object.keys(userRooms).filter(
+      (u) => userRooms[u] === currentUserRoom
+    );
+    usersInRoom.forEach((u) => {
+      console.log(
+        `User ${u} ready: ${userPlayed[u]} in room ${currentUserRoom}`
+      ); // Log user readiness
+    });
+
+    // Check if all users in the room are ready
+    const allUsersReady = usersInRoom.every((u) => userPlayed[u]);
+    if (allUsersReady && usersInRoom.length == process.env.MAX_USERS_ROOM) {
       io.to(userRooms[user]).emit("execute");
-      userPlayed[Object.keys(userPlayed)[0]] = false;
-      userPlayed[Object.keys(userPlayed)[1]] = false;
+      console.log("Both players are ready. Executing...");
+      usersInRoom.forEach((u) => {
+        userPlayed[u] = false;
+      });
     }
   });
 
   socket.on("disconnect", () => {
     console.log(`User ${user} disconnected from room ${room}`);
     if (!io.sockets.adapter.rooms.get(room)) {
+      let userCurrentRoom = userRooms[user];
+      const otherUser = Object.keys(userRooms).find(
+        (u) => u !== user && userRooms[u] === userCurrentRoom
+      );
       delete userRooms[user];
+      delete userRooms[otherUser];
+      delete userPlayed[user];
+      delete userPlayed[otherUser];
       console.log(`Room ${room} deleted`);
     }
   });
 });
-
-// Opción 2 - Cada usuario se conecta a una sala distinta.
-// Cada vez que un usuario emita el mensaje play, se enviará a la sala contraria.
-// Solo hay dos salas. Solo hay un usuario por sala. No hay limite de usuarios.
-/* io.on("connection", (socket) => {
-  const user = socket.handshake.query.user;
-  const room = `room-${currentRoom}`;
-  userRooms[user] = room;
-  socket.join(room);
-
-  console.log(`User ${user} connected to room ${room}`);
-
-  if (currentRoom % 2 === 0) {
-    pairedRooms[`room-${currentRoom - 1}`] = `room-${currentRoom}`;
-    pairedRooms[`room-${currentRoom}`] = `room-${currentRoom - 1}`;
-
-    console.log(`Paired rooms: ${pairedRooms[`room-${currentRoom - 1}`]} - ${pairedRooms[`room-${currentRoom}`]}`);
-  }
-  currentRoom++;
-
-  socket.on("play", (msg) => {
-    const targetRoom = pairedRooms[userRooms[user]];
-    io.to(targetRoom).emit("move", msg);
-  });
-
-  socket.on("disconnect", () => {
-    console.log(`User ${user} disconnected`);
-  });
-}); */
-
-// Opción 3 - Solo hay dos usuarios conectados al servidor.
-// Cada vez que un usuario emita el mensaje play, se enviará al otro usuario.
-// No hay salas. Solo hay dos usuarios.
-/* io.on("connection", (socket) => {
-  if (connectedUsers >= process.env.MAX_USERS_TOTAL) {
-    socket.emit("full", "Server is full");
-    socket.disconnect();
-    return;
-  }
-
-  const user = socket.handshake.query.user;
-  userSockets[user] = socket;
-  connectedUsers++;
-  console.log(`User ${user} connected`);
-
-  socket.on("play", (msg) => {
-    const targetUser = Object.keys(userSockets).find((u) => u !== user);
-    userSockets[targetUser].emit("move", msg);
-  });
-
-  socket.on("disconnect", () => {
-    connectedUsers--;
-    delete userSockets[user];
-    console.log(`User ${user} disconnected`);
-  });
-}); */

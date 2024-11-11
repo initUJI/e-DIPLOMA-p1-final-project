@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DefinitiveScene_Menu.unity
     guid: efd4fa83d77f75e44881ace5a203e6bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OfficialCollaborativeLevels/Zombies_CollaborativeLevel.unity
     guid: b5313a070234b0042963b090465b2493
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OfficialCollaborativeLevels/Trash_CollaborativeLevel.unity
     guid: 75b81763ab208f142bacaa4838901b21
   - enabled: 1

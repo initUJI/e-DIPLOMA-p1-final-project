@@ -18,4 +18,5 @@ public class RightHandedToggle_Controller : MonoBehaviour
         bool newState = gameObject.GetComponent<Toggle>().isOn;
         playerSettings.isPlayerRightHanded = newState;
     }
+
 }

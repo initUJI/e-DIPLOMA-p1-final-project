@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public abstract class Block : MonoBehaviour
 {
     [HideInInspector] public Block bottomBlock;
+    public GameObject myShelfController;
 
     public virtual void Start()
     {

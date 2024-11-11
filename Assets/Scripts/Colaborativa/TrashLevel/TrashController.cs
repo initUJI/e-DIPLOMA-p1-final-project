@@ -18,22 +18,26 @@ public class TrashController : MonoBehaviour
         {
             StartCoroutine(ActivateParticles(TrashParticles1, Trash1, AnimMovement));
             gameManager.incrementGamePhase();
+            other.transform.GetChild(0).gameObject.SetActive(false);
         }
         else if (other.gameObject == Trash2)
         {
             StartCoroutine(ActivateParticles(TrashParticles2, Trash2, AnimMovement));
             gameManager.incrementGamePhase();
+            other.transform.GetChild(0).gameObject.SetActive(false);
         }
         else if (other.gameObject == Trash3)
         {
             StartCoroutine(ActivateParticles(TrashParticles3, Trash3, AnimMovement));
             gameManager.incrementGamePhase();
+            other.transform.GetChild(0).gameObject.SetActive(false);
 
         }
         else if (other.gameObject == Trash4)
         {
             StartCoroutine(ActivateParticles(TrashParticles4, Trash4, AnimMovement));
             gameManager.incrementGamePhase();
+            other.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

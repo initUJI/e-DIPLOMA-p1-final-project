@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 4849361858314858638}
   - component: {fileID: 3808753710082774479}
   - component: {fileID: 7494666534467787734}
-  - component: {fileID: 4906559855746860696}
   m_Layer: 0
   m_Name: VariableBlockShelf
   m_TagString: Untagged
@@ -162,19 +161,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
---- !u!114 &4906559855746860696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362628165029908827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0986eab9854d3894593b1733500d905b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 184024043501887833, guid: 2625ac5c763e4fd47b9998b0d0a74b6c, type: 3}
-  attach: {fileID: 3471840588420917804}
-  currentBlock: {fileID: 0}
-  joystickValue: {x: 0, y: 0}
