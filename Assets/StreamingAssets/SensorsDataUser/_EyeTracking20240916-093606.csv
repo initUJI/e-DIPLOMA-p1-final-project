@@ -1,7 +1,0 @@
-userID;fecha
-anom;16/09/2024_09:36
-unixTimestamp;Timestamp;Situacion;Accion;Objeto
-1726472167,03480;,07963;Test1;ENTRA_HEAD;Grass: Part of the level
-1726472169,38732;2,43215;Test1;SALE_HEAD;Grass: Part of the level
-1726472169,54723;2,59226;Test1;ENTRA_HEAD;Center Wall: Part of -------STATIC LEVEL--------
-1726472177,32083;10,36565;Test1;SALE_HEAD;Table: Part of -------STATIC LEVEL--------

@@ -1,8 +1,0 @@
-userID;fecha
-anom;16/09/2024_09:23
-unixTimestamp;Timestamp;Situacion;Accion;Objeto
-1726471439,74708;,21687;Test1;ENTRA_HEAD;Grass: Part of the level
-1726471445,48166;5,95127;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
-1726471445,50909;5,97890;Test1;ENTRA_HEAD;Water: Part of the level
-1726471464,56179;25,03118;Test1;SALE_HEAD;attach3: Part of ArduinoCompleto
-1726471464,61651;25,08635;Test1;ENTRA_HEAD;attach3: Part of ArduinoCompleto
