@@ -10,8 +10,11 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 /emotibit*
-/[Dd]ata
-/Assets/StreamingAssets/SensorsDataUser
+/[Dd]ata/
+/Assets/SensorsDataUser/
+/Assets/StreamingAssets/SensorsDataUser/
+/*/node_modules/
+/*/package-lock.json
 
 /*.7z
 
